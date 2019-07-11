@@ -12,6 +12,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "dev": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
@@ -26,7 +27,7 @@
       "build/**/*",
       "node_modules/**/*"
     ],
-    "directories":{
+    "directories": {
       "buildResources": "assets"
     }
   },
@@ -49,6 +50,9 @@
     "concurrently": "^4.1.1",
     "electron": "^5.0.6",
     "electron-builder": "^20.44.4",
+    "react-router": "^5.0.1",
+    "react-router-dom": "^5.0.1",
+    "reactstrap": "^8.0.1",
     "wait-on": "^3.2.0"
   }
 }
