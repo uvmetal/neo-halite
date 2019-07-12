@@ -3,7 +3,6 @@ import { NavLink as RRNavLink } from 'react-router-dom'
 import {
   Card,
   CardBody,
-  Jumbotron,
   Button,
   Collapse,
   Navbar,
@@ -15,24 +14,22 @@ import {
   UncontrolledDropdown,
   DropdownToggle,
   DropdownMenu,
-  DropdownItem,
-  Breadcrumb,
-  BreadcrumbItem } from 'reactstrap'
-
-import cozLogo from '../../images/coz-inverted.svg'
-import neoOneLogo from '../../images/neo-one.png'
-import neoLogo from '../../images/neo_logo.svg'
+  DropdownItem
+} from 'reactstrap'
 
 import './style.css'
 
-let color = "black"
 
 function RunningNetworks(props) {
   let listItems
 
   if (props && props.networks && props.networks.running.length) {
     listItems = props.networks.running.map((net) =>
-      <li>[<a href="">Start</a> | <a href="">Stop</a> | <a href="">Restart</a>] <a href="">{net}</a> </li>
+      <li>
+      <Button size="sm" outline color="success" style={{ marginLeft: '1rem', marginBottom: '1rem' }}>Start</Button>
+      <Button size="sm" outline color="success" style={{ marginLeft: '1rem', marginBottom: '1rem' }}>Stop</Button>
+      <Button size="sm" outline color="success" style={{ marginLeft: '1rem', marginBottom: '1rem' }}>Restart</Button>
+      <a href="">{net}</a> </li>
     )
   }
 

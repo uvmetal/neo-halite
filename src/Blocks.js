@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
 import NavBar from './components/navbar'
-import BlockItem from './BlockItem'
-import Neon, { rpc } from "@cityofzion/neon-js"
+// import BlockItem from './BlockItem'
+// import Neon, { rpc } from "@cityofzion/neon-js"
 // var initSqlJs = require('sql.js');
-import sqlite3 from 'sqlite3'
+// import { Database } from "sqlite3";
+// import sqlite3 from 'sqlite3'
 // import sqlite3 from 'sqlite3'
 // sqlite3.verbose()
 // import {promisify} from 'bluebird';

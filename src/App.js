@@ -12,10 +12,6 @@ import Storage from './Storage'
 import Events from './Events'
 import About from './About'
 
-// import Accounts from './Accounts';
-
-
-import logo from './logo.svg'
 import './App.css'
 
 // function App() {

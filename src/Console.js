@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import Terminal from 'terminal-in-react';
 import NavBar from './components/navbar'
 // import NavBar from './components/navbar'
