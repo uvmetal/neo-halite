@@ -107,31 +107,31 @@ class NavBar extends Component {
           <Collapse isOpen={!this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem >
-                <NavLink href="/">Home</NavLink>
+                <NavLink tag={RRNavLink} exact to="/" activeClassName="active">Home</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="/accounts">Accounts</NavLink>
+                <NavLink tag={RRNavLink} exact to="/Accounts" activeClassName="active">Accounts</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="/transactions">Transactions</NavLink>
+                <NavLink tag={RRNavLink} exact to="/Transactions" activeClassName="active">Transactions</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="/contracts">Contracts</NavLink>
+                <NavLink tag={RRNavLink} exact to="/Contracts" activeClassName="active">Contracts</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="/storage">Storage</NavLink>
+                <NavLink tag={RRNavLink} exact to="/Storage" activeClassName="active">Storage</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="/blocks">Blocks</NavLink>
+                <NavLink tag={RRNavLink} exact to="/Blocks" activeClassName="active">Blocks</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="/events">Events</NavLink>
+                <NavLink tag={RRNavLink} exact to="/Events" activeClassName="active">Events</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink tag={RRNavLink} exact to="/console" activeClassName="active">Console</NavLink>
+                <NavLink tag={RRNavLink} exact to="/Console" activeClassName="active">Console</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="/about">About</NavLink>
+                <NavLink tag={RRNavLink} exact to="/About" activeClassName="active">About</NavLink>
               </NavItem>
               <UncontrolledDropdown nav inNavbar>
                 <DropdownToggle nav caret>
