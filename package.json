@@ -54,6 +54,7 @@
     "react-router": "^5.0.1",
     "react-router-dom": "^5.0.1",
     "reactstrap": "^8.0.1",
+    "terminal-in-react": "^4.3.1",
     "wait-on": "^3.2.0"
   }
 }

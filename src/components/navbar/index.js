@@ -1,6 +1,8 @@
-import React, {Component} from 'react';
-import { Link } from 'react-router-dom';
+import React, {Component} from 'react'
+import { NavLink as RRNavLink } from 'react-router-dom'
 import {
+  Card,
+  CardBody,
   Jumbotron,
   Button,
   Collapse,
@@ -15,13 +17,13 @@ import {
   DropdownMenu,
   DropdownItem,
   Breadcrumb,
-  BreadcrumbItem } from 'reactstrap';
+  BreadcrumbItem } from 'reactstrap'
 
-import cozLogo from '../../images/coz-inverted.svg';
-import neoOneLogo from '../../images/neo-one.png';
-import neoLogo from '../../images/neo_logo.svg';
+import cozLogo from '../../images/coz-inverted.svg'
+import neoOneLogo from '../../images/neo-one.png'
+import neoLogo from '../../images/neo_logo.svg'
 
-import './style.css';
+import './style.css'
 
 let color = "black"
 
@@ -41,34 +43,27 @@ function RunningNetworks(props) {
       {listItems}
       </ul>
     </div>
-  );
+  )
 }
 
 class NavBar extends Component {
   constructor(props) {
-    super(props);
+    super(props)
     // this.listenerFunction = this.listenerFunction.bind(this);
 
     this.toggle = this.toggle.bind(this);
-    this.stopAllClick = this.stopAllClick.bind(this);
+    this.toggleNetworkStatus = this.toggleNetworkStatus.bind(this);
+    this.stopAllClick = this.stopAllClick.bind(this)
 
     this.state = {
+      networkStatusToggle: false,
       isOpen: false,
       ready: true,
       networks: {
         running: []
-            // running: []
-
       }
     }
   }
-  // state = {
-  //   ready: true,
-  //   networks: {
-  //     running: ['BlueNet', 'RedNet']
-  //     // running: []
-  //   },
-  // };
 
   toggle() {
       this.setState({
@@ -76,7 +71,11 @@ class NavBar extends Component {
       });
   }
 
-
+  toggleNetworkStatus() {
+      this.setState({
+          networkStatusToggle: !this.state.networkStatusToggle
+      });
+  }
 
   startAllClick() {
       this.setState({
@@ -111,28 +110,28 @@ class NavBar extends Component {
                 <NavLink href="/">Home</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="/">Accounts</NavLink>
+                <NavLink href="/accounts">Accounts</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="/">Transactions</NavLink>
+                <NavLink href="/transactions">Transactions</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="/">Contracts</NavLink>
+                <NavLink href="/contracts">Contracts</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="/">Storage</NavLink>
+                <NavLink href="/storage">Storage</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="/">Blocks</NavLink>
+                <NavLink href="/blocks">Blocks</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="/">Events</NavLink>
+                <NavLink href="/events">Events</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="/">Console</NavLink>
+                <NavLink tag={RRNavLink} exact to="/console" activeClassName="active">Console</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="/">About</NavLink>
+                <NavLink href="/about">About</NavLink>
               </NavItem>
               <UncontrolledDropdown nav inNavbar>
                 <DropdownToggle nav caret>
@@ -154,14 +153,19 @@ class NavBar extends Component {
             </Nav>
           </Collapse>
         </Navbar>
-        <hr></hr>
-        <h3>Session Status</h3>
+        <Button size="sm" outline color="success" onClick={this.toggleNetworkStatus} style={{ marginLeft: '1rem', marginBottom: '1rem' }}>Session Status</Button>
+          <Collapse isOpen={this.state.networkStatusToggle}>
+            <Card style={{ marginLeft: '1rem', marginRight: '1rem', marginBottom: '1rem' }}>
+              <CardBody>
+              <Button size="sm" outline color="success" onClick={() => this.startAllClick()}>Start All</Button>
+              <Button size="sm" outline color="danger" onClick={() => this.stopAllClick()}>Stop All</Button>
+              <RunningNetworks networks={this.state.networks} />
+              </CardBody>
+            </Card>
+          </Collapse>
 
-        <Button size="sm" outline color="success" onClick={() => this.startAllClick()}>Start All</Button>
-        <Button size="sm" outline color="danger" onClick={() => this.stopAllClick()}>Stop All</Button>
-        <RunningNetworks networks={this.state.networks} />
       </div>
-    );
+    )
   }
 }
-export default NavBar;
+export default NavBar

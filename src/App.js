@@ -1,13 +1,14 @@
-import React from 'react';
-import { MemoryRouter, Switch, Route } from 'react-router';
+import React from 'react'
+import { MemoryRouter, Switch, Route } from 'react-router'
 
-import Home from './Home';
+import Home from './Home'
+import Console from './Console';
 
 // import Accounts from './Accounts';
 
 
-import logo from './logo.svg';
-import './App.css';
+import logo from './logo.svg'
+import './App.css'
 
 // function App() {
 //   return (
@@ -33,10 +34,11 @@ import './App.css';
 const App = () => (
   <MemoryRouter>
     <Switch>
+      <Route path="/console" component={Console} />
       <Route path="/" component={Home} />
     </Switch>
   </MemoryRouter>
 );
 
 
-export default App;
+export default App
