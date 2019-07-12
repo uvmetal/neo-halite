@@ -1,9 +1,12 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 import NavBar from './components/navbar'
-import BlockItem from './BlockItem';
-import Neon, { rpc } from "@cityofzion/neon-js";
-// import sqlite3 from 'sqlite3';
+import BlockItem from './BlockItem'
+import Neon, { rpc } from "@cityofzion/neon-js"
+// var initSqlJs = require('sql.js');
+import sqlite3 from 'sqlite3'
+// import sqlite3 from 'sqlite3'
+// sqlite3.verbose()
 // import {promisify} from 'bluebird';
 
 // const { remote } = require( "electron" );
@@ -43,6 +46,10 @@ class Blocks extends Component {
 
   getBlocksSqlite()
   {
+   //  initSqlJs().then(function(SQL){
+   //   const dbPath = '/'
+   //   var db = new SQL.Database(dbPath);
+   // })
   //   const dbPath = '/Users/joe/Library/Application Support/neo-one/plugin/neo-one-server-plugin-neotracker/neotracker/manager/resources/neotracker9/db.sqlite';
   //   const db = new sqlite3.Database(dbPath, sqlite3.OPEN_READONLY);
   //   db.all = promisify(db.all);
@@ -77,7 +84,7 @@ class Blocks extends Component {
     //   .subscribe((res) => {
     //     console.log("start network result: " + JSON.stringify(res));
     //     this.getBlocks(this.state.rpcAddress);
-    //     this.getBlocksSqlite();
+        this.getBlocksSqlite();
     //   });
     // });
   }

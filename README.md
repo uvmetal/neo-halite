@@ -64,6 +64,15 @@ Systems that we need to control:
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) and fine-tuned to support Electron by [UVMetal](https://github.com/uvmetal).
 
+## Notes
+
+If you have problems with sqlite3 on Ubuntu 18 or similar, you may need to do the following:
+
+```
+npm install sqlite3 --build-from-source
+
+```
+
 ## Available Scripts
 
 In the project directory, you can run (I prefer to replace `npm` with `yarn`):
