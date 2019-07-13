@@ -17,7 +17,7 @@ const Console = () => (
           }}>
           <Terminal
             color='#dee5eb'
-            backgroundColor='#191c49'
+            backgroundColor='#000000'
             fullscreen
             hideTopBar
             startState='maximised'
@@ -25,7 +25,7 @@ const Console = () => (
             allowTabs={false}
             watchConsoleLogging
             barColor='#363963'
-            msg='Neodymium console opened.'
+            msg='Your sword is glowing a faint green. A black orc swirls from the shadows. What do you do?'
             style={{ fontWeight: "bold", fontSize: "1em", minHeight: "500px", height: "500px", lineHeight: "1em" }}
             commands={{
               exec: () => alert('Not implemented.'),

@@ -1,8 +1,13 @@
 
 # Neo Black Orc Plan
-Neo-One Neo-Black Orchestration System Draft v1
 
-# Build rough outline of Neo-Black Orchestration requirements
+Neo Black - Private Net Orchestration System Draft v1 based on concept codename Neodymium.
+
+# Neodymium City of Zion Project Requirements
+https://gist.github.com/hal0x2328/7c95e58ebbb27091790b153160763fad
+
+
+# Build strict Neo-Black Orchestration requirements
 * Determine additional modules for control, if needed, and if rpc can run everything alone
   * Integrate RPC control module into Neo-Black
   * Integrate command line control module into Neo-Black (if needed)
@@ -10,13 +15,14 @@ Neo-One Neo-Black Orchestration System Draft v1
 
 # Build Presentation Framework (front end)
 
-  Bring up fastest option first (Neo-Black Actual)
-  * electron comes later as desktop integration
+  Currently running:
+  * electron
   * react
   * redux
-  * webpack front end
+  * webpack
 
 ## Screens for Neo-Black Presentation Framework (front end) (WIP)
+
 
 This sections describes the control surface views within the front end.
 

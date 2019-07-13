@@ -99,7 +99,7 @@ class NavBar extends Component {
     return(
       <div>
         <Navbar color="faded" light expand="md">
-          <NavbarBrand href="/">Neo Black</NavbarBrand>
+          <NavbarBrand href="/">Black Orc</NavbarBrand>
           <NavbarToggler onClick={this.toggle}  className="mr-2" />
           <Collapse isOpen={!this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
