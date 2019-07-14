@@ -9,7 +9,7 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: #ffffff;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -23,10 +23,32 @@
   color: #61dafb;
 }
 
-.topcorner{
+
+
+.hrBlack {
+  display: block; height: 1px;
+  border: 0; border-top: 1px solid #fff;
+  margin: 1em 0; padding: 0;
+}
+
+
+.TopLeftCorner{
+  position:absolute;
+  top:0;
+  left:0;
+}
+
+.TopCorner{
   position:absolute;
   top:0;
   right:0;
+}
+
+.ButtonBounds{
+  marginLeft: '1rem';
+  marginRight: '1rem';
+  marginTop: '1rem';
+  marginBottom: '1rem';
 }
 
 @keyframes App-logo-spin {
