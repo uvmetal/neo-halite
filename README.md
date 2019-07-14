@@ -1,6 +1,8 @@
 
 # Neo Hive
 
+![honeycomb](images/honecomb.png)
+
 Welcome to the Hive. Neo Hive is a suite of tools designed to make the Neo Smart Economy easier to use.
 
   * Rest, RPC, and Desktop Control Surfaces
@@ -14,7 +16,7 @@ The hive is made up of many moving parts, but we only want you to worry about on
 
 # Plan
 
-Neo Black - Private Net Orchestration System Draft v1 based on concept codename Neodymium.
+Neo Hive - Private Net Orchestration System Draft v1 based on concept codename Neodymium.
 
 # Neodymium City of Zion Project Requirements
 New:
@@ -24,7 +26,7 @@ Original:
 https://gist.github.com/hal0x2328/7c95e58ebbb27091790b153160763fad
 
 
-# Build strict Neo-Black Orchestration requirements
+# Build strict Neo Hive Orchestration requirements
 * Determine additional modules for control, if needed, and if rpc can run everything alone
   * Integrate RPC control module into Neo-Black
   * Integrate command line control module into Neo-Black (if needed)
@@ -38,7 +40,7 @@ https://gist.github.com/hal0x2328/7c95e58ebbb27091790b153160763fad
   * redux
   * webpack
 
-## Screens for Neo-Black Presentation Framework (front end) (WIP)
+## Screens for Neo Hive Presentation Framework (front end) (WIP)
 
 This sections describes the control surface views within the front end.
 
