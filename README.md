@@ -1,5 +1,5 @@
 
-# Neo Hive
+# Hive
 
 ![honeycomb](images/honecomb.png)
 
@@ -10,7 +10,7 @@ Welcome to the Hive. Neo Hive is a suite of tools designed to make the Neo Smart
   * Multi-user Options - Join or build a collective. Hi, honey, you're home.
   * Orchestration
 
-# Neo Honeycomb
+# Honeycomb
 
 The hive is made up of many moving parts, but we only want you to worry about one. Honeycomb is your portal into the Hive complex. Control everything from the golden comfort of your home in Honeycomb.
 
