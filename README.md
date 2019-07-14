@@ -1,5 +1,18 @@
 
-# Neo Black Orc Plan
+# Neo Hive
+
+Welcome to the Hive. Neo Hive is a suite of tools designed to make the Neo Smart Economy easier to use.
+
+  * Rest, RPC, and Desktop Control Surfaces
+  * One-click Deployment
+  * Multi-user Options - Join or build a collective. Hi, honey, you're home.
+  * Orchestration
+
+# Neo Honeycomb
+
+The hive is made up of many moving parts, but we only want you to worry about one. Honeycomb is your portal into the Hive complex. Control everything from the golden comfort of your home in Honeycomb.
+
+# Plan
 
 Neo Black - Private Net Orchestration System Draft v1 based on concept codename Neodymium.
 
