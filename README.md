@@ -41,26 +41,56 @@ https://gist.github.com/hal0x2328/7c95e58ebbb27091790b153160763fad
   * redux
   * webpack
 
+# Build Server Framework
+
+Sailsjs is used on the backend to facilitate everything necessary for Neo privatenet abstraction: database, REST, RPC, and core node network.
+
+* Sailsjs
+
+  Wrap RPC, REST, and Database in Sailsjs routes. These routes should be strictly version controlled while the adapter layer could leverage the underlying modules for Neo-One, NeoTracker, etc directly, through IPC, by process spawn, or any other mechanism. It is preferred to directly implement the underlying modules for the tightest integration.
+
+* Localhost-only
+
+  Dynamic port determination to front end checks if port use that conflicts with any system feature and notifies the user to offer an easy solution to fix. Either stop the port and change to another at install time.
+
+* Modular, Configurable, and Movable
+
+  In case users want to scale to devs or devs want to scale to service they can imagine. Hive should be the base for all derived work.
+
+* Database Agnostic
+
+  The system will wrap core Neo tools for data like NeoTracker and Neo-One, but easy portability to other formats and or databases would be ideal. This should include capability to use Sailsjs schema abstraction technology to easily port chain to new databases.
+
 ## Screens for Neo Hive Presentation Framework (front end) (WIP)
 
 This sections describes the control surface views within the front end.
 
-  * Login
-  * Configure Private Net
-  * Configure Wallets
-  * C&C Neotracker
-  * Configure Application
-  * C&C Neo-One (PRIORITY)
-  * New neo-one Instance
-  * Start/restart neo-one instance
-  * Stop neo-one intance
-  * View Running Instances
-  * View Past Instances (logs too perhaps)
-  * Restore Past Instances
+Please see the mock UI spreadsheet at for full details:
+
+[Neo Hive Mock UI](project-planning/mock/ui/Neo Hive Mock UI.xlsx)
+
+Snapshot (the braces represent buttons)
+
+* [New]
+* [Quickstart]
+* Workspace [rollup]
+  * [gear] [Accounts]
+  * [gear] [Blocks]
+  * [gear] [Contracts]
+  * [gear] [Export]
+  * [gear] [Transactions]
+  * [gear] [Storage]
+* System Settings [rollup]
+  * [Database]
+  * [Export]
+  * [Logs]
+  * [Rest]
+  * [RPC]
+  * [Session]
+* [About]
 
 
-
-# Control Surfaces (API)
+# Control Surfaces (RPC, REST, Database APIs)
 
 At this time, it looks like most of the system control is done via command line and process management that is OS-specific.
 
