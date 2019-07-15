@@ -17,23 +17,24 @@ The hive is made up of many moving parts, but we only want you to worry about on
 
 # Plan
 
-Neo Hive - Private Net Orchestration System Draft v1 based on concept codename Neodymium.
+Neo Hive - Private Net Orchestration System Draft v1 based on concept codename Neodymium. This plan is largely based off of the requirements set out by City of Zion in the following section.
 
-# Neodymium City of Zion Project Requirements
-New:
+## City of Zion Project Requirements per codename Neodymium
+
+Reformatted Goals:
+
 [Project Goals](./docs/ProjectGoals.md)
 
 Original:
+
 https://gist.github.com/hal0x2328/7c95e58ebbb27091790b153160763fad
 
-
-# Build strict Neo Hive Orchestration requirements
+## Build strict Neo Hive Orchestration requirements
 * Determine additional modules for control, if needed, and if rpc can run everything alone
-  * Integrate RPC control module into Neo-Black
-  * Integrate command line control module into Neo-Black (if needed)
+  * Integrate RPC control module
+  * Integrate command line control module (if needed)
 
-
-# Build Presentation Framework (front end)
+## Build Presentation Framework (front end)
 
   Currently running:
   * electron
@@ -41,27 +42,7 @@ https://gist.github.com/hal0x2328/7c95e58ebbb27091790b153160763fad
   * redux
   * webpack
 
-# Build Server Framework
-
-Sailsjs is used on the backend to facilitate everything necessary for Neo privatenet abstraction: database, REST, RPC, and core node network.
-
-* Sailsjs
-
-  Wrap RPC, REST, and Database in Sailsjs routes. These routes should be strictly version controlled while the adapter layer could leverage the underlying modules for Neo-One, NeoTracker, etc directly, through IPC, by process spawn, or any other mechanism. It is preferred to directly implement the underlying modules for the tightest integration.
-
-* Localhost-only
-
-  Dynamic port determination to front end checks if port use that conflicts with any system feature and notifies the user to offer an easy solution to fix. Either stop the port and change to another at install time.
-
-* Modular, Configurable, and Movable
-
-  In case users want to scale to devs or devs want to scale to service they can imagine. Hive should be the base for all derived work.
-
-* Database Agnostic
-
-  The system will wrap core Neo tools for data like NeoTracker and Neo-One, but easy portability to other formats and or databases would be ideal. This should include capability to use Sailsjs schema abstraction technology to easily port chain to new databases.
-
-## Screens for Neo Hive Presentation Framework (front end) (WIP)
+### Screens for Neo Hive Presentation Framework (front end) (WIP)
 
 This sections describes the control surface views within the front end.
 
@@ -89,8 +70,29 @@ Snapshot (the braces represent buttons)
   * [Session]
 * [About]
 
+## Server Framework Goals
 
-# Control Surfaces (RPC, REST, Database APIs)
+Sailsjs is used on the backend to facilitate everything necessary for Neo privatenet abstraction: database, REST, RPC, and core node network.
+
+* Sailsjs
+
+  Wrap RPC, REST, and Database in Sailsjs routes. These routes should be strictly version controlled while the adapter layer could leverage the underlying modules for Neo-One, NeoTracker, etc directly, through IPC, by process spawn, or any other mechanism. It is preferred to directly implement the underlying modules for the tightest integration.
+
+* Localhost-only
+
+  Dynamic port determination to front end checks if port use that conflicts with any system feature and notifies the user to offer an easy solution to fix. Either stop the port and change to another at install time.
+
+* Modular, Configurable, and Movable
+
+  In case users want to scale to devs or devs want to scale to service they can imagine. Hive should be the base for all derived work.
+
+* Database Agnostic
+
+  The system will wrap core Neo tools for data like NeoTracker and Neo-One, but easy portability to other formats and or databases would be ideal. This should include capability to use Sailsjs schema abstraction technology to easily port chain to new databases.
+
+### Server Framework Detail
+
+This section is for control surfaces (RPC, REST, Database APIs).
 
 At this time, it looks like most of the system control is done via command line and process management that is OS-specific.
 
@@ -112,8 +114,6 @@ Systems that we need to control:
 
 * grpc controls?
   * https://github.com/neo-one-suite/neo-one/blob/7781fc1ab09107d8301bade113538ddae761b3c7/packages/neo-one-server-grpc/proto/server.proto
-
-
 
 # Build
 
