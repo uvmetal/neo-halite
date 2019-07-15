@@ -46,7 +46,7 @@ https://gist.github.com/hal0x2328/7c95e58ebbb27091790b153160763fad
 
 This sections describes the control surface views within the front end.
 
-Please see the mock UI spreadsheet at for full details:
+Please see the mock UI spreadsheet for full details:
 
 [Neo Hive Mock UI](project-planning/mock/ui/Neo Hive Mock UI.xlsx)
 
@@ -78,17 +78,19 @@ Sailsjs is used on the backend to facilitate everything necessary for Neo privat
 
   Wrap RPC, REST, and Database in Sailsjs routes. These routes should be strictly version controlled while the adapter layer could leverage the underlying modules for Neo-One, NeoTracker, etc directly, through IPC, by process spawn, or any other mechanism. It is preferred to directly implement the underlying modules for the tightest integration.
 
-* Localhost-only
+* Localhost-only By Default
 
-  Dynamic port determination to front end checks if port use that conflicts with any system feature and notifies the user to offer an easy solution to fix. Either stop the port and change to another at install time.
+  Dynamic port determination to front end checks if port use that conflicts with any system feature and notifies the user to offer an easy solution to fix. Either stop the port and change to another at install time or dynamically allocate new ones.
+
+  Future: Allow easy configuration to expose services to the world. See next section.
 
 * Modular, Configurable, and Movable
 
-  In case users want to scale to devs or devs want to scale to service they can imagine. Hive should be the base for all derived work.
+  Plan for case where users want to scale to devs or devs want to scale to services. They can build anything they can imagine on this function primitive. Hive should be the base for all derived work.
 
 * Database Agnostic
 
-  The system will wrap core Neo tools for data like NeoTracker and Neo-One, but easy portability to other formats and or databases would be ideal. This should include capability to use Sailsjs schema abstraction technology to easily port chain to new databases.
+  The system will wrap exist Neo Smart Economy technology for data like NeoTracker and Neo-One, but easy portability to other formats or databases would be ideal. This is enabled by capability to use Sailsjs schema abstraction to easily port any chains to any databases.
 
 ### Server Framework Detail
 
