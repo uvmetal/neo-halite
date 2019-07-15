@@ -86,11 +86,11 @@ Sailsjs is used on the backend to facilitate everything necessary for Neo privat
 
 * Modular, Configurable, and Movable
 
-  Plan for case where users want to scale to devs or devs want to scale to services. They can build anything they can imagine on this function primitive. Hive should be the base for all derived work.
+  Plan for cases where users want to scale to devs or devs want to scale to services. They can build anything they can imagine on this function primitive. Hive should be the base for all derived work.
 
 * Database Agnostic
 
-  The system will wrap exist Neo Smart Economy technology for data like NeoTracker and Neo-One, but easy portability to other formats or databases would be ideal. This is enabled by capability to use Sailsjs schema abstraction to easily port any chains to any databases.
+  The system will wrap existing Neo Smart Economy technology for data like NeoTracker and Neo-One, but easy portability to other formats or databases would be ideal. This is enabled by capability to use Sailsjs schema abstraction to easily port any chains to any databases.
 
 ### Server Framework Detail
 
