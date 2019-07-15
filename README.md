@@ -3,9 +3,10 @@
 
 ![honeycomb](images/honecomb.png)
 
-Welcome to the Hive. Neo Hive is a suite of tools designed to make the Neo Smart Economy easier to use.
+Welcome to the Hive. Neo Hive is a suite of tools designed to make the Neo Smart Economy easier to use. Get started fast using the Hive.
 
   * Rest, RPC, and Desktop Control Surfaces
+  * One-click Private Net
   * One-click Deployment
   * Multi-user Options - Join or build a collective. Hi, honey, you're home.
   * Orchestration
