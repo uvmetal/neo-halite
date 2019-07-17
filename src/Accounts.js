@@ -10,9 +10,11 @@ let leftPaneContent = 'left paneleft paneleft paneleft paneleft paneleft panelef
 
 let rightPaneContent = 'rightpane rightpane rightpane right pane rightpanerightpanee'
 
+let footerContent = 'footer footer footer footer footer footer footer footer footer footer footer footer footer footer footer footer footer footer footer footer footer footer footer footer footer footer footer footer footer '
+
 const Accounts = () => (
   <div>
-    <Panel headerContent={headerContent} leftPaneContent={leftPaneContent} rightPaneContent={rightPaneContent}/>
+    <Panel headerContent={headerContent} leftPaneContent={leftPaneContent} rightPaneContent={rightPaneContent} footerContent={footerContent}/>
   </div>
 );
 

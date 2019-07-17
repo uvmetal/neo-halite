@@ -27,19 +27,19 @@ class Panel extends Component {
     let headerContent = this.props.headerContent ? this.props.headerContent : ''
     let leftPaneContent = this.props.leftPaneContent ? this.props.leftPaneContent : ''
     let rightPaneContent = this.props.rightPaneContent ? this.props.rightPaneContent : ''
+    let footerContent = this.props.footerContent ? this.props.footerContent : ''
 
     return (
 
       <div class="wrapper container">
-        <div class="headerContent">header</div>
-
+        <div class="headerContent">{headerContent}</div>
         <div class="leftPaneContent">
         {leftPaneContent}
         </div>
         <div class="rightPaneContent">
         {rightPaneContent}
         </div>
-        <div class="footerContent">footer</div>
+        <div class="footerContent">{footerContent}</div>
 
       </div>
     )
