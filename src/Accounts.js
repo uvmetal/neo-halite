@@ -1,5 +1,5 @@
 import React from 'react'
-import NavBar from './components/NavBar'
+import NavBar from './components/NavBar/NavBar'
 import HeaderControls from './components/HeaderControls/HeaderControls'
 
 import Panel from './components/Panel/Panel'

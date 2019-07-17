@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import NavBar from './components/navbar'
+import NavBar from './components/NavBar/NavBar'
 // import BlockItem from './BlockItem'
 // import Neon, { rpc } from "@cityofzion/neon-js"
 // var initSqlJs = require('sql.js');

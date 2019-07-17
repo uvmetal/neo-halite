@@ -1,7 +1,8 @@
 import React, {Component} from 'react'
 import { Link } from 'react-router-dom'
 import { Jumbotron } from 'reactstrap';
-import NavBar from './components/navbar'
+import NavBar from './components/NavBar/NavBar'
+
 
 import './Home.css'
 

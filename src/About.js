@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import { Jumbotron } from 'reactstrap';
-import NavBar from './components/navbar'
+import NavBar from './components/NavBar/NavBar'
 
 import './Home.css'
 

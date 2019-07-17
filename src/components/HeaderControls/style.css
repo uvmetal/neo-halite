@@ -61,13 +61,7 @@
 }
 
 .button {
-  marginLeft: '5rem';
+  marginLeft: '1rem';
   marginBottom: '1rem';
-}
-
-.NavElipsisButton {
-  color: hotpink;
-
-  marginLeft: '5rem';
-  marginBottom: '1rem';
+  padding: 5px;
 }

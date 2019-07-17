@@ -1,7 +1,7 @@
 import React from 'react';
 import Terminal from 'terminal-in-react';
-import NavBar from './components/navbar'
-// import NavBar from './components/navbar'
+import NavBar from './components/NavBar/NavBar'
+// import NavBar from './components/NavBar/NavBar'
 
 const Console = () => (
   <React.Fragment>
