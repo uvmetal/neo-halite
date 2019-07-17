@@ -83,6 +83,22 @@ class Panel extends React.Component {
 
     return (
       <div>
+      <Container fluid className="">
+      <Row className="">
+        <Col className="">
+        {headerContent}
+        <hr/>
+        </Col>
+      </Row>
+      <Row id="flex-container">
+        <Col id='raw' className='raw-item'>
+          {leftPaneContent}
+        </Col>
+        <Col id='flex' className='flex-item'>
+          {rightPaneContent}
+        </Col>
+      </Row>
+      </Container>
         <ReactPanel theme="chemical">
         <Tab title="One" icon="fa fa-plane">
          <Toolbar>Toolbar content of One</Toolbar>

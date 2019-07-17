@@ -29,23 +29,18 @@ class Panel extends Component {
     let rightPaneContent = this.props.rightPaneContent ? this.props.rightPaneContent : ''
 
     return (
-      <div>
-      <Container fluid className="">
-      <Row className="">
-        <Col className="">
-        {headerContent}
-        <hr/>
-        </Col>
-      </Row>
-      <Row className="wrapper">
-        <Col className="left" >
-          {leftPaneContent}
-        </Col>
-        <Col className="main">
-          {rightPaneContent}
-        </Col>
-      </Row>
-      </Container>
+
+      <div class="wrapper container">
+        <div class="headerContent">header</div>
+
+        <div class="leftPaneContent">
+        {leftPaneContent}
+        </div>
+        <div class="rightPaneContent">
+        {rightPaneContent}
+        </div>
+        <div class="footerContent">footer</div>
+
       </div>
     )
   }

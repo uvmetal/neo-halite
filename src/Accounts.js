@@ -8,7 +8,7 @@ let headerContent =  <NavBar />
 
 let leftPaneContent = 'left paneleft paneleft paneleft paneleft paneleft paneleft paneleft paneleft paneleft paneleft paneleft paneleft paneleft paneleft paneleft paneleft paneleft paneleft pane'
 
-let rightPaneContent = 'rightpane rightpane rightpane right pane rightpanerightpane r ight pane right paner ightp anerig htpan erightpaner ightpaneright paneri ghtpane rightpane'
+let rightPaneContent = 'rightpane rightpane rightpane right pane rightpanerightpanee'
 
 const Accounts = () => (
   <div>
