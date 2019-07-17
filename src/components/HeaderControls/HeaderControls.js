@@ -101,8 +101,8 @@ class NavBar extends Component {
           <NavbarBrand href="/">Black Orc</NavbarBrand>
 
           </Navbar>
-          <Button onClick={this.props.hideLeftPane}  className="mr-2" >...</Button>
-        <Button size="sm" outline color="success" onClick={this.toggleNetworkStatus} style={{ marginLeft: '1rem', marginBottom: '1rem' }}>Session Status</Button>
+          <Button size="sm" onClick={this.props.hideLeftPane}  className="mr-2" >...</Button>
+        <Button size="sm" outline color="success" onClick={this.toggleNetworkStatus} >Session Status</Button>
           <Collapse isOpen={this.state.networkStatusToggle}>
             <Card style={{ marginLeft: '1rem', marginRight: '1rem', marginBottom: '1rem' }}>
               <CardBody>
