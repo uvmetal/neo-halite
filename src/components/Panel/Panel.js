@@ -35,13 +35,14 @@ class Panel extends Component {
   }
 
   render() {
-    let headerContent = this.props.headerContent ? this.props.headerContent : <HeaderControls hideLeftPane={this.leftPaneToggleHidden} />
+    let headerContent = this.props.headerContent ? this.props.headerContent :
+      <HeaderControls hideLeftPane={this.leftPaneToggleHidden} />
     let leftPaneContent = this.props.leftPaneContent ? this.props.leftPanelContent : ''
     let rightPaneContent = this.props.rightPaneContent ? this.props.rightPanelContent : ''
     let footerContent = this.props.footerContent ? this.props.footerContent : ''
 
     return (
-        <div class='wrapper container'>
+        <div class='wrapper'>
           <div class='headerContent'>{headerContent}</div>
           { !this.state.leftPaneHidden &&
             <div class='leftPaneContent'>

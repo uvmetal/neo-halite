@@ -97,9 +97,7 @@ class NavBar extends Component {
   render() {
     return(
       <div>
-        <Navbar color="faded" light expand="md">
-          <NavbarBrand href="/">Black Orc</NavbarBrand>
-          </Navbar>
+
           <Button size="sm" onClick={this.props.hideLeftPane} >...</Button>
         <Button size="sm" outline color="success" onClick={this.toggleNetworkStatus} >Session Status</Button>
           <Collapse isOpen={this.state.networkStatusToggle}>
