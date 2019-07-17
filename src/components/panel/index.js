@@ -21,7 +21,7 @@ class Panel extends Component {
   componentDidMount() {
 
   }
-  // <CardImg top width="100%" src={cozLogo} alt="Card image cap" />
+  // <CardImg top width='100%' src={cozLogo} alt='Card image cap' />
 
   render() {
     let headerContent = this.props.headerContent ? this.props.headerContent : ''
@@ -31,15 +31,15 @@ class Panel extends Component {
 
     return (
 
-      <div class="wrapper container">
-        <div class="headerContent">{headerContent}</div>
-        <div class="leftPaneContent">
+      <div class='wrapper container'>
+        <div class='headerContent'>{headerContent}</div>
+        <div class='leftPaneContent'>
         {leftPaneContent}
         </div>
-        <div class="rightPaneContent">
+        <div class='rightPaneContent'>
         {rightPaneContent}
         </div>
-        <div class="footerContent">{footerContent}</div>
+        <div class='footerContent'>{footerContent}</div>
 
       </div>
     )
