@@ -47,7 +47,7 @@ class VerticalNav extends Component {
             <Collapse isOpen={!this.state.isOpen} navbar>
               <Nav vertical navbar>
                 <NavItem >
-                  <NavLink tag={RRNavLink} exct to="/" activeClassName="active">Home</NavLink>
+                  <NavLink tag={RRNavLink} exact to="/" activeClassName="active">Home</NavLink>
                 </NavItem>
                 <NavItem>
                   <NavLink tag={RRNavLink} exact to="/About" activeClassName="active">About</NavLink>
