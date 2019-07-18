@@ -5,9 +5,7 @@ import NavBar from './components/NavBar/NavBar'
 
 const Console = () => (
   <React.Fragment>
-    <div class="container">
-      <div><h2 class="text-muted">Console</h2></div>
-     <div>
+
      <Jumbotron className="vertical-center">
      <div className="container hero-container text-center">
        <h1 className="display-4">Console </h1>
@@ -38,8 +36,6 @@ const Console = () => (
               show: false
             }}
           />
-      </div>
-    </div>
   </React.Fragment>
 );
 
