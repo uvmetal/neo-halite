@@ -24,6 +24,7 @@
 }
 
 
+
 .hrBlack {
   display: block; height: 1px;
   border: 0; border-top: 1px solid #fff;
@@ -41,6 +42,13 @@
   position:absolute;
   top:0;
   right:0;
+}
+
+.ButtonBounds{
+  marginLeft: '1rem';
+  marginRight: '1rem';
+  marginTop: '1rem';
+  marginBottom: '1rem';
 }
 
 @keyframes App-logo-spin {

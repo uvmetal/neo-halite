@@ -1,7 +1,8 @@
 import React, {Component} from 'react'
 import { Link } from 'react-router-dom'
 import { Jumbotron } from 'reactstrap';
-import NavBar from './components/navbar'
+import NavBar from './components/NavBar/NavBar'
+
 
 import './Home.css'
 
@@ -24,7 +25,6 @@ class Home extends Component {
   render() {
     return(
         <React.Fragment>
-        <NavBar />
           <Jumbotron className="vertical-center">
           <div className="container hero-container text-center">
             <h1 className="display-4">Neodymium</h1>

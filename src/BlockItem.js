@@ -1,7 +1,19 @@
 import React, { Component } from 'react';
 import { Collapse, Button, CardBody, Card } from 'reactstrap';
+import VerticalNav from './components/VerticalNav/VerticalNav'
 // import sqlite3 from 'sqlite3';
 // import {promisify} from 'bluebird';
+import Main from './components/Main/Main'
+
+let headerContent =  ''
+
+let leftPaneContent = <VerticalNav />
+
+// let leftPaneContent = 'left paneleft paneleft paneleft paneleft paneleft paneleft paneleft paneleft paneleft paneleft paneleft paneleft paneleft paneleft paneleft paneleft paneleft paneleft pane'
+
+let rightPaneContent = 'rightpane rightpane rightpane right pane rightpanerightpanee'
+
+let footerContent = 'footer footer footer footer footer footer footer footer footer footer footer footer footer footer footer footer footer footer footer footer footer footer footer footer footer footer footer footer footer '
 
 class BlockItem extends Component {
   constructor(props) {
@@ -33,14 +45,7 @@ class BlockItem extends Component {
   render() {
     return (
       <div>
-        <Button className="coz-teal" onClick={this.toggle}>{this.props.blockhash}</Button>
-        <Collapse isOpen={this.state.collapse}>
-          <Card>
-            <CardBody>
-              <pre>{this.state.blockdata}</pre>
-            </CardBody>
-          </Card>
-        </Collapse>
+        <Main headerContent={headerContent} leftPaneContent={leftPaneContent} rightPaneContent={rightPaneContent} footerContent={footerContent} hidden='true'/>
       </div>
     );
   }

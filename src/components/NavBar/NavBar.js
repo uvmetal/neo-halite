@@ -46,10 +46,10 @@ function RunningNetworks(props) {
 class NavBar extends Component {
   constructor(props) {
     super(props)
-    // this.listenerFunction = this.listenerFunction.bind(this);
+    // this.listenerFunction = this.listenerFunction.bind(this)
 
-    this.toggle = this.toggle.bind(this);
-    this.toggleNetworkStatus = this.toggleNetworkStatus.bind(this);
+    this.toggle = this.toggle.bind(this)
+    this.toggleNetworkStatus = this.toggleNetworkStatus.bind(this)
     this.stopAllClick = this.stopAllClick.bind(this)
 
     this.state = {
@@ -65,13 +65,13 @@ class NavBar extends Component {
   toggle() {
       this.setState({
           isOpen: !this.state.isOpen
-      });
+      })
   }
 
   toggleNetworkStatus() {
       this.setState({
           networkStatusToggle: !this.state.networkStatusToggle
-      });
+      })
   }
 
   startAllClick() {
@@ -79,7 +79,7 @@ class NavBar extends Component {
           networks: {
             running: ['BlueNet', 'RedNet']
           }
-      });
+      })
   }
 
   stopAllClick() {
@@ -87,9 +87,8 @@ class NavBar extends Component {
           networks: {
             running: []
           }
-      });
+      })
   }
-
 
   componentDidMount() {
 
@@ -130,23 +129,6 @@ class NavBar extends Component {
               <NavItem>
                 <NavLink tag={RRNavLink} exact to="/About" activeClassName="active">About</NavLink>
               </NavItem>
-              <UncontrolledDropdown nav inNavbar>
-                <DropdownToggle nav caret>
-                  Options
-                </DropdownToggle>
-                <DropdownMenu right>
-                  <DropdownItem>
-                    Option 1
-                  </DropdownItem>
-                  <DropdownItem>
-                    Option 2
-                  </DropdownItem>
-                  <DropdownItem divider />
-                  <DropdownItem>
-                    Reset
-                  </DropdownItem>
-                </DropdownMenu>
-              </UncontrolledDropdown>
             </Nav>
           </Collapse>
         </Navbar>
@@ -160,7 +142,6 @@ class NavBar extends Component {
               </CardBody>
             </Card>
           </Collapse>
-
       </div>
     )
   }

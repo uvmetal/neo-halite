@@ -1,20 +1,21 @@
 import React from 'react';
+import { Jumbotron } from 'reactstrap';
 import Terminal from 'terminal-in-react';
-import NavBar from './components/navbar'
-// import NavBar from './components/navbar'
+import NavBar from './components/NavBar/NavBar'
 
 const Console = () => (
   <React.Fragment>
-    <NavBar />
-    <div class="container">
-      <div><h2 class="text-muted">Console</h2></div>
-     <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            height: "630px"
-          }}>
+
+     <Jumbotron className="vertical-center">
+     <div className="container hero-container text-center">
+       <h1 className="display-4">Console </h1>
+       <p className="lead">Lorem ipsum dolor</p>
+       <hr className="my-4" />
+       <p className="lead mx-auto">
+       </p>
+     </div>
+     </Jumbotron>
+
           <Terminal
             color='#dee5eb'
             backgroundColor='#000000'
@@ -35,8 +36,6 @@ const Console = () => (
               show: false
             }}
           />
-      </div>
-    </div>
   </React.Fragment>
 );
 

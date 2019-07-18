@@ -24,6 +24,7 @@
 }
 
 
+
 .hrBlack {
   display: block; height: 1px;
   border: 0; border-top: 1px solid #fff;
@@ -43,6 +44,13 @@
   right:0;
 }
 
+.ButtonBounds{
+  marginLeft: '1rem';
+  marginRight: '1rem';
+  marginTop: '1rem';
+  marginBottom: '1rem';
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -50,4 +58,10 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.button {
+  marginLeft: '1rem';
+  marginBottom: '1rem';
+  padding: 5px;
 }

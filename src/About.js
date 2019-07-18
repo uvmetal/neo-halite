@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import { Jumbotron } from 'reactstrap';
-import NavBar from './components/navbar'
+import NavBar from './components/NavBar/NavBar'
 
 import './Home.css'
 
@@ -12,34 +12,30 @@ class About extends Component {
     super(props);
 
     this.state = {
-
     }
   }
 
   componentDidMount() {
-
   }
 
   render() {
     return(
-        <React.Fragment>
-        <NavBar />
-          <Jumbotron className="vertical-center">
-          <div className="container hero-container text-center">
-            <h1 className="display-4">About </h1>
-            <p className="lead">Lorem ipsum dolor</p>
-            <hr className="my-4" />
-            <p className="lead mx-auto">
-
-            </p>
-          </div>
+      <React.Fragment>
+        <Jumbotron className="vertical-center">
+        <div className="container hero-container text-center">
+          <h1 className="display-4">About </h1>
+          <p className="lead">Lorem ipsum dolor</p>
+          <hr className="my-4" />
+          <p className="lead mx-auto">
+          </p>
+        </div>
         </Jumbotron>
         <img src={neoOneLogo} className="img-fluid mx-auto d-block" alt="Neo One" />
         <div className="footer coz-medium pt-1">
           <img src={cozLogo} width="276" height="50" alt="City of Zion" className="img-fluid mx-auto d-block" />
         </div>
-        </React.Fragment>
-    );
+      </React.Fragment>
+    )
   }
 }
 export default About
