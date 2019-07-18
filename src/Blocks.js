@@ -1,5 +1,14 @@
 import React, { Component } from 'react'
 import NavBar from './components/NavBar/NavBar'
+import VerticalNav from './components/VerticalNav/VerticalNav'
+import Main from './components/Main/Main'
+
+let headerContent =  ''
+let leftPaneContent = <VerticalNav />
+// let leftPaneContent = 'left paneleft paneleft paneleft paneleft paneleft paneleft paneleft paneleft paneleft paneleft paneleft paneleft paneleft paneleft paneleft paneleft paneleft paneleft pane'
+let rightPaneContent = 'rightpane rightpane rightpane right pane rightpanerightpanee'
+let footerContent = 'footer footer footer footer footer footer footer footer footer footer footer footer footer footer footer footer footer footer footer footer footer footer footer footer footer footer footer footer footer '
+
 // import BlockItem from './BlockItem'
 // import Neon, { rpc } from "@cityofzion/neon-js"
 // var initSqlJs = require('sql.js');
@@ -26,7 +35,7 @@ class Blocks extends Component {
     blocks: [],
     nodeReady: false,
     rpcAddress: ''
-  };
+  }
   getBlocks(rpcurl) {
     // const client = Neon.create.rpcClient(rpcurl);
     //
@@ -42,7 +51,7 @@ class Blocks extends Component {
     //     });
     //   }
     // })
-  };
+  }
 
   getBlocksSqlite()
   {
@@ -84,7 +93,7 @@ class Blocks extends Component {
     //   .subscribe((res) => {
     //     console.log("start network result: " + JSON.stringify(res));
     //     this.getBlocks(this.state.rpcAddress);
-        this.getBlocksSqlite();
+        this.getBlocksSqlite()
     //   });
     // });
   }
@@ -92,14 +101,10 @@ class Blocks extends Component {
 
   render() {
     return(
-  <div>
-    <NavBar />
-    <div className="container">
-    <h2 className="text-muted">Blocks</h2>
-
-    </div>
-  </div>
-    );
+      <div>
+        <Main headerContent={headerContent} leftPaneContent={leftPaneContent} rightPaneContent={rightPaneContent} footerContent={footerContent} />
+      </div>
+    )
   }
 }
 

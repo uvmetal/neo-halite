@@ -1,24 +1,24 @@
-import React from 'react'
-import NavBar from './components/NavBar/NavBar'
-import HeaderControls from './components/HeaderControls/HeaderControls'
+import React, { Component } from 'react'
+import Main from './components/Main/Main'
 
-import Panel from './components/Panel/Panel'
-
-// let title =  <h2  className="text-muted">Accounts</h2>
-// let headerContent =  <NavBar />
-// let headerContent =  <HeaderControls />
-let headerContent =  ''
-
-let leftPaneContent = 'left paneleft paneleft paneleft paneleft paneleft paneleft paneleft paneleft paneleft paneleft paneleft paneleft paneleft paneleft paneleft paneleft paneleft paneleft pane'
-
+// let headerContent =  ''
+// let leftPaneContent = <VerticalNav />
+// let leftPaneContent = 'left paneleft paneleft paneleft paneleft paneleft paneleft paneleft paneleft paneleft paneleft paneleft paneleft paneleft paneleft paneleft paneleft paneleft paneleft pane'
 let rightPaneContent = 'rightpane rightpane rightpane right pane rightpanerightpanee'
-
 let footerContent = 'footer footer footer footer footer footer footer footer footer footer footer footer footer footer footer footer footer footer footer footer footer footer footer footer footer footer footer footer footer '
 
-const Accounts = () => (
-  <div>
-    <Panel headerContent={headerContent} leftPaneContent={leftPaneContent} rightPaneContent={rightPaneContent} footerContent={footerContent} hidden='true'/>
-  </div>
-);
+class Accounts extends Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    return(
+      <div>
+      Accounts
+      </div>
+    )
+  }
+}
 
 export default Accounts

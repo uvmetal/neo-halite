@@ -43,7 +43,7 @@ function RunningNetworks(props) {
   )
 }
 
-class NavBar extends Component {
+class VerticalNav extends Component {
   constructor(props) {
     super(props)
     // this.listenerFunction = this.listenerFunction.bind(this)
@@ -95,22 +95,47 @@ class NavBar extends Component {
   }
 
   render() {
-    return(
-      <div>
+    if (!this.props.hidden) {
+      return(
+        <div>
+          <Navbar color="faded" light expand="md">
+            <Collapse isOpen={!this.state.isOpen} navbar>
+              <Nav vertical navbar>
+                <NavItem >
+                  <NavLink tag={RRNavLink} exct to="/" activeClassName="active">Home</NavLink>
+                </NavItem>
+                <NavItem>
+                  <NavLink tag={RRNavLink} exact to="/About" activeClassName="active">About</NavLink>
+                </NavItem>
+                <NavItem>
+                  <NavLink tag={RRNavLink} exact to="/Accounts" activeClassName="active">Accounts</NavLink>
+                </NavItem>
+                <NavItem>
+                  <NavLink tag={RRNavLink} exact to="/Blocks" activeClassName="active">Blocks</NavLink>
+                </NavItem>
+                <NavItem>
+                  <NavLink tag={RRNavLink} exact to="/Console" activeClassName="active">Console</NavLink>
+                </NavItem>
+                <NavItem>
+                  <NavLink tag={RRNavLink} exact to="/Contracts" activeClassName="active">Contracts</NavLink>
+                </NavItem>
+                <NavItem>
+                  <NavLink tag={RRNavLink} exact to="/Events" activeClassName="active">Events</NavLink>
+                </NavItem>
+                <NavItem>
+                  <NavLink tag={RRNavLink} exact to="/Storage" activeClassName="active">Storage</NavLink>
+                </NavItem>
+                <NavItem>
+                  <NavLink tag={RRNavLink} exact to="/Transactions" activeClassName="active">Transactions</NavLink>
+                </NavItem>
 
-        <Button size="sm" onClick={this.props.hideLeftPane} >...</Button>
-        <Button size="sm" outline color="success" onClick={this.toggleNetworkStatus} >Session Status</Button>
-          <Collapse isOpen={this.state.networkStatusToggle}>
-            <Card style={{ marginLeft: '1rem', marginRight: '1rem', marginBottom: '1rem' }}>
-              <CardBody>
-              <Button size="sm" outline color="success" onClick={() => this.startAllClick()}>Start All</Button>
-              <Button size="sm" outline color="danger" onClick={() => this.stopAllClick()}>Stop All</Button>
-              <RunningNetworks networks={this.state.networks} />
-              </CardBody>
-            </Card>
-          </Collapse>
-      </div>
-    )
+              </Nav>
+            </Collapse>
+          </Navbar>
+
+        </div>
+      )
+    }
   }
 }
-export default NavBar
+export default VerticalNav
