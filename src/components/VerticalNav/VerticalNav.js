@@ -19,46 +19,14 @@ import {
 
 import './style.css'
 
-
-function RunningNetworks(props) {
-  let listItems
-
-  if (props && props.networks && props.networks.running.length) {
-    listItems = props.networks.running.map((net) =>
-      <li>
-      <Button size="sm" outline color="success" style={{ marginLeft: '1rem', marginBottom: '1rem' }}>Start</Button>
-      <Button size="sm" outline color="success" style={{ marginLeft: '1rem', marginBottom: '1rem' }}>Stop</Button>
-      <Button size="sm" outline color="success" style={{ marginLeft: '1rem', marginBottom: '1rem' }}>Restart</Button>
-      <a href="">{net}</a> </li>
-    )
-  }
-
-  return (
-    <div>
-      <p>Running Networks ({props.networks.running.length}):</p>
-      <ul>
-      {listItems}
-      </ul>
-    </div>
-  )
-}
-
 class VerticalNav extends Component {
   constructor(props) {
     super(props)
-    // this.listenerFunction = this.listenerFunction.bind(this)
 
     this.toggle = this.toggle.bind(this)
-    this.toggleNetworkStatus = this.toggleNetworkStatus.bind(this)
-    this.stopAllClick = this.stopAllClick.bind(this)
 
     this.state = {
-      networkStatusToggle: false,
       isOpen: false,
-      ready: true,
-      networks: {
-        running: []
-      }
     }
   }
 
@@ -68,30 +36,7 @@ class VerticalNav extends Component {
       })
   }
 
-  toggleNetworkStatus() {
-      this.setState({
-          networkStatusToggle: !this.state.networkStatusToggle
-      })
-  }
-
-  startAllClick() {
-      this.setState({
-          networks: {
-            running: ['BlueNet', 'RedNet']
-          }
-      })
-  }
-
-  stopAllClick() {
-      this.setState({
-          networks: {
-            running: []
-          }
-      })
-  }
-
   componentDidMount() {
-
   }
 
   render() {
@@ -128,11 +73,9 @@ class VerticalNav extends Component {
                 <NavItem>
                   <NavLink tag={RRNavLink} exact to="/Transactions" activeClassName="active">Transactions</NavLink>
                 </NavItem>
-
               </Nav>
             </Collapse>
           </Navbar>
-
         </div>
       )
     }

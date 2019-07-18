@@ -1,24 +1,7 @@
 import React, {Component} from 'react'
 import { NavLink as RRNavLink } from 'react-router-dom'
-import {
-  Card,
-  CardBody,
-  Button,
-  Collapse,
-  Navbar,
-  NavbarToggler,
-  NavbarBrand,
-  Nav,
-  NavItem,
-  NavLink,
-  UncontrolledDropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem
-} from 'reactstrap'
-
+import { Card, CardBody, Button, Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink, UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap'
 import './style.css'
-
 
 function RunningNetworks(props) {
   let listItems
@@ -43,7 +26,7 @@ function RunningNetworks(props) {
   )
 }
 
-class NavBar extends Component {
+class HeaderControls extends Component {
   constructor(props) {
     super(props)
     // this.listenerFunction = this.listenerFunction.bind(this)
@@ -91,13 +74,11 @@ class NavBar extends Component {
   }
 
   componentDidMount() {
-
   }
 
   render() {
     return(
       <div>
-
         <Button size="sm" onClick={this.props.hideLeftPane} >...</Button>
         <Button size="sm" outline color="success" onClick={this.toggleNetworkStatus} >Session Status</Button>
           <Collapse isOpen={this.state.networkStatusToggle}>
@@ -113,4 +94,4 @@ class NavBar extends Component {
     )
   }
 }
-export default NavBar
+export default HeaderControls

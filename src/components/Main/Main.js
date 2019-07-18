@@ -1,17 +1,19 @@
 import React, { Component } from 'react'
 import { Container, Row, Col, Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle, Button } from 'reactstrap';
+
 import HeaderControls from '../../components/HeaderControls/HeaderControls'
 import VerticalNav from '../../components/VerticalNav/VerticalNav'
+
 import Home from '../../Home'
-import Console from '../../Console'
-// import Quickstart from './Quickstart'
-import Blocks from '../../Blocks'
-import Transactions from '../../Transactions'
-import Contracts from '../../Contracts'
-import Accounts from '../../Accounts'
-import Storage from '../../Storage'
-import Events from '../../Events'
 import About from '../../About'
+import Accounts from '../../Accounts'
+import Blocks from '../../Blocks'
+import Console from '../../Console'
+import Contracts from '../../Contracts'
+import Events from '../../Events'
+// import Quickstart from './Quickstart'
+import Storage from '../../Storage'
+import Transactions from '../../Transactions'
 
 import cozLogo from '../../images/coz-inverted.svg'
 
@@ -23,8 +25,6 @@ class Main extends Component {
   constructor(props) {
     super(props)
 
-    console.log('this.props: '+this.props)
-
     this.leftPaneToggleHidden = this.leftPaneToggleHidden.bind(this)
 
     this.state = {
@@ -33,9 +33,7 @@ class Main extends Component {
   }
 
   componentDidMount() {
-
   }
-  // <CardImg top width='100%' src={cozLogo} alt='Card image cap' />
 
   leftPaneToggleHidden () {
     this.setState({
@@ -50,11 +48,53 @@ class Main extends Component {
     let rightPaneContent = this.props.rightPaneContent ? this.props.rightPaneContent : ''
     let footerContent = this.props.footerContent ? this.props.footerContent : ''
     footerContent = 'footer footer footer'
-    footerContent = 'footer footer footer footer footer footerfooter footer footerfooter footer footerfooter footer footerfooter footer footerfooter footer footerfooter footer footerfooter footer footerfooter footer footerfooter footer footerfooter footer footer'
+    // footerContent = 'footer footer footer footer footer footerfooter footer footerfooter footer footerfooter footer footerfooter footer footerfooter footer footerfooter footer footerfooter footer footerfooter footer footerfooter footer footerfooter footer footer'
     // console.log('this.props: '+util.inspect(this.props, {depth: null}))
+
+    if (this.props && this.props.location && this.props.location.pathname) {
 
     console.log('pathname: ' + this.props.location.pathname)
 
+    rightPaneContent = <Home />
+
+    switch(this.props.location.pathname) {
+
+        case '/Accounts':
+          rightPaneContent = <Accounts />
+        break;
+
+        case '/About':
+          rightPaneContent = <About />
+        break;
+
+        case '/Blocks':
+          rightPaneContent = <Blocks />
+        break;
+
+        case '/Console':
+          rightPaneContent = <Console />
+        break;
+
+        case '/Contracts':
+          rightPaneContent = <Contracts />
+        break;
+
+        case '/Events':
+          rightPaneContent = <Events />
+        break;
+
+        case '/Storage':
+          rightPaneContent = <Storage />
+        break;
+
+        case '/Transactions':
+          rightPaneContent = <Transactions />
+        break;
+
+        default:
+          rightPaneContent = <Home />
+      }
+    }
 
     return (
         <div class='wrapper'>
