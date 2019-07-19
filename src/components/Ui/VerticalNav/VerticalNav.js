@@ -102,6 +102,9 @@ class VerticalNav extends Component {
                     <NavLink tag={RRNavLink} exact to="/SettingsRest" activeClassName="active"> &nbsp; &nbsp; Rest</NavLink>
                   </NavItem>
                   <NavItem>
+                    <NavLink tag={RRNavLink} exact to="/SettingsRpc" activeClassName="active"> &nbsp; &nbsp; Rpc</NavLink>
+                  </NavItem>
+                  <NavItem>
                     <NavLink tag={RRNavLink} exact to="/SettingsSession" activeClassName="active"> &nbsp; &nbsp; Session</NavLink>
                   </NavItem>
                 </Nav>

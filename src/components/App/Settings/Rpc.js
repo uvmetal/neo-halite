@@ -37,4 +37,4 @@ class SettingsRpc extends Component {
     )
   }
 }
-export default SettingsRpcRpc
+export default SettingsRpc

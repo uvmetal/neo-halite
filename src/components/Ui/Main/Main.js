@@ -15,6 +15,7 @@ import SettingsDatabase from '../../App/Settings/Database'
 import SettingsExport from '../../App/Settings/Export'
 import SettingsLogs from '../../App/Settings/Logs'
 import SettingsRest from '../../App/Settings/Rest'
+import SettingsRpc from '../../App/Settings/Rpc'
 import SettingsSession from '../../App/Settings/Session'
 
 import About from '../../App/About'
@@ -126,7 +127,7 @@ class Main extends Component {
         case '/SettingsDatabase':
           rightPaneContent = <SettingsDatabase />
         break
-        
+
         case '/SettingsExport':
           rightPaneContent = <SettingsExport />
         break
@@ -137,6 +138,10 @@ class Main extends Component {
 
         case '/SettingsRest':
           rightPaneContent = <SettingsRest />
+        break
+
+        case '/SettingsRpc':
+          rightPaneContent = <SettingsRpc />
         break
 
         case '/SettingsSession':
