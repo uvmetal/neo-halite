@@ -1,7 +1,24 @@
 import React, {Component} from 'react'
 import { NavLink as RRNavLink } from 'react-router-dom'
-import { Card, CardBody, Button, Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink, UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap'
+import {
+  Card,
+  CardBody,
+  Button,
+  Collapse,
+  Navbar,
+  NavbarToggler,
+  NavbarBrand,
+  Nav,
+  NavItem,
+  NavLink,
+  UncontrolledDropdown,
+  DropdownToggle,
+  DropdownMenu,
+  DropdownItem
+} from 'reactstrap'
+
 import './style.css'
+
 
 function RunningNetworks(props) {
   let listItems
@@ -26,7 +43,7 @@ function RunningNetworks(props) {
   )
 }
 
-class HeaderControls extends Component {
+class HorizontalNav extends Component {
   constructor(props) {
     super(props)
     // this.listenerFunction = this.listenerFunction.bind(this)
@@ -74,13 +91,48 @@ class HeaderControls extends Component {
   }
 
   componentDidMount() {
+
   }
 
   render() {
     return(
       <div>
-        <Button size="sm" onClick={this.props.hideLeftPane} >...</Button>
-        <Button size="sm" outline color="success" onClick={this.toggleNetworkStatus} >Session Status</Button>
+        <Navbar color="faded" light expand="md">
+          <NavbarBrand href="/">Black Orc</NavbarBrand>
+          <NavbarToggler onClick={this.toggle}  className="mr-2" />
+          <Collapse isOpen={!this.state.isOpen} navbar>
+            <Nav className="ml-auto" navbar>
+              <NavItem >
+                <NavLink tag={RRNavLink} exact to="/" activeClassName="active">Home</NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink tag={RRNavLink} exact to="/Accounts" activeClassName="active">Accounts</NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink tag={RRNavLink} exact to="/Transactions" activeClassName="active">Transactions</NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink tag={RRNavLink} exact to="/Contracts" activeClassName="active">Contracts</NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink tag={RRNavLink} exact to="/Storage" activeClassName="active">Storage</NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink tag={RRNavLink} exact to="/Blocks" activeClassName="active">Blocks</NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink tag={RRNavLink} exact to="/Events" activeClassName="active">Events</NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink tag={RRNavLink} exact to="/Console" activeClassName="active">Console</NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink tag={RRNavLink} exact to="/About" activeClassName="active">About</NavLink>
+              </NavItem>
+            </Nav>
+          </Collapse>
+        </Navbar>
+        <Button size="sm" outline color="success" onClick={this.toggleNetworkStatus} style={{ marginLeft: '1rem', marginBottom: '1rem' }}>Session Status</Button>
           <Collapse isOpen={this.state.networkStatusToggle}>
             <Card style={{ marginLeft: '1rem', marginRight: '1rem', marginBottom: '1rem' }}>
               <CardBody>
@@ -94,4 +146,4 @@ class HeaderControls extends Component {
     )
   }
 }
-export default HeaderControls
+export default HorizontalNav

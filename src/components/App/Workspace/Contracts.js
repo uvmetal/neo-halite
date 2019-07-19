@@ -1,13 +1,12 @@
-import React, {Component} from 'react'
-import { Jumbotron } from 'reactstrap';
-import NavBar from './components/NavBar/NavBar'
+import React, { Component } from 'react'
+import { Jumbotron } from 'reactstrap'
 
-import './Home.css'
+import '../style.css'
 
-import cozLogo from './images/coz-inverted.svg'
-import neoOneLogo from './images/neo-one.png'
+import cozLogo from '../../../images/coz-inverted.svg'
+import neoOneLogo from '../../../images/neo-one.png'
 
-class Contracts extends Component {
+class WorkspaceContracts extends Component {
   constructor(props) {
     super(props);
 
@@ -38,4 +37,4 @@ class Contracts extends Component {
     )
   }
 }
-export default Contracts
+export default WorkspaceContracts

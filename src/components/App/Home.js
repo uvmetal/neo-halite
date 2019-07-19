@@ -1,13 +1,11 @@
 import React, {Component} from 'react'
 import { Link } from 'react-router-dom'
-import { Jumbotron } from 'reactstrap';
-import NavBar from './components/NavBar/NavBar'
+import { Jumbotron } from 'reactstrap'
 
+import './style.css'
 
-import './Home.css'
-
-import cozLogo from './images/coz-inverted.svg'
-import neoOneLogo from './images/neo-one.png'
+import cozLogo from '../../images/coz-inverted.svg'
+import neoOneLogo from '../../images/neo-one.png'
 
 class Home extends Component {
   constructor(props) {
