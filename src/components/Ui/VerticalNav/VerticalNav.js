@@ -68,6 +68,9 @@ class VerticalNav extends Component {
                   <NavLink tag={RRNavLink} exact to="/Events" activeClassName="active">Events</NavLink>
                 </NavItem>
                 <NavItem>
+                  <NavLink tag={RRNavLink} exact to="/Quickstart" activeClassName="active">Quickstart</NavLink>
+                </NavItem>
+                <NavItem>
                   <NavLink tag={RRNavLink} exact to="/Storage" activeClassName="active">Storage</NavLink>
                 </NavItem>
                 <NavItem>

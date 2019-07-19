@@ -43,7 +43,7 @@ function RunningNetworks(props) {
   )
 }
 
-class NavBar extends Component {
+class HorizontalNav extends Component {
   constructor(props) {
     super(props)
     // this.listenerFunction = this.listenerFunction.bind(this)
@@ -146,4 +146,4 @@ class NavBar extends Component {
     )
   }
 }
-export default NavBar
+export default HorizontalNav

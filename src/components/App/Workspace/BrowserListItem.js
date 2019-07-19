@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
-import { ListGroupItem } from 'reactstrap';
-import { shell } from 'electron';
+import React, { Component } from 'react'
+import { ListGroupItem } from 'reactstrap'
+import { shell } from 'electron'
 
 export default class BrowserListItem extends Component {
   openBrowser(e) {
-    e.preventDefault();
-    
-    const { href } = this.props;
+    e.preventDefault()
+
+    const { href } = this.props
     shell.openExternal(href);
   }
 

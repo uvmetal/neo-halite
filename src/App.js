@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { MemoryRouter, Switch, Route } from 'react-router'
 
-import Main from './components/Main/Main'
+import Main from './components/Ui/Main/Main'
 
 
 

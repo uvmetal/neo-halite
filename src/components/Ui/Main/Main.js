@@ -1,21 +1,22 @@
 import React, { Component } from 'react'
 import { Container, Row, Col, Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle, Button } from 'reactstrap';
 
-import HeaderControls from '../../components/HeaderControls/HeaderControls'
-import VerticalNav from '../../components/VerticalNav/VerticalNav'
+import HeaderControls from '../HeaderControls/HeaderControls'
+import VerticalNav from '../VerticalNav/VerticalNav'
 
-import Home from '../../Home'
-import About from '../../About'
-import Accounts from '../../Accounts'
-import Blocks from '../../Blocks'
-import Console from '../../Console'
-import Contracts from '../../Contracts'
-import Events from '../../Events'
-// import Quickstart from './Quickstart'
-import Storage from '../../Storage'
-import Transactions from '../../Transactions'
+import Home from '../../App/Home'
+import About from '../../App/About'
+import Accounts from '../../App/Workspace/Accounts'
+import Blocks from '../../App/Workspace/Blocks'
+import Console from '../../App/Workspace/Console'
+import Contracts from '../../App/Workspace/Contracts'
+import Events from '../../App/Events'
+import Export from '../../App/Workspace/Export'
+import Quickstart from '../../App/Quickstart'
+import Storage from '../../App/Workspace/Storage'
+import Transactions from '../../App/Workspace/Transactions'
 
-import cozLogo from '../../images/coz-inverted.svg'
+import cozLogo from '../../../images/coz-inverted.svg'
 
 import './style.css'
 
@@ -81,6 +82,14 @@ class Main extends Component {
 
         case '/Events':
           rightPaneContent = <Events />
+        break;
+
+        case '/Export':
+          rightPaneContent = <Export />
+        break;
+
+        case '/Quickstart':
+          rightPaneContent = <Quickstart />
         break;
 
         case '/Storage':

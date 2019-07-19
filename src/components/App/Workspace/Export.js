@@ -1,15 +1,14 @@
 import React, {Component} from 'react'
-import { Jumbotron } from 'reactstrap';
-import NavBar from './components/NavBar/NavBar'
+import { Jumbotron } from 'reactstrap'
 
-import './Home.css'
+import '../style.css'
 
-import cozLogo from './images/coz-inverted.svg'
-import neoOneLogo from './images/neo-one.png'
+import cozLogo from '../../../images/coz-inverted.svg'
+import neoOneLogo from '../../../images/neo-one.png'
 
-class Contracts extends Component {
+class Export extends Component {
   constructor(props) {
-    super(props);
+    super(props)
 
     this.state = {
     }
@@ -23,7 +22,7 @@ class Contracts extends Component {
       <React.Fragment>
         <Jumbotron className="vertical-center">
         <div className="container hero-container text-center">
-          <h1 className="display-4">Contracts </h1>
+          <h1 className="display-4">Export </h1>
           <p className="lead">Lorem ipsum dolor</p>
           <hr className="my-4" />
           <p className="lead mx-auto">
@@ -38,4 +37,4 @@ class Contracts extends Component {
     )
   }
 }
-export default Contracts
+export default Export
