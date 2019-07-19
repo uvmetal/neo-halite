@@ -1,39 +1,62 @@
 import React, { Component } from 'react'
-import { Container, Row, Col, Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle, Button } from 'reactstrap';
 
 import HeaderControls from '../HeaderControls/HeaderControls'
 import VerticalNav from '../VerticalNav/VerticalNav'
 
-import Home from '../../App/Home'
+import WorkSpaceAccounts from '../../App/Workspace/Accounts'
+import WorkspaceBlocks from '../../App/Workspace/Blocks'
+import WorkspaceConsole from '../../App/Workspace/Console'
+import WorkspaceContracts from '../../App/Workspace/Contracts'
+import WorkspaceExport from '../../App/Workspace/Export'
+import WorkspaceStorage from '../../App/Workspace/Storage'
+import WorkspaceTransactions from '../../App/Workspace/Transactions'
+
+import SettingsDatabase from '../../App/Settings/Database'
+import SettingsExport from '../../App/Settings/Export'
+import SettingsLogs from '../../App/Settings/Logs'
+import SettingsRest from '../../App/Settings/Rest'
+import SettingsSession from '../../App/Settings/Session'
+
 import About from '../../App/About'
-import Accounts from '../../App/Workspace/Accounts'
-import Blocks from '../../App/Workspace/Blocks'
-import Console from '../../App/Workspace/Console'
-import Contracts from '../../App/Workspace/Contracts'
 import Events from '../../App/Events'
-import Export from '../../App/Workspace/Export'
+import Home from '../../App/Home'
 import Quickstart from '../../App/Quickstart'
-import Storage from '../../App/Workspace/Storage'
-import Transactions from '../../App/Workspace/Transactions'
+
+import util from 'util'
 
 import cozLogo from '../../../images/coz-inverted.svg'
 
 import './style.css'
 
-import util from 'util'
 
 class Main extends Component {
   constructor(props) {
     super(props)
 
     this.leftPaneToggleHidden = this.leftPaneToggleHidden.bind(this)
+    this.toggleVerticalNavRollup = this.toggleVerticalNavRollup.bind(this)
 
     this.state = {
-      leftPaneHidden: true
+      leftPaneHidden: true,
+      hideWorkspaceRollup: false,
+      hideSettingsRollup: false,
     }
   }
 
   componentDidMount() {
+  }
+
+  toggleVerticalNavRollup(rollup) {
+    if(rollup == 'workspace') {
+      this.setState({
+        hideWorkspaceRollup: !this.state.hideWorkspaceRollup,
+      })
+    }
+    else {
+      this.setState({
+        hideSettingsRollup: !this.state.hideSettingsRollup,
+      })
+    }
   }
 
   leftPaneToggleHidden () {
@@ -44,7 +67,7 @@ class Main extends Component {
 
   render() {
     let headerContent = this.props.headerContent ? this.props.headerContent :
-      <HeaderControls hideLeftPane={this.leftPaneToggleHidden} />
+      <HeaderControls leftPaneToggleHidden={this.leftPaneToggleHidden} />
     // let leftPaneContent = this.props.leftPaneContent ? this.props.leftPaneContent : ''
     let rightPaneContent = this.props.rightPaneContent ? this.props.rightPaneContent : ''
     let footerContent = this.props.footerContent ? this.props.footerContent : ''
@@ -54,51 +77,71 @@ class Main extends Component {
 
     if (this.props && this.props.location && this.props.location.pathname) {
 
-    console.log('pathname: ' + this.props.location.pathname)
+      console.log('pathname: ' + this.props.location.pathname)
 
-    rightPaneContent = <Home />
+      rightPaneContent = <Home />
 
-    switch(this.props.location.pathname) {
-
-        case '/Accounts':
-          rightPaneContent = <Accounts />
-        break;
+      switch(this.props.location.pathname) {
 
         case '/About':
-          rightPaneContent = <About />
-        break;
-
-        case '/Blocks':
-          rightPaneContent = <Blocks />
-        break;
-
-        case '/Console':
-          rightPaneContent = <Console />
-        break;
-
-        case '/Contracts':
-          rightPaneContent = <Contracts />
-        break;
+        rightPaneContent = <About />
+        break
 
         case '/Events':
-          rightPaneContent = <Events />
-        break;
-
-        case '/Export':
-          rightPaneContent = <Export />
-        break;
+        rightPaneContent = <Events />
+        break
 
         case '/Quickstart':
           rightPaneContent = <Quickstart />
+        break
+
+        case '/WorkspaceAccounts':
+          rightPaneContent = <WorkSpaceAccounts />
+        break
+
+        case '/WorkspaceBlocks':
+        rightPaneContent = <WorkspaceBlocks />
+        break
+
+        case '/WorkspaceConsole':
+          rightPaneContent = <WorkspaceConsole />
+        break
+
+        case '/WorkspaceContracts':
+          rightPaneContent = <WorkspaceContracts />
+        break
+
+        case '/WorkspaceExport':
+          rightPaneContent = <WorkspaceExport />
+        break
+
+        case '/WorkspaceStorage':
+        rightPaneContent = <WorkspaceStorage />
         break;
 
-        case '/Storage':
-          rightPaneContent = <Storage />
-        break;
+        case '/WorkspaceTransactions':
+        rightPaneContent = <WorkspaceTransactions />
+        break
 
-        case '/Transactions':
-          rightPaneContent = <Transactions />
-        break;
+        case '/SettingsDatabase':
+          rightPaneContent = <SettingsDatabase />
+        break
+        
+        case '/SettingsExport':
+          rightPaneContent = <SettingsExport />
+        break
+
+        case '/SettingsLogs':
+          rightPaneContent = <SettingsLogs />
+        break
+
+        case '/SettingsRest':
+          rightPaneContent = <SettingsRest />
+        break
+
+        case '/SettingsSession':
+          rightPaneContent = <SettingsSession />
+        break
 
         default:
           rightPaneContent = <Home />
@@ -110,7 +153,10 @@ class Main extends Component {
           <div class='headerContent'>{headerContent}</div>
           { !this.state.leftPaneHidden &&
             <div class='leftPaneContent'>
-            <VerticalNav hidden={this.state.leftPaneHidden}/>
+            <VerticalNav hidden={this.state.leftPaneHidden}
+             hideWorkspaceRollup={this.state.hideWorkspaceRollup}
+             hideSettingsRollup={this.state.hideSettingsRollup} toggleRollup={this.toggleVerticalNavRollup}
+            />
             </div>
           }
           <div class='rightPaneContent'>

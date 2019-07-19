@@ -6,9 +6,9 @@ import '../style.css'
 import cozLogo from '../../../images/coz-inverted.svg'
 import neoOneLogo from '../../../images/neo-one.png'
 
-class WorkspaceContracts extends Component {
+class SettingsRpc extends Component {
   constructor(props) {
-    super(props);
+    super(props)
 
     this.state = {
     }
@@ -22,7 +22,7 @@ class WorkspaceContracts extends Component {
       <React.Fragment>
         <Jumbotron className="vertical-center">
         <div className="container hero-container text-center">
-          <h1 className="display-4">Contracts </h1>
+          <h1 className="display-4">Rpc </h1>
           <p className="lead">Lorem ipsum dolor</p>
           <hr className="my-4" />
           <p className="lead mx-auto">
@@ -37,4 +37,4 @@ class WorkspaceContracts extends Component {
     )
   }
 }
-export default WorkspaceContracts
+export default SettingsRpcRpc

@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 import { Jumbotron } from 'reactstrap'
 
 import '../style.css'
@@ -6,7 +6,7 @@ import '../style.css'
 import cozLogo from '../../../images/coz-inverted.svg'
 import neoOneLogo from '../../../images/neo-one.png'
 
-class Transactions extends Component {
+class WorkspaceTransactions extends Component {
   constructor(props) {
     super(props);
 
@@ -37,4 +37,4 @@ class Transactions extends Component {
     )
   }
 }
-export default Transactions
+export default WorkspaceTransactions
