@@ -39,8 +39,8 @@ class Main extends Component {
 
     this.state = {
       leftPaneHidden: true,
-      hideWorkspaceRollup: false,
-      hideSettingsRollup: false,
+      hideWorkspaceRollup: true,
+      hideSettingsRollup: true,
     }
   }
 
