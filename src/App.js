@@ -3,9 +3,6 @@ import { MemoryRouter, Switch, Route } from 'react-router'
 
 import Main from './components/Ui/Main/Main'
 
-
-
-
 import worker from './app.worker.js'
 import WebWorker from './WebWorker'
 

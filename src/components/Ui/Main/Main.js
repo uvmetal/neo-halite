@@ -23,11 +23,25 @@ import Events from '../../App/Events'
 import Home from '../../App/Home'
 import Quickstart from '../../App/Quickstart'
 
+// import Sails from 'sails'
+
+//
+// import rc from 'sails/accessible/rc'
+
+// var mySailsApp = new Sails();
+// mySailsApp.lift(rc('sails'), function(err) {
+//
+// });
+
 import util from 'util'
 
 import cozLogo from '../../../images/coz-inverted.svg'
 
 import './style.css'
+
+
+
+
 
 
 class Main extends Component {
