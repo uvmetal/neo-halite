@@ -7,15 +7,6 @@ import './style.css'
 import cozLogo from '../../images/coz-inverted.svg'
 import neoOneLogo from '../../images/neo-one.png'
 
-// import ipcRenderer from 'electron'
-
-// const { ipcRenderer } = window.require('electron')
-//
-// import Sails from 'sails'
-// import util from 'util'
-//
-// let sailsServer = null
-
 class Home extends Component {
   constructor(props) {
     super(props)
@@ -29,45 +20,14 @@ class Home extends Component {
   }
 
   lift() {
-  //   if (sailsServer === null) {
-  //     sailsServer = new Sails.constructor()
-  //     console.log('sails.config: ' + util.inspect(sailsServer.config, {depth: null}))
-  //
-  //     sailsServer.lift({appPath: './server/'}, function(err) {
-  //       if (err) {
-  //           console.log('Error occurred lifting Sails app:', err)
-  //           return
-  //         }
-  //
-  //         // --•
-  //         console.log('Sails app lifted successfully!')
-  //         console.log('sails.config: ' + util.inspect(sailsServer.config, {depth: null}))
-  //     })
-  //   } else console.log('sails server is already running')
     window.ipcRenderer.send('start-server')
   }
 
   lower() {
-    // if (sailsServer !== null) {
-    //   sailsServer.lower(
-    //     function (err) {
-    //       if (err) {
-    //         return console.log("Error occurred lowering Sails app: ", err);
-    //       }
-    //       console.log("Sails app lowered successfully!");
-    //     }
-    //   )
-    // } else console.log('sails is not running')
-
     window.ipcRenderer.send('stop-server')
-
   }
 
   componentDidMount() {
-    // if (isElectron()) {
-			// console.log(window.ipcRenderer);
-			// window.ipcRenderer.send('start-server')
-		// }
   }
 
   render() {

@@ -7,6 +7,11 @@
     "sails-generate": "1.16.13"
   },
   "hooks": {
-    "grunt": false
+    "csrf": false,
+    "grunt": false,
+    "i18n": false,
+    "pubsub": false,
+    "sockets": false,
+    "cors": false
   }
 }

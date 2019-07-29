@@ -5,19 +5,6 @@ var rc = require('sails/accessible/rc')
 var util = require('util')
 
 let sailsServer = null
-// var mySailsApp = new Sails()
-// console.log('sails.config: ' + util.inspect(mySailsApp.config, {depth: null}))
-//
-// mySailsApp.lift({appPath: './server/'}, function(err) {
-//   if (err) {
-//       console.log('Error occurred lifting Sails app:', err)
-//       return
-//     }
-//
-//     // --•
-//     console.log('Sails app lifted successfully!')
-//     console.log('sails.config: ' + util.inspect(mySailsApp.config, {depth: null}))
-// })
 
 const electron = require('electron')
 const app = electron.app
@@ -61,10 +48,8 @@ app.on('activate', () => {
 
 ipc.on('start-server', function (event, arg) {
   // win.webContents.send('targetPriceVal', arg)
-
     if (sailsServer === null) {
       sailsServer = new Sails()
-      console.log('sails.config: ' + util.inspect(sailsServer.config, {depth: null}))
 
       sailsServer.lift({appPath: './server/'}, function(err) {
         if (err) {
@@ -72,16 +57,14 @@ ipc.on('start-server', function (event, arg) {
             return
           }
 
-          // --•
           console.log('Sails app lifted successfully!')
-          console.log('sails.config: ' + util.inspect(sailsServer.config, {depth: null}))
+          // console.log('sails.config: ' + util.inspect(sailsServer.config, {depth: null}))
       })
     } else console.log('sails server is already running')
 })
 
 ipc.on('stop-server', function (event, arg) {
   // win.webContents.send('targetPriceVal', arg)
-
   if (sailsServer !== null) {
     sailsServer.lower(
       function (err) {
