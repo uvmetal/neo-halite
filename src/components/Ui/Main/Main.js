@@ -19,6 +19,8 @@ import SettingsRest from '../../App/Settings/Rest'
 import SettingsRpc from '../../App/Settings/Rpc'
 import SettingsSession from '../../App/Settings/Session'
 
+import InstallerMain  from '../../App/Installer/Main'
+
 import About from '../../App/About'
 import Events from '../../App/Events'
 import Home from '../../App/Home'
@@ -45,10 +47,11 @@ class Main extends Component {
   }
 
   componentDidMount() {
+
   }
 
   toggleVerticalNavRollup(rollup) {
-    if(rollup == 'workspace') {
+    if(rollup === 'workspace') {
       this.setState({
         hideWorkspaceRollup: !this.state.hideWorkspaceRollup,
       })
@@ -150,6 +153,10 @@ class Main extends Component {
 
         case '/SettingsSession':
           rightPaneContent = <SettingsSession />
+        break
+
+        case '/InstallerMain':
+          rightPaneContent = <InstallerMain />
         break
 
         default:

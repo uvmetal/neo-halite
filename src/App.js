@@ -8,6 +8,10 @@ import WebWorker from './WebWorker'
 
 import './App.css'
 
+const electron = window.require("electron")
+
+
+
 class App extends Component {
   constructor(props) {
       super(props);
@@ -20,14 +24,20 @@ class App extends Component {
   }
 
   componentDidMount() {
-      this.worker = new WebWorker(worker);
+    this.worker = new WebWorker(worker);
 
-      this.worker.addEventListener('message', event => {
-          const sortedList = event.data
-          this.setState({
-              users: sortedList
-          })
-      })
+    this.worker.addEventListener('message', event => {
+        const sortedList = event.data
+        this.setState({
+            users: sortedList
+        })
+    })
+
+    electron.ipcRenderer.on('check-install-reply', function (event, arg) {
+      console.log('Got installer message. isFirstRun is ' + arg)
+    })
+
+    electron.ipcRenderer.send('check-install')
   }
 
   handleSort() {

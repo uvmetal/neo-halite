@@ -16,6 +16,10 @@ const isDev = require('electron-is-dev')
 
 const ipc = require('electron').ipcMain
 
+const firstRun = require('electron-first-run')
+
+const isFirstRun = firstRun()
+
 let mainWindow;
 
 function createWindow() {
@@ -30,6 +34,11 @@ function createWindow() {
   })
   mainWindow.loadURL(isDev ? 'http://localhost:3000' : `file://${path.join(__dirname, '../build/index.html')}`)
   mainWindow.on('closed', () => mainWindow = null)
+
+  // console.log('ipc: '+ util.inspect(ipc, {depth: null}))
+
+  // ipc.send('installing')
+
 }
 
 app.on('ready', createWindow);
@@ -58,8 +67,6 @@ ipc.on('start-server', function (event, arg) {
 
           console.log('Sails app lifted successfully!')
           // console.log('sails.config: ' + util.inspect(sailsServer.config, {depth: null}))
-
-
       })
     } else console.log('sails server is already running')
 })
@@ -76,4 +83,22 @@ ipc.on('stop-server', function (event, arg) {
       }
     )
   } else console.log('sails is not running')
+})
+
+ipc.on('check-install', function (event, arg) {
+
+  console.log('Checking your software installation...')
+
+  // mainWindow.loadURL(`file://${path.join(__dirname, '../build/index.html')})
+
+  if (isFirstRun) {
+    console.log('Your software is installing. ' + isFirstRun)
+    mainWindow.webContents.send('installing')
+  } else {
+    console.log('Your software is already installed.')
+  }
+
+  // console.log('ipc: '+ util.inspect(event, {depth: null}))
+
+  event.sender.send('check-install-reply', isFirstRun)
 })
