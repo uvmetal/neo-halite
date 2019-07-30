@@ -8,7 +8,7 @@ import neoOneLogo from '../../../images/neo-one.png'
 
 class WorkspaceAccounts extends Component {
   constructor(props) {
-    super(props);
+    super(props)
 
     this.state = {
     }

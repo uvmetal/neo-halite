@@ -80,7 +80,8 @@
     "appId": "com.example.electron-cra",
     "files": [
       "build/**/*",
-      "node_modules/**/*"
+      "node_modules/**/*",
+      "server/**/*"
     ],
     "directories": {
       "buildResources": "assets"
@@ -90,7 +91,10 @@
         "AppImage",
         "deb"
       ]
-    }
+    },
+    "extraFiles": [
+      "server"
+    ]
   },
   "eslintConfig": {
     "extends": "react-app"

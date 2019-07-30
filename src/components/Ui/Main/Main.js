@@ -9,6 +9,7 @@ import WorkspaceConsole from '../../App/Workspace/Console'
 import WorkspaceContracts from '../../App/Workspace/Contracts'
 import WorkspaceExport from '../../App/Workspace/Export'
 import WorkspaceStorage from '../../App/Workspace/Storage'
+import WorkspaceServer from '../../App/Workspace/Server'
 import WorkspaceTransactions from '../../App/Workspace/Transactions'
 
 import SettingsDatabase from '../../App/Settings/Database'
@@ -23,26 +24,11 @@ import Events from '../../App/Events'
 import Home from '../../App/Home'
 import Quickstart from '../../App/Quickstart'
 
-// import Sails from 'sails'
-
-//
-// import rc from 'sails/accessible/rc'
-
-// var mySailsApp = new Sails();
-// mySailsApp.lift(rc('sails'), function(err) {
-//
-// });
-
 import util from 'util'
 
 import cozLogo from '../../../images/coz-inverted.svg'
 
 import './style.css'
-
-
-
-
-
 
 class Main extends Component {
   constructor(props) {
@@ -132,6 +118,10 @@ class Main extends Component {
 
         case '/WorkspaceStorage':
         rightPaneContent = <WorkspaceStorage />
+        break;
+
+        case '/WorkspaceServer':
+        rightPaneContent = <WorkspaceServer />
         break;
 
         case '/WorkspaceTransactions':

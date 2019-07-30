@@ -11,20 +11,9 @@ class Home extends Component {
   constructor(props) {
     super(props)
 
-    this.lift = this.lift.bind(this)
-    this.lower = this.lower.bind(this)
-
     this.state = {
 
     }
-  }
-
-  lift() {
-    window.ipcRenderer.send('start-server')
-  }
-
-  lower() {
-    window.ipcRenderer.send('stop-server')
   }
 
   componentDidMount() {
@@ -42,9 +31,6 @@ class Home extends Component {
               <Link to={this.state.ready ? 'blocks' : '#'} className={this.state.ready ? "btn coz-teal btn-lg mr-2" : "btn btn-outline-light disabled-link btn-lg"}><i className="fas fa-stopwatch mr-2"/>Quick start</Link>
               <button type="button" disabled className="btn btn-secondary btn-lg ml-2"><i className="fas fa-list mr-2" />Customize</button>
               <p/>
-              <Button size="sm" onClick={this.lift} >Start Sails</Button>
-              <Button size="sm" onClick={this.lower} >Stop Sails</Button>
-
             </p>
           </div>
         </Jumbotron>

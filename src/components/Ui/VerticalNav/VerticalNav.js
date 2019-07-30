@@ -79,6 +79,9 @@ class VerticalNav extends Component {
                     <NavLink tag={RRNavLink} exact to="/WorkspaceStorage" activeClassName="active"> &nbsp; &nbsp; Storage</NavLink>
                   </NavItem>
                   <NavItem>
+                    <NavLink tag={RRNavLink} exact to="/WorkspaceServer" activeClassName="active"> &nbsp; &nbsp; Server</NavLink>
+                  </NavItem>
+                  <NavItem>
                     <NavLink tag={RRNavLink} exact to="/WorkspaceTransactions" activeClassName="active"> &nbsp; &nbsp; Transactions</NavLink>
                   </NavItem>
                   </Nav>

@@ -47,7 +47,6 @@ app.on('activate', () => {
 })
 
 ipc.on('start-server', function (event, arg) {
-  // win.webContents.send('targetPriceVal', arg)
     if (sailsServer === null) {
       sailsServer = new Sails()
 
@@ -59,12 +58,13 @@ ipc.on('start-server', function (event, arg) {
 
           console.log('Sails app lifted successfully!')
           // console.log('sails.config: ' + util.inspect(sailsServer.config, {depth: null}))
+
+
       })
     } else console.log('sails server is already running')
 })
 
 ipc.on('stop-server', function (event, arg) {
-  // win.webContents.send('targetPriceVal', arg)
   if (sailsServer !== null) {
     sailsServer.lower(
       function (err) {

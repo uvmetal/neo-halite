@@ -4,7 +4,7 @@ import Terminal from 'terminal-in-react'
 
 class WorkspaceConsole extends Component {
   constructor(props) {
-    super(props);
+    super(props)
 
     this.state = {
     }
