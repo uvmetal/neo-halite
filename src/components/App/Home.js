@@ -1,5 +1,4 @@
 import React, {Component} from 'react'
-import { Link } from 'react-router-dom'
 import { Jumbotron, Button } from 'reactstrap'
 
 import './style.css'
@@ -28,8 +27,7 @@ class Home extends Component {
             <p className="lead">Launch a custom Neo privatenet instantly</p>
             <hr className="my-4" />
             <p className="lead mx-auto">
-              <Link to={this.state.ready ? 'blocks' : '#'} className={this.state.ready ? "btn coz-teal btn-lg mr-2" : "btn btn-outline-light disabled-link btn-lg"}><i className="fas fa-stopwatch mr-2"/>Quick start</Link>
-              <button type="button" disabled className="btn btn-secondary btn-lg ml-2"><i className="fas fa-list mr-2" />Customize</button>
+  
               <p/>
             </p>
           </div>

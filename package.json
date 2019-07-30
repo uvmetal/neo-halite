@@ -54,6 +54,7 @@
     "react-app-polyfill": "^1.0.1",
     "react-dev-utils": "^9.0.1",
     "react-dom": "^16.8.6",
+    "react-router-dom": "^5.0.1",
     "resolve": "1.10.0",
     "sails": "^1.2.3",
     "sass-loader": "7.1.0",
@@ -119,7 +120,6 @@
     "electron": "^5.0.6",
     "electron-builder": "^20.44.4",
     "react-router": "^5.0.1",
-    "react-router-dom": "^5.0.1",
     "reactstrap": "^8.0.1",
     "terminal-in-react": "^4.3.1",
     "wait-on": "^3.2.0"

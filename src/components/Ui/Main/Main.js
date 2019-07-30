@@ -81,86 +81,92 @@ class Main extends Component {
 
     if (this.props && this.props.location && this.props.location.pathname) {
 
+
       console.log('pathname: ' + this.props.location.pathname)
 
-      rightPaneContent = <Home />
+      if (this.props.redirect) {
+        rightPaneContent = <InstallerMain />
+        console.log('redirecting to: ' + this.props.redirect)
+      } else {
+        rightPaneContent = <Home />
 
-      switch(this.props.location.pathname) {
+        switch(this.props.location.pathname) {
 
-        case '/About':
-        rightPaneContent = <About />
-        break
+          case '/About':
+          rightPaneContent = <About />
+          break
 
-        case '/Events':
-        rightPaneContent = <Events />
-        break
+          case '/Events':
+          rightPaneContent = <Events />
+          break
 
-        case '/Quickstart':
-          rightPaneContent = <Quickstart />
-        break
+          case '/Quickstart':
+            rightPaneContent = <Quickstart />
+          break
 
-        case '/WorkspaceAccounts':
-          rightPaneContent = <WorkSpaceAccounts />
-        break
+          case '/WorkspaceAccounts':
+            rightPaneContent = <WorkSpaceAccounts />
+          break
 
-        case '/WorkspaceBlocks':
-        rightPaneContent = <WorkspaceBlocks />
-        break
+          case '/WorkspaceBlocks':
+          rightPaneContent = <WorkspaceBlocks />
+          break
 
-        case '/WorkspaceConsole':
-          rightPaneContent = <WorkspaceConsole />
-        break
+          case '/WorkspaceConsole':
+            rightPaneContent = <WorkspaceConsole />
+          break
 
-        case '/WorkspaceContracts':
-          rightPaneContent = <WorkspaceContracts />
-        break
+          case '/WorkspaceContracts':
+            rightPaneContent = <WorkspaceContracts />
+          break
 
-        case '/WorkspaceExport':
-          rightPaneContent = <WorkspaceExport />
-        break
+          case '/WorkspaceExport':
+            rightPaneContent = <WorkspaceExport />
+          break
 
-        case '/WorkspaceStorage':
-        rightPaneContent = <WorkspaceStorage />
-        break;
+          case '/WorkspaceStorage':
+          rightPaneContent = <WorkspaceStorage />
+          break;
 
-        case '/WorkspaceServer':
-        rightPaneContent = <WorkspaceServer />
-        break;
+          case '/WorkspaceServer':
+          rightPaneContent = <WorkspaceServer />
+          break;
 
-        case '/WorkspaceTransactions':
-        rightPaneContent = <WorkspaceTransactions />
-        break
+          case '/WorkspaceTransactions':
+          rightPaneContent = <WorkspaceTransactions />
+          break
 
-        case '/SettingsDatabase':
-          rightPaneContent = <SettingsDatabase />
-        break
+          case '/SettingsDatabase':
+            rightPaneContent = <SettingsDatabase />
+          break
 
-        case '/SettingsExport':
-          rightPaneContent = <SettingsExport />
-        break
+          case '/SettingsExport':
+            rightPaneContent = <SettingsExport />
+          break
 
-        case '/SettingsLogs':
-          rightPaneContent = <SettingsLogs />
-        break
+          case '/SettingsLogs':
+            rightPaneContent = <SettingsLogs />
+          break
 
-        case '/SettingsRest':
-          rightPaneContent = <SettingsRest />
-        break
+          case '/SettingsRest':
+            rightPaneContent = <SettingsRest />
+          break
 
-        case '/SettingsRpc':
-          rightPaneContent = <SettingsRpc />
-        break
+          case '/SettingsRpc':
+            rightPaneContent = <SettingsRpc />
+          break
 
-        case '/SettingsSession':
-          rightPaneContent = <SettingsSession />
-        break
+          case '/SettingsSession':
+            rightPaneContent = <SettingsSession />
+          break
 
-        case '/InstallerMain':
-          rightPaneContent = <InstallerMain />
-        break
+          case '/InstallerMain':
+            rightPaneContent = <InstallerMain />
+          break
 
-        default:
-          rightPaneContent = <Home />
+          default:
+            rightPaneContent = <Home />
+        }
       }
     }
 
