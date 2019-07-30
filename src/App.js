@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { MemoryRouter, Switch, Route, Router, Redirect } from 'react-router'
-// import { withRouter } from 'react-router-dom'
 
 import Main from './components/Ui/Main/Main'
 
@@ -16,8 +15,6 @@ const electron = window.require("electron")
 class App extends Component {
   constructor(props) {
       super(props)
-
-
 
       this.state = {
           isLoading: true,
@@ -41,8 +38,6 @@ class App extends Component {
 
     electron.ipcRenderer.on('check-install-reply', function (event, arg) {
       console.log('Got installer message. isFirstRun is ' + arg)
-
-      // this.setState(() => ({ isFirstRun: !arg }))
 
       self.setState({ isFirstRun: arg })
     })
@@ -78,7 +73,5 @@ class App extends Component {
     )
   }
 }
-
-// export default withRouter(App)
 
 export default App

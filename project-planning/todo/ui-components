@@ -2,3 +2,9 @@
 
 
 componentize network status button overlay flyout
+
+abstract nav away from vertical/horizontal
+
+compartmentalize nav to function -
+  installer should have its own nav
+  app should have its own nav

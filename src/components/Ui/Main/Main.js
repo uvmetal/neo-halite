@@ -76,11 +76,8 @@ class Main extends Component {
     let rightPaneContent = this.props.rightPaneContent ? this.props.rightPaneContent : ''
     let footerContent = this.props.footerContent ? this.props.footerContent : ''
     footerContent = 'footer footer footer'
-    // footerContent = 'footer footer footer footer footer footerfooter footer footerfooter footer footerfooter footer footerfooter footer footerfooter footer footerfooter footer footerfooter footer footerfooter footer footerfooter footer footerfooter footer footer'
-    // console.log('this.props: '+util.inspect(this.props, {depth: null}))
 
     if (this.props && this.props.location && this.props.location.pathname) {
-
 
       console.log('pathname: ' + this.props.location.pathname)
 

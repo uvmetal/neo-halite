@@ -29,7 +29,6 @@ function RunningNetworks(props) {
 class HeaderControls extends Component {
   constructor(props) {
     super(props)
-    // this.listenerFunction = this.listenerFunction.bind(this)
 
     this.toggle = this.toggle.bind(this)
     this.toggleNetworkStatus = this.toggleNetworkStatus.bind(this)

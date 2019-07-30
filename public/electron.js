@@ -34,11 +34,6 @@ function createWindow() {
   })
   mainWindow.loadURL(isDev ? 'http://localhost:3000' : `file://${path.join(__dirname, '../build/index.html')}`)
   mainWindow.on('closed', () => mainWindow = null)
-
-  // console.log('ipc: '+ util.inspect(ipc, {depth: null}))
-
-  // ipc.send('installing')
-
 }
 
 app.on('ready', createWindow);
@@ -64,9 +59,7 @@ ipc.on('start-server', function (event, arg) {
             console.log('Error occurred lifting Sails app:', err)
             return
           }
-
           console.log('Sails app lifted successfully!')
-          // console.log('sails.config: ' + util.inspect(sailsServer.config, {depth: null}))
       })
     } else console.log('sails server is already running')
 })
@@ -86,10 +79,7 @@ ipc.on('stop-server', function (event, arg) {
 })
 
 ipc.on('check-install', function (event, arg) {
-
   console.log('Checking your software installation...')
-
-  // mainWindow.loadURL(`file://${path.join(__dirname, '../build/index.html')})
 
   if (isFirstRun) {
     console.log('Your software is installing. ' + isFirstRun)
@@ -97,8 +87,6 @@ ipc.on('check-install', function (event, arg) {
   } else {
     console.log('Your software is already installed.')
   }
-
-  // console.log('ipc: '+ util.inspect(event, {depth: null}))
 
   event.sender.send('check-install-reply', isFirstRun)
 })

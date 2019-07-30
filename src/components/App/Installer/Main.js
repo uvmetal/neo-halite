@@ -28,14 +28,9 @@ class InstallerMain extends Component {
   }
 
   componentDidMount() {
-    // ipcRenderer.on('logmessage', function (event, arg) {
-    //   console.log(arg)
-    // })
-
     // receive ipc when sails loads then fetch the page to show in this window
     fetch(`http://localhost:1337`)
       .then((response) => {
-        // this.setState(() => ({ user }))
         console.log('sails response: '+ util.inspect(response, {depth: null}))
       })
   }
