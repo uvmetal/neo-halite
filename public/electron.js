@@ -82,23 +82,36 @@ ipc.on('stop-server', function (event, arg) {
 
 ipc.on('check-install', function (event, arg) {
   console.log('Checking your software installation...')
-  // console.log('Directories: ')
-  // console.log('home: ' + app.getPath('home'))
-  // console.log('appData: ' + app.getPath('appData'))
-  // console.log('userData: ' + app.getPath('userData'))
-  // console.log('temp: ' + app.getPath('temp'))
-  // console.log('exe: ' + app.getPath('exe'))
-  // console.log('module: ' + app.getPath('module'))
-  // console.log('desktop: ' + app.getPath('desktop'))
-  // console.log('documents: ' + app.getPath('documents'))
-  // console.log('downloads: ' + app.getPath('downloads'))
-  // console.log('music: ' + app.getPath('music'))
-  // console.log('pictures: ' + app.getPath('pictures'))
-  // console.log('videos: ' + app.getPath('videos'))
-  // console.log('logs: ' + app.getPath('logs'))
-  // console.log('pepperFlashSystemPlugin: ' + app.getPath('pepperFlashSystemPlugin'))
 
-  let home, appData, userData, temp, exe, mod, desktop, documents, music, pictures, videos, logs, pepperFlashSystemPlugin
+  let systemConfig = getSystemProfile()
+
+  if (isFirstRun) {
+    console.log('Your software is installing. ' + isFirstRun)
+    mainWindow.webContents.send('installing')
+  } else {
+    console.log('Your software is already installed.')
+  }
+
+  event.sender.send('check-install-reply', systemConfig)
+})
+
+ipc.on('update-system-profile', function (event, arg) {
+  console.log('Checking your software installation...')
+
+  let systemConfig = getSystemProfile()
+
+  if (isFirstRun) {
+    console.log('Your software is installing. ' + isFirstRun)
+    mainWindow.webContents.send('installing')
+  } else {
+    console.log('Your software is already installed.')
+  }
+
+  event.sender.send('update-system-profile-reply', systemConfig)
+})
+
+function getSystemProfile() {
+  let home, appData, userData, temp, exe, mod, desktop, documents, music, pictures, videos, logs, pepperFlashSystemPlugin, version
 
   let systemConfig
 
@@ -119,6 +132,8 @@ ipc.on('check-install', function (event, arg) {
   try { videos = app.getPath('videos') } catch(error) { configError(error) }
   try { logs = app.getPath('logs') } catch(error) { configError(error) }
   try { pepperFlashSystemPlugin = app.getPath('pepperFlashSystemPlugin') } catch(error) { configError(error) }
+  try { version = app.getVersion() } catch(error) { configError(error) }
+  try { appMetrics = app.getAppMetrics() } catch(error) { configError(error) }
 
   systemConfig = {
     isFirstRun: isFirstRun,
@@ -134,17 +149,12 @@ ipc.on('check-install', function (event, arg) {
     pictures: pictures,
     videos: videos,
     logs: logs,
-    pepperFlashSystemPlugin: pepperFlashSystemPlugin
+    pepperFlashSystemPlugin: pepperFlashSystemPlugin,
+    version: version,
+    appMetrics: appMetrics
   }
 
   console.log('systemConfig is ' + util.inspect(systemConfig, {depth: null}))
 
-  if (isFirstRun) {
-    console.log('Your software is installing. ' + isFirstRun)
-    mainWindow.webContents.send('installing')
-  } else {
-    console.log('Your software is already installed.')
-  }
-
-  event.sender.send('check-install-reply', systemConfig)
-})
+  return systemConfig
+}
