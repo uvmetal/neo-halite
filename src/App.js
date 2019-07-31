@@ -20,7 +20,7 @@ class App extends Component {
           isLoading: true,
           users: [],
           isSorting: false,
-          isFirstRun: false
+          systemConfig: {}
       }
   }
 
@@ -37,9 +37,9 @@ class App extends Component {
     let self = this
 
     electron.ipcRenderer.on('check-install-reply', function (event, arg) {
-      console.log('Got installer message. isFirstRun is ' + arg)
+      // console.log('Got installer message. systemConfig is ' + arg)
 
-      self.setState({ isFirstRun: arg })
+      self.setState({ systemConfig: arg })
     })
 
     electron.ipcRenderer.send('check-install')
@@ -50,13 +50,13 @@ class App extends Component {
   }
 
   render() {
-    if (this.state.isFirstRun === true) {
+    if (this.state.systemConfig && this.state.systemConfig.isFirstRun === true) {
       console.log('redirecting to installer')
 
       return (
         <MemoryRouter>
           <Switch>
-          <Route render={(props) => <Main {...props} redirect='/InstallerMain'/>} />
+          <Route render={(props) => <Main {...props} redirect='/InstallerMain' config={this.state.systemConfig} />} />
           </Switch>
         </MemoryRouter>
       )

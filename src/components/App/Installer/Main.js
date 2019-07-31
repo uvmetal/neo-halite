@@ -28,6 +28,11 @@ class InstallerMain extends Component {
   }
 
   componentDidMount() {
+    if (this.props.systemConfig) {
+      console.log('System directory configuration: ')
+      console.log(this.props.systemConfig)
+    }
+
     // receive ipc when sails loads then fetch the page to show in this window
     fetch(`http://localhost:1337`)
       .then((response) => {

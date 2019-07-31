@@ -82,7 +82,11 @@ class Main extends Component {
       console.log('pathname: ' + this.props.location.pathname)
 
       if (this.props.redirect) {
-        rightPaneContent = <InstallerMain />
+        if (this.props.config) {
+          rightPaneContent = <InstallerMain config={this.props.config} />
+        } else {
+          rightPaneContent = <InstallerMain />
+        }
         console.log('redirecting to: ' + this.props.redirect)
       } else {
         rightPaneContent = <Home />
