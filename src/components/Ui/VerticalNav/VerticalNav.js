@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import { NavLink as RRNavLink } from 'react-router-dom'
-import { Card, CardBody, Button, Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink, UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap'
+import { Collapse, Nav, NavItem, NavLink } from 'reactstrap'
 import './style.css'
 
 class VerticalNav extends Component {

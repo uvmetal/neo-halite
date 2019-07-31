@@ -111,7 +111,7 @@ ipc.on('update-system-profile', function (event, arg) {
 })
 
 function getSystemProfile() {
-  let home, appData, userData, temp, exe, mod, desktop, documents, music, pictures, videos, logs, pepperFlashSystemPlugin, version
+  let home, appData, userData, temp, exe, mod, desktop, documents, music, pictures, videos, logs, pepperFlashSystemPlugin, version, gpuInfo, isAccessibilitySupportEnabled, isPackaged
 
   let systemConfig
 
@@ -134,6 +134,9 @@ function getSystemProfile() {
   try { pepperFlashSystemPlugin = app.getPath('pepperFlashSystemPlugin') } catch(error) { configError(error) }
   try { version = app.getVersion() } catch(error) { configError(error) }
   try { appMetrics = app.getAppMetrics() } catch(error) { configError(error) }
+  try { gpuInfo = app.getGPUInfo('complete') } catch(error) { configError(error) }
+  try { isAccessibilitySupportEnabled = app.isAccessibilitySupportEnabled() } catch(error) { configError(error) }
+  try { isPackaged = app.isPackaged } catch(error) { configError(error) }
 
   systemConfig = {
     isFirstRun: isFirstRun,
@@ -151,7 +154,10 @@ function getSystemProfile() {
     logs: logs,
     pepperFlashSystemPlugin: pepperFlashSystemPlugin,
     version: version,
-    appMetrics: appMetrics
+    appMetrics: appMetrics,
+    gpuInfo: gpuInfo,
+    isAccessibilitySupportEnabled: isAccessibilitySupportEnabled,
+    isPackaged: isPackaged
   }
 
   console.log('systemConfig is ' + util.inspect(systemConfig, {depth: null}))

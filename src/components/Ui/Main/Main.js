@@ -26,9 +26,9 @@ import Events from '../../App/Events'
 import Home from '../../App/Home'
 import Quickstart from '../../App/Quickstart'
 
-import util from 'util'
+// import util from 'util'
 
-import cozLogo from '../../../images/coz-inverted.svg'
+// import cozLogo from '../../../images/coz-inverted.svg'
 
 import './style.css'
 

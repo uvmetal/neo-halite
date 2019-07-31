@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
-import { MemoryRouter, Switch, Route, Router, Redirect } from 'react-router'
+import { MemoryRouter, Switch, Route  } from 'react-router'
 
 import Main from './components/Ui/Main/Main'
 
 import worker from './app.worker.js'
 import WebWorker from './WebWorker'
 
-import util from 'util'
+// import util from 'util'
 
 import './App.css'
 

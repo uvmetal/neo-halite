@@ -1,5 +1,5 @@
-import React, {Component} from 'react'
-import { Jumbotron, Button } from 'reactstrap'
+import React, { Component } from 'react'
+import { Jumbotron } from 'reactstrap'
 
 import './style.css'
 
@@ -27,7 +27,7 @@ class Home extends Component {
             <p className="lead">Launch a custom Neo privatenet instantly</p>
             <hr className="my-4" />
             <p className="lead mx-auto">
-  
+
               <p/>
             </p>
           </div>

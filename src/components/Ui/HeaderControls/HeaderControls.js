@@ -1,6 +1,5 @@
 import React, {Component} from 'react'
-import { NavLink as RRNavLink } from 'react-router-dom'
-import { Card, CardBody, Button, Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink, UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap'
+import { Card, CardBody, Button, Collapse } from 'reactstrap'
 import './style.css'
 
 function RunningNetworks(props) {
