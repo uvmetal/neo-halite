@@ -34,17 +34,20 @@ https://gist.github.com/hal0x2328/7c95e58ebbb27091790b153160763fad
   * Integrate RPC control module
   * Integrate command line control module (if needed)
 
-## Build Presentation Framework (front end)
+## Build Presentation Framework (front-end)
 
   Currently running:
-  * electron
-  * react
-  * redux
-  * webpack
+  * Electron
+    * This is the only working option right now even thought react is supported. Native system access is required to control Sailsjs server component with Electronjs main process.
+  * React
+    * Partially supported; front-end works, but React cannot bypass chrome sandbox to start server piece.
+  * Webpack
 
-### Screens for Neo Hive Presentation Framework (front end) (WIP)
+  *TODO*: Add build flags to control server deployment and front-end options.
 
-This sections describes the control surface views within the front end.
+### Screens for Neo Hive Presentation Framework (front-end) (WIP)
+
+This sections describes the control surface views within the front-end.
 
 Please see the mock UI spreadsheet for full details:
 
@@ -80,7 +83,7 @@ Sailsjs is used on the backend to facilitate everything necessary for Neo privat
 
 * Localhost-only By Default
 
-  Dynamic port determination to front end checks if port use that conflicts with any system feature and notifies the user to offer an easy solution to fix. Either stop the port and change to another at install time or dynamically allocate new ones.
+  Dynamic port determination to front-end checks if port use that conflicts with any system feature and notifies the user to offer an easy solution to fix. Either stop the port and change to another at install time or dynamically allocate new ones.
 
   Future: Allow easy configuration to expose services to the world. See next section.
 
