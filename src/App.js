@@ -68,7 +68,7 @@ class App extends Component {
 
       <MemoryRouter>
         <Switch>
-        <Route render={(props) => <AppMain {...props} />} />
+        <Route render={(props) => <AppMain {...props} config={this.state.systemConfig} />} />
         </Switch>
       </MemoryRouter>
     )

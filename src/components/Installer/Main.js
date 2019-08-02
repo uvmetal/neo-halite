@@ -74,7 +74,7 @@ class InstallerMain extends Component {
         break
 
         default:
-          rightPaneContent = <InstallerHome />
+          rightPaneContent = <InstallerHome config={this.props.config} />
       }
     }
 

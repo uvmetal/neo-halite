@@ -28,9 +28,9 @@ class InstallerHome extends Component {
   }
 
   componentDidMount() {
-    if (this.props.systemConfig) {
+    if (this.props.config) {
       console.log('System directory configuration: ')
-      console.log(this.props.systemConfig)
+      console.log(this.props.config)
     }
 
     // receive ipc when sails loads then fetch the page to show in this window

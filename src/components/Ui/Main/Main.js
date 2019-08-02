@@ -155,7 +155,7 @@ class AppMain extends Component {
         break
 
         case '/InstallerHome':
-          rightPaneContent = <InstallerHome />
+          rightPaneContent = <InstallerHome config={this.props.config}/>
         break
 
         default:
