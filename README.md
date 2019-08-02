@@ -126,7 +126,9 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Available Scripts
 
-In the project directory, you can run (I prefer to replace `npm` with `yarn`):
+In the project directory, you can run (I prefer to replace `npm` with `yarn`).
+
+`electron-prepack`, `electron-pack`, and `electron-dev` are your best friends.
 
 ### `npm start`
 
@@ -165,6 +167,20 @@ For example, to run stand-alone, do:
 cd ./dist
 ./neoblack\ 0.1.0.AppImage
 ```
+
+For complete installation on Ubuntu 18.04 Linux to default directory /opt/ use:
+
+```
+cd ./dist
+sudo dpkg -i neoblack_0.1.0_amd64.deb
+chown -R youruser.youruser /opt/neoblack/
+```
+
+*TODO*: Add post-install Debian script to chown post-intsall.
+See https://www.electron.build/configuration/linux
+
+*TODO*: Develop and test Windows installer code
+*TODO*: Develop and test macOS installer code
 
 ### `yarn electron-prepack`
 

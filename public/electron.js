@@ -20,7 +20,7 @@ const firstRun = require('electron-first-run')
 
 const isFirstRun = firstRun()
 
-let mainWindow;
+let mainWindow
 
 function createWindow() {
   mainWindow = new BrowserWindow(
@@ -54,9 +54,11 @@ ipc.on('start-server', function (event, arg) {
     if (sailsServer === null) {
       sailsServer = new Sails()
 
+      let serverPath = app.isPackaged ? '../server' : './server'
 
+      console.log('lifting server at: ' + serverPath)
 
-      sailsServer.lift({appPath: './server/'}, function(err) {
+      sailsServer.lift({appPath: serverPath}, function(err) {
         if (err) {
             console.log('Error occurred lifting Sails app:', err)
             return
