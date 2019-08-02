@@ -153,7 +153,7 @@ For complete installation on Ubuntu 18.04 Linux to default directory /opt/ use:
 ```
 cd ./dist
 sudo dpkg -i neoblack_0.1.0_amd64.deb
-chown -R youruser.youruser /opt/neoblack/
+sudo chown -R youruser.youruser /opt/neoblack/
 ```
 
 *TODO*: Add post-install Debian script to chown post-intsall.
