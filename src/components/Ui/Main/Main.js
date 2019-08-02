@@ -19,7 +19,7 @@ import SettingsRest from '../../App/Settings/Rest'
 import SettingsRpc from '../../App/Settings/Rpc'
 import SettingsSession from '../../App/Settings/Session'
 
-import InstallerMain  from '../../App/Installer/Main'
+import InstallerHome  from '../../Installer/Home'
 
 import About from '../../App/About'
 import Events from '../../App/Events'
@@ -32,7 +32,7 @@ import Quickstart from '../../App/Quickstart'
 
 import './style.css'
 
-class Main extends Component {
+class AppMain extends Component {
   constructor(props) {
     super(props)
 
@@ -73,6 +73,7 @@ class Main extends Component {
     let headerContent = this.props.headerContent ? this.props.headerContent :
       <HeaderControls leftPaneToggleHidden={this.leftPaneToggleHidden} />
     // let leftPaneContent = this.props.leftPaneContent ? this.props.leftPaneContent : ''
+    let leftPaneContent = <VerticalNav hidden={this.state.leftPaneHidden} hideWorkspaceRollup={this.state.hideWorkspaceRollup} hideSettingsRollup={this.state.hideSettingsRollup} toggleRollup={this.toggleVerticalNavRollup} />
     let rightPaneContent = this.props.rightPaneContent ? this.props.rightPaneContent : ''
     let footerContent = this.props.footerContent ? this.props.footerContent : ''
     footerContent = 'footer footer footer'
@@ -81,113 +82,101 @@ class Main extends Component {
 
       console.log('pathname: ' + this.props.location.pathname)
 
-      if (this.props.redirect) {
-        if (this.props.config) {
-          rightPaneContent = <InstallerMain config={this.props.config} />
-        } else {
-          rightPaneContent = <InstallerMain />
-        }
-        console.log('redirecting to: ' + this.props.redirect)
-      } else {
-        rightPaneContent = <Home />
+      rightPaneContent = <Home />
 
-        switch(this.props.location.pathname) {
+      switch(this.props.location.pathname) {
 
-          case '/About':
-          rightPaneContent = <About />
-          break
+        case '/About':
+        rightPaneContent = <About />
+        break
 
-          case '/Events':
-          rightPaneContent = <Events />
-          break
+        case '/Events':
+        rightPaneContent = <Events />
+        break
 
-          case '/Quickstart':
-            rightPaneContent = <Quickstart />
-          break
+        case '/Quickstart':
+          rightPaneContent = <Quickstart />
+        break
 
-          case '/WorkspaceAccounts':
-            rightPaneContent = <WorkSpaceAccounts />
-          break
+        case '/WorkspaceAccounts':
+          rightPaneContent = <WorkSpaceAccounts />
+        break
 
-          case '/WorkspaceBlocks':
-          rightPaneContent = <WorkspaceBlocks />
-          break
+        case '/WorkspaceBlocks':
+        rightPaneContent = <WorkspaceBlocks />
+        break
 
-          case '/WorkspaceConsole':
-            rightPaneContent = <WorkspaceConsole />
-          break
+        case '/WorkspaceConsole':
+          rightPaneContent = <WorkspaceConsole />
+        break
 
-          case '/WorkspaceContracts':
-            rightPaneContent = <WorkspaceContracts />
-          break
+        case '/WorkspaceContracts':
+          rightPaneContent = <WorkspaceContracts />
+        break
 
-          case '/WorkspaceExport':
-            rightPaneContent = <WorkspaceExport />
-          break
+        case '/WorkspaceExport':
+          rightPaneContent = <WorkspaceExport />
+        break
 
-          case '/WorkspaceStorage':
-          rightPaneContent = <WorkspaceStorage />
-          break;
+        case '/WorkspaceStorage':
+        rightPaneContent = <WorkspaceStorage />
+        break;
 
-          case '/WorkspaceServer':
-          rightPaneContent = <WorkspaceServer />
-          break;
+        case '/WorkspaceServer':
+        rightPaneContent = <WorkspaceServer />
+        break;
 
-          case '/WorkspaceTransactions':
-          rightPaneContent = <WorkspaceTransactions />
-          break
+        case '/WorkspaceTransactions':
+        rightPaneContent = <WorkspaceTransactions />
+        break
 
-          case '/SettingsDatabase':
-            rightPaneContent = <SettingsDatabase />
-          break
+        case '/SettingsDatabase':
+          rightPaneContent = <SettingsDatabase />
+        break
 
-          case '/SettingsExport':
-            rightPaneContent = <SettingsExport />
-          break
+        case '/SettingsExport':
+          rightPaneContent = <SettingsExport />
+        break
 
-          case '/SettingsLogs':
-            rightPaneContent = <SettingsLogs />
-          break
+        case '/SettingsLogs':
+          rightPaneContent = <SettingsLogs />
+        break
 
-          case '/SettingsRest':
-            rightPaneContent = <SettingsRest />
-          break
+        case '/SettingsRest':
+          rightPaneContent = <SettingsRest />
+        break
 
-          case '/SettingsRpc':
-            rightPaneContent = <SettingsRpc />
-          break
+        case '/SettingsRpc':
+          rightPaneContent = <SettingsRpc />
+        break
 
-          case '/SettingsSession':
-            rightPaneContent = <SettingsSession />
-          break
+        case '/SettingsSession':
+          rightPaneContent = <SettingsSession />
+        break
 
-          case '/InstallerMain':
-            rightPaneContent = <InstallerMain />
-          break
+        case '/InstallerHome':
+          rightPaneContent = <InstallerHome />
+        break
 
-          default:
-            rightPaneContent = <Home />
-        }
+        default:
+          rightPaneContent = <Home />
       }
     }
 
     return (
-        <div class='wrapper'>
-          <div class='headerContent'>{headerContent}</div>
-          { !this.state.leftPaneHidden &&
-            <div class='leftPaneContent'>
-            <VerticalNav hidden={this.state.leftPaneHidden}
-             hideWorkspaceRollup={this.state.hideWorkspaceRollup}
-             hideSettingsRollup={this.state.hideSettingsRollup} toggleRollup={this.toggleVerticalNavRollup}
-            />
-            </div>
-          }
-          <div class='rightPaneContent'>
-          {rightPaneContent}
+      <div class='wrapper'>
+        <div class='headerContent'>{headerContent}</div>
+        { !this.state.leftPaneHidden &&
+          <div class='leftPaneContent'>
+         { leftPaneContent }
           </div>
-          <div class='footerContent'>{footerContent}</div>
+        }
+        <div class='rightPaneContent'>
+        {rightPaneContent}
         </div>
+        <div class='footerContent'>{footerContent}</div>
+      </div>
     )
   }
 }
-export default Main
+export default AppMain

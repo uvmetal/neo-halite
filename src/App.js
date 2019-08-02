@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { MemoryRouter, Switch, Route  } from 'react-router'
 
-import Main from './components/Ui/Main/Main'
+import AppMain from './components/Ui/Main/Main'
+import InstallerMain from './components/Installer/Main'
 
 import worker from './app.worker.js'
 import WebWorker from './WebWorker'
@@ -56,7 +57,7 @@ class App extends Component {
       return (
         <MemoryRouter>
           <Switch>
-          <Route render={(props) => <Main {...props} redirect='/InstallerMain' config={this.state.systemConfig} />} />
+          <Route render={(props) => <InstallerMain {...props} config={this.state.systemConfig} />} />
           </Switch>
         </MemoryRouter>
       )
@@ -67,7 +68,7 @@ class App extends Component {
 
       <MemoryRouter>
         <Switch>
-        <Route render={(props) => <Main {...props} />} />
+        <Route render={(props) => <AppMain {...props} />} />
         </Switch>
       </MemoryRouter>
     )

@@ -3,12 +3,12 @@ import { Jumbotron, Button } from 'reactstrap'
 
 import util from 'util'
 
-import '../style.css'
+import '../../style.css'
 
-import cozLogo from '../../../images/coz-inverted.svg'
-import neoOneLogo from '../../../images/neo-one.png'
+import cozLogo from '../../images/coz-inverted.svg'
+import neoOneLogo from '../../images/neo-one.png'
 
-class InstallerMain extends Component {
+class InstallerHome extends Component {
   constructor(props) {
     super(props)
 
@@ -62,4 +62,4 @@ class InstallerMain extends Component {
     )
   }
 }
-export default InstallerMain
+export default InstallerHome

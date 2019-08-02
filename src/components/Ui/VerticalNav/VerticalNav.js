@@ -116,7 +116,7 @@ class VerticalNav extends Component {
               <Collapse isOpen={!this.state.isOpen} navbar>
                 <Nav vertical navbar>
                   <NavItem >
-                    <NavLink tag={RRNavLink} exact to="/InstallerMain" activeClassName="active">Installation</NavLink>
+                    <NavLink tag={RRNavLink} exact to="/InstallerHome" activeClassName="active">Installation</NavLink>
                   </NavItem>
                 </Nav>
               </Collapse>

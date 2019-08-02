@@ -1,10 +1,11 @@
 
-
-
 componentize network status button overlay flyout
 
 abstract nav away from vertical/horizontal
 
-compartmentalize nav to function -
-  installer should have its own nav
-  app should have its own nav
+Event-driven flyout states
+  - I.e., clicking hamburger doesn't close session status automatically
+  - Ideally, this could be configurable flag
+
+
+Main UI panes do not scroll independently, consider best approach i.e., add scroll or not
