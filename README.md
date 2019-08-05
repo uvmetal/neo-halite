@@ -1,23 +1,21 @@
 
-# Hive
+# Neodymium
 
-![honeycomb](images/honecomb.png)
-
-Welcome to the Hive. Neo Hive is a suite of tools designed to make the Neo Smart Economy easier to use. Get started fast using the Hive.
+Welcome. This is a suite of tools designed to make the Neo Smart Economy easier to use. Get started fast using the Hive.
 
   * Rest, RPC, and Desktop Control Surfaces
   * One-click Private Net
   * One-click Deployment
-  * Multi-user Options - Join or build a collective. Hi, honey, you're home.
+  * Multi-user Options - Join or build a collective.
   * Orchestration
 
-# Honeycomb
+# Overview
 
-The hive is made up of many moving parts, but we only want you to worry about one. Honeycomb is your portal into the Hive complex. Control everything from the golden comfort of your home in Honeycomb.
+The project is made up of many moving parts, but we only want you to worry about one. The front-end is your portal into the Neo Smart Economy development universe.
 
 # Plan
 
-Neo Hive - Private Net Orchestration System Draft v1 based on concept codename Neodymium. This plan is largely based off of the requirements set out by City of Zion in the following section.
+Private Net Orchestration System Draft v1 based on concept codename Neodymium. This plan is largely based off of the requirements set out by City of Zion in the following section.
 
 ## City of Zion Project Requirements per codename Neodymium
 
@@ -29,7 +27,7 @@ Original:
 
 https://gist.github.com/hal0x2328/7c95e58ebbb27091790b153160763fad
 
-## Build strict Neo Hive Orchestration requirements
+## Build strict Orchestration requirements
 * Determine additional modules for control, if needed, and if rpc can run everything alone
   * Integrate RPC control module
   * Integrate command line control module (if needed)
@@ -45,13 +43,9 @@ https://gist.github.com/hal0x2328/7c95e58ebbb27091790b153160763fad
 
   *TODO*: Add build flags to control server deployment and front-end options.
 
-### Screens for Neo Hive Presentation Framework (front-end) (WIP)
+### Screens for the Neodymium Presentation Framework (front-end) (WIP)
 
 This sections describes the control surface views within the front-end.
-
-Please see the mock UI spreadsheet for full details:
-
-[Neo Hive Mock UI](project-planning/mock/ui/Neo Hive Mock UI.xlsx)
 
 Snapshot (the braces represent buttons)
 
@@ -89,7 +83,7 @@ Sailsjs is used on the backend to facilitate everything necessary for Neo privat
 
 * Modular, Configurable, and Movable
 
-  Plan for cases where users want to scale to devs or devs want to scale to services. They can build anything they can imagine on this function primitive. Hive should be the base for all derived work.
+  Plan for cases where users want to scale to devs or devs want to scale to services. They can build anything they can imagine on this function primitive. This project should be the base for all derived work.
 
 * Database Agnostic
 
@@ -120,40 +114,52 @@ Systems that we need to control:
 * grpc controls?
   * https://github.com/neo-one-suite/neo-one/blob/7781fc1ab09107d8301bade113538ddae761b3c7/packages/neo-one-server-grpc/proto/server.proto
 
+# Install Software
+
+`yarn`
+
+## Manual Server Software Installation
+
+This step shouldn't be necessary unless you are customizing your build.
+
+The standard build uses Sailjs as a localhost server. Install the software requirements for Sails manually like so.
+
+```
+cd server
+yarn
+```
+
+# Development
+
+Run an interactive dev version packaged with Electron.
+
+### `yarn dev`
+
 # Build
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) and fine-tuned to support Electron by [UVMetal](https://github.com/uvmetal).
+Only build the software. Do not package it.
 
-## Notes
+`yarn prepack` or `yarn build`
 
+# Create the Package
 
-## Available Scripts
+To build and package a distribution file with Electron and send it to the `./dist/` folder do:
 
-In the project directory, you can run (I prefer to replace `npm` with `yarn`).
+`yarn pack`
 
-`electron-prepack`, `electron-pack`, and `electron-dev` are your best friends.
-
-### `yarn electron-dev`
-
-Run a dev version packaged with Electron.
-
-### `yarn electron-pack`
-
-Package a distribution file with Electron and send it to the `./dist/` folder.
-
-For example, to run stand-alone, do:
+## Run or Install the Package
 
 ```
 cd ./dist
-./neoblack\ 0.1.0.AppImage
+./projectname\ 0.1.0.AppImage
 ```
 
 For complete installation on Ubuntu 18.04 Linux to default directory /opt/ use:
 
 ```
 cd ./dist
-sudo dpkg -i neoblack_0.1.0_amd64.deb
-sudo chown -R youruser.youruser /opt/neoblack/
+sudo dpkg -i projectname_0.1.0_amd64.deb
+sudo chown -R youruser.youruser /opt/projectname/
 ```
 
 *TODO*: Add post-install Debian script to chown post-intsall.
@@ -162,13 +168,21 @@ See https://www.electron.build/configuration/linux
 *TODO*: Develop and test Windows installer code
 *TODO*: Develop and test macOS installer code
 
-### `yarn electron-prepack`
 
-Build react first, then package with Electron
-
-### `yarn clean`
+# Clean
 
 Delete the ``./dist/`` folder. This can grow quite large.
 
+`yarn clean`
+
+## Errors
+
+If during the course of development on Linux you should encounter an error along the lines of the following please check the instructions at the link below.
+
+```
+Error: ENOSPC
+```
+
+https://stackoverflow.com/questions/22475849/node-js-what-is-enospc-error-and-how-to-solve?lq=1
 
 ## Learn More
