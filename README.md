@@ -155,7 +155,7 @@ Only build the software. Do not package it.
 
 To build and package a distribution file with Electron and send it to the `./dist/` folder do:
 
-`yarn pack`
+`yarn package`
 
 ## Run or Install the Package
 

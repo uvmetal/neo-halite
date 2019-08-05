@@ -62,6 +62,7 @@
     "style-loader": "0.23.1",
     "terser-webpack-plugin": "1.2.3",
     "ts-pnp": "1.1.2",
+    "typescript": "^3.5.3",
     "url-loader": "1.1.2",
     "webpack": "4.29.6",
     "webpack-dev-server": "3.2.1",
@@ -74,7 +75,7 @@
     "build": "node scripts/build.js",
     "test": "node scripts/test.js",
     "dev": "concurrently \"BROWSER=none yarn start\" \"wait-on http://localhost:3000 && electron .\"",
-    "pack": "build -c.extraMetadata.main=build/electron.js",
+    "package": "build -c.extraMetadata.main=build/electron.js",
     "prepack": "yarn build",
     "clean": "rm -r dist/*"
   },
