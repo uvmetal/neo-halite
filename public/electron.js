@@ -56,9 +56,12 @@ ipc.on('start-server', function (event, arg) {
 
       let serverPath = app.isPackaged ? '../server' : './server'
 
+      // TODO add flag to configure from environment or cli
+      let serverPort = 2328
+
       console.log('lifting server at: ' + serverPath)
 
-      sailsServer.lift({appPath: serverPath}, function(err) {
+      sailsServer.lift({appPath: serverPath, port: serverPort}, function(err) {
         if (err) {
             console.log('Error occurred lifting Sails app:', err)
             return

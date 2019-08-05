@@ -120,14 +120,30 @@ Systems that we need to control:
 
 ## Manual Server Software Installation
 
-This step shouldn't be necessary unless you are customizing your build.
-
-The standard build uses Sailjs as a localhost server. Install the software requirements for Sails manually like so.
+The standard build uses Sailjs as a localhost server. Before you can lift sails you will need to install the software requirements for Sails manually like so.
 
 ```
 cd server
 yarn
 ```
+
+Test by doing `sails lift` and then browse to localhost:2328.
+
+*TODO*: What should be on the page if you browse directly to the Sailsjs back-end?
+* service status
+* service manager / admin login
+* branding and reference
+* interface to decouple service from the front-end in the form of a deployment package along with instructions on how to point the front-end to it
+
+## Server Configuration Notes
+
+### Default Server Port
+
+To modify the Sailjs server port that is used when starting Sails from Electron, for now, you will have to edit `public/electron.js` and change the variable `serverPort`.
+
+*TODO*: Server service configuration option should be able to control this directly from the Electron front-end.
+
+For `sails lift`, edit `server/.sailsrc` and change the port configuration variable.
 
 # Development
 
