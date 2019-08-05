@@ -28,7 +28,7 @@ Original:
 https://gist.github.com/hal0x2328/7c95e58ebbb27091790b153160763fad
 
 ## Build strict Orchestration requirements
-* Determine additional modules for control, if needed, and if rpc can run everything alone
+* Determine additional modules for control, if needed, and if RPC can run everything alone
   * Integrate RPC control module
   * Integrate command line control module (if needed)
 
@@ -47,7 +47,7 @@ https://gist.github.com/hal0x2328/7c95e58ebbb27091790b153160763fad
 
 This sections describes the control surface views within the front-end.
 
-Snapshot (the braces represent buttons)
+Snapshot (the braces represent buttons). These are only an example. The current UI is a superset of this.
 
 * [New]
 * [Quickstart]
@@ -96,21 +96,15 @@ This section is for control surfaces (RPC, REST, Database APIs).
 At this time, it looks like most of the system control is done via command line and process management that is OS-specific.
 
 Systems that we need to control:
- * Neo-One
-  * Neo-tracker
+* Neotracker https://github.com/neotracker/
+* Neo-One https://github.com/neo-one-suite/neo-one
   * @neo-one/client
   * @neo-one/smart-contract
-
 * Neo-One-Playground
   * https://github.com/neo-one-suite/neo-one-playground
-
 * Neo network RPC control via neo-tools RPC module
-
   These have been tested with neo-tools
-
   * https://github.com/neo-one-suite/neo-one/blob/ec89546f72b4ec12b499337434efeac4dae6d7a0/packages/neo-one-client-core/src/provider/JSONR
-
-
 * grpc controls?
   * https://github.com/neo-one-suite/neo-one/blob/7781fc1ab09107d8301bade113538ddae761b3c7/packages/neo-one-server-grpc/proto/server.proto
 
