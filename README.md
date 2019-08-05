@@ -133,7 +133,7 @@ yarn
 
 Run an interactive dev version packaged with Electron.
 
-### `yarn dev`
+`yarn dev`
 
 # Build
 
