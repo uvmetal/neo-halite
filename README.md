@@ -1,7 +1,7 @@
 
 # Neodymium
 
-Welcome. This is a suite of tools designed to make the Neo Smart Economy easier to use. Get started fast using the Hive.
+Welcome. This is a suite of tools designed to make the Neo Smart Economy easier to use.
 
   * Rest, RPC, and Desktop Control Surfaces
   * One-click Private Net
