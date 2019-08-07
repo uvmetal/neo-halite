@@ -1,5 +1,5 @@
 {
-  "name": "neoblack",
+  "name": "neo-halite",
   "version": "0.1.0",
   "private": true,
   "main": "public/electron.js",

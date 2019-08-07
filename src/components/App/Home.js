@@ -23,7 +23,7 @@ class Home extends Component {
         <React.Fragment>
           <Jumbotron className="vertical-center">
           <div className="container hero-container text-center">
-            <h1 className="display-4">Neodymium</h1>
+            <h1 className="display-4">Neo-Halite</h1>
             <p className="lead">Launch a custom Neo privatenet instantly</p>
             <hr className="my-4" />
             <p className="lead mx-auto">

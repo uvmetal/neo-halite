@@ -1,5 +1,5 @@
 
-# Neodymium
+# Neo-Halite
 
 Welcome. This is a suite of tools designed to make the Neo Smart Economy easier to use.
 
@@ -43,7 +43,7 @@ https://gist.github.com/hal0x2328/7c95e58ebbb27091790b153160763fad
 
   *TODO*: Add build flags to control server deployment and front-end options.
 
-### Screens for the Neodymium Presentation Framework (front-end) (WIP)
+### Screens for the Neo-Halite Presentation Framework (front-end) (WIP)
 
 This sections describes the control surface views within the front-end.
 
