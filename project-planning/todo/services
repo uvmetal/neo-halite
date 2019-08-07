@@ -1,7 +1,0 @@
-
-
-add configuration options to decouple and run services independently of the front-end
-
-
-verify sails is in fact stopped by checking port and pagq
-

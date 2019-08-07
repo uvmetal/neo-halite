@@ -1,31 +1,93 @@
 
 # Neo-Halite
 
-Welcome. This is a suite of tools designed to make the Neo Smart Economy easier to use.
+<!-- TOC depthFrom:1 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
 
-  * Rest, RPC, and Desktop Control Surfaces
-  * One-click Private Net
-  * One-click Deployment
-  * Multi-user Options - Join or build a collective.
-  * Orchestration
+- [Neo-Halite](#neo-halite)
+- [Overview](#overview)
+- [Plan](#plan)
+	- [Instant Neo Private Net and Orchestration](#instant-neo-private-net-and-orchestration)
+	- [Goals](#goals)
+	- [Technology](#technology)
+	- [Feature List (From City of Zion Project Requirements)](#feature-list-from-city-of-zion-project-requirements)
+	- [Build strict Orchestration requirements](#build-strict-orchestration-requirements)
+	- [Build Presentation Framework (front-end)](#build-presentation-framework-front-end)
+	- [Server Framework Goals](#server-framework-goals)
+		- [Server Framework Detail](#server-framework-detail)
+- [Install Software](#install-software)
+	- [Manual Server Software Installation](#manual-server-software-installation)
+	- [Server Configuration Notes](#server-configuration-notes)
+		- [Default Server Port](#default-server-port)
+- [Development](#development)
+	- [Build](#build)
+	- [Create the Package](#create-the-package)
+	- [Run or Install the Package](#run-or-install-the-package)
+	- [Clean](#clean)
+	- [Errors](#errors)
+- [Todo](#todo)
+	- [Server](#server)
+	- [State](#state)
+	- [UI Components](#ui-components)
+	- [UI Design](#ui-design)
+- [Learn More](#learn-more)
+
+<!-- /TOC -->
+
 
 # Overview
 
-The project is made up of many moving parts, but we only want you to worry about one. The front-end is your portal into the Neo Smart Economy development universe.
+Welcome. Neo-Halite is a suite of tools designed to make the Neo Smart Economy easier to use.
+
+* Rest, RPC, and Desktop Control Surfaces
+* One-click Private Net
+* One-click Deployment
+* Multi-user Options - Join or build a collective.
+* Orchestration
+
+The project is made up of many moving parts, but we only want you to worry about one. Neo-Halite is your portal to the Neo Smart Economy development universe.
 
 # Plan
 
 Private Net Orchestration System Draft v1 based on concept codename Neodymium. This plan is largely based off of the requirements set out by City of Zion in the following section.
 
-## City of Zion Project Requirements per codename Neodymium
+## Instant Neo Private Net and Orchestration
 
-Reformatted Goals:
+## Goals
+* Provide developers a "download-and-double-click" solution to deploy a Neo private net
+* Make system completely GUI-based with no CLI knowledge required to operate
+* Design modern and attractive UI to show Neo's tooling
+* Provide UX with easy transition for users migrating from Ethereum/Ganache
+* Easy integration with other Neo tools like neo-python or neocompiler.io
 
-[Project Goals](./docs/ProjectGoals.md)
+## Technology
+* Node.js
+* Electron
+* React
+* Redux
+* Sails.js
+* Neon-js
+* Neo-One and the TypeScript NeoVM implementation
+* Neotracker
 
-Original:
+## Feature List (From City of Zion Project Requirements)
+* Must Have
+  * Quickstart
+  * Accounts browser
+  * Blocks browser
+  * Transactions browser
+  * Logs/Notifications browser
+  * Neoscan-compatible API (required for Neon-js)
+  * Neo-cli compatible RPC API
+  * Contracts browser
+  * Dynamic update support
+* Should Have  
+  * One-click chain reset
+  * Blocks created on-demand
+* Nice to Have
+  * Multiple workspace configurations
+  * Contract storage browser
+  * Simple chain export and sharing
 
-https://gist.github.com/hal0x2328/7c95e58ebbb27091790b153160763fad
 
 ## Build strict Orchestration requirements
 * Determine additional modules for control, if needed, and if RPC can run everything alone
@@ -43,29 +105,6 @@ https://gist.github.com/hal0x2328/7c95e58ebbb27091790b153160763fad
 
   *TODO*: Add build flags to control server deployment and front-end options.
 
-### Screens for the Neo-Halite Presentation Framework (front-end) (WIP)
-
-This sections describes the control surface views within the front-end.
-
-Snapshot (the braces represent buttons). These are only an example. The current UI is a superset of this.
-
-* [New]
-* [Quickstart]
-* Workspace [rollup]
-  * [gear] [Accounts]
-  * [gear] [Blocks]
-  * [gear] [Contracts]
-  * [gear] [Export]
-  * [gear] [Transactions]
-  * [gear] [Storage]
-* System Settings [rollup]
-  * [Database]
-  * [Export]
-  * [Logs]
-  * [Rest]
-  * [RPC]
-  * [Session]
-* [About]
 
 ## Server Framework Goals
 
@@ -145,13 +184,13 @@ Run an interactive dev version packaged with Electron.
 
 `yarn dev`
 
-# Build
+## Build
 
 Only build the software. Do not package it.
 
 `yarn prepack` or `yarn build`
 
-# Create the Package
+## Create the Package
 
 To build and package a distribution file with Electron and send it to the `./dist/` folder do:
 
@@ -159,17 +198,19 @@ To build and package a distribution file with Electron and send it to the `./dis
 
 ## Run or Install the Package
 
+The following should be suitable to install on Linux. This has been tested on Ubuntu 18.04
+
 ```
 cd ./dist
-./projectname\ 0.1.0.AppImage
+./neo-halite\ 0.1.0.AppImage
 ```
 
 For complete installation on Ubuntu 18.04 Linux to default directory /opt/ use:
 
 ```
 cd ./dist
-sudo dpkg -i projectname_0.1.0_amd64.deb
-sudo chown -R youruser.youruser /opt/projectname/
+sudo dpkg -i neo-halite_0.1.0_amd64.deb
+sudo chown -R youruser.youruser /opt/neo-halite/
 ```
 
 *TODO*: Add post-install Debian script to chown post-intsall.
@@ -179,7 +220,7 @@ See https://www.electron.build/configuration/linux
 *TODO*: Develop and test macOS installer code
 
 
-# Clean
+## Clean
 
 Delete the ``./dist/`` folder. This can grow quite large.
 
@@ -195,4 +236,33 @@ Error: ENOSPC
 
 https://stackoverflow.com/questions/22475849/node-js-what-is-enospc-error-and-how-to-solve?lq=1
 
-## Learn More
+
+# Todo
+
+Create project board for the following:
+
+## Server
+* Add configuration options to decouple and run services independently of the front-end.
+* Verify sails is in fact stopped by checking port and page.
+* Integrate Neo-One and Neotracker
+
+
+## State
+* Add state management with redux before the prop passing and state lifting gets out of hand
+
+
+## UI Components
+* Componentize network status button overlay flyout
+* Abstract nav away from vertical/horizontal
+* Event-driven flyout states
+  - I.e., clicking hamburger doesn't close session status automatically
+  - Ideally, this could be configurable flag
+* Main UI panes do not scroll independently, consider best approach i.e., add scroll or not
+
+
+## UI Design
+* Theme - the current UI design and layout was for testing and example
+* Dark Mode
+* Flex nav flyout
+
+# Learn More
