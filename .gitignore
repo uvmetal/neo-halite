@@ -24,7 +24,7 @@ env/
 /.settings/*
 
 # misc
-.tmp
+#.tmp
 .DS_Store
 .env
 .env.local
