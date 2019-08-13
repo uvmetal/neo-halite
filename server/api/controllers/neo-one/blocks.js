@@ -7,10 +7,10 @@ const util = require('util')
 
 module.exports = {
 
-  friendlyName: 'Get blocks',
+  friendlyName: 'Blocks',
 
 
-  description: '',
+  description: 'Neo-One Blocks',
 
 
   inputs: {
@@ -89,6 +89,4 @@ module.exports = {
     // All done.
     // return
   }
-
-
-};
+}

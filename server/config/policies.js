@@ -21,6 +21,10 @@ module.exports.policies = {
   'legal/view-terms': true,
   'legal/view-privacy': true,
   'deliver-contact-form-message': true,
-  'neo-one/get-blocks': true,
+  'neo-one/accounts': true,
+  'neo-one/blocks': true,
+  'neo-one/contracts': true,
+  'neo-one/events': true,
+  'neo-one/transactions': true,
 
 };
