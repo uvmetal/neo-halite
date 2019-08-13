@@ -14,6 +14,9 @@ module.exports.bootstrap = async function() {
   // Import dependencies
   var path = require('path');
 
+  sails.Neon = require("@cityofzion/neon-js")
+
+
   // This bootstrap version indicates what version of fake data we're dealing with here.
   var HARD_CODED_DATA_VERSION = 0;
 

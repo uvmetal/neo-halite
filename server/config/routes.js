@@ -52,6 +52,9 @@ module.exports.routes = {
   //  ╩ ╩╩  ╩  ╚═╝╝╚╝═╩╝╩  ╚═╝╩╝╚╝ ╩ ╚═╝
   // Note that, in this app, these API endpoints may be accessed using the `Cloud.*()` methods
   // from the Parasails library, or by using those method names as the `action` in <ajax-form>.
+
+  'GET /api/v1/neo-one/get-blocks':                   { action: 'neo-one/get-blocks' },
+
   '/api/v1/account/logout':                           { action: 'account/logout' },
   'PUT   /api/v1/account/update-password':            { action: 'account/update-password' },
   'PUT   /api/v1/account/update-profile':             { action: 'account/update-profile' },
