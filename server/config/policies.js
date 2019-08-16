@@ -26,5 +26,8 @@ module.exports.policies = {
   'neo-one/contracts': true,
   'neo-one/events': true,
   'neo-one/transactions': true,
+  'neo-one/network/start': true,
+  'neo-one/network/stop': true,
+  'neo-one/network/status': true,
 
 };

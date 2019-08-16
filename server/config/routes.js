@@ -69,4 +69,9 @@ module.exports.routes = {
   'GET /api/v1/neo-one/contracts':                    { action: 'neo-one/contracts' },
   'GET /api/v1/neo-one/events':                       { action: 'neo-one/events' },
   'GET /api/v1/neo-one/transactions':                 { action: 'neo-one/transactions' },
+
+  // Neo-One API for Network and contract management
+  'GET /api/v1/neo-one/network/start':                 { action: 'neo-one/network/start' },
+  'GET /api/v1/neo-one/network/stop':                 { action: 'neo-one/network/stop' },
+  'GET /api/v1/neo-one/network/status':                 { action: 'neo-one/network/status' },
 };
