@@ -251,7 +251,7 @@ There are two main portions of neo-halite, the server, and the client. The syste
 
 The server tightly integrates with neo-one providing API routes to control a neo-one instance: starting, stopping, status, and network data like contracts, events, accounts, blocks, transactions, etc are available.
 
-For status and planning of the server component please see: (Server README.md)[/server/README.md]
+For status and planning of the server component please see: [Server README.md](/server/README.md)
 
 ### Client
 
