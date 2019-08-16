@@ -1,10 +1,20 @@
+// From: https://neo-one.io/docs/environment-setup
+// For local network and smart contract management, you should install
+//
+// @neo-one/cli - Provides the neo-one cli command which manages common tasks like building and deploying smart contracts and spinning up local networks.
+
+
+const cli_1 = require('@neo-one/cli')
+const util = require('util')
+
+
 module.exports = {
 
 
-  friendlyName: 'Events',
+  friendlyName: 'Status',
 
 
-  description: 'Neo-One Events',
+  description: 'Status network.',
 
 
   inputs: {

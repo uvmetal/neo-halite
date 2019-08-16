@@ -32,7 +32,7 @@ module.exports = {
       // `res.badRequest` if it's left out.
       required: false
     },
-    privatenet: {
+    network: {
       description: 'The Neo-One private net instance to use.',
       // By declaring a numeric example, Sails will automatically respond with `res.badRequest`
       // if the `userId` parameter is not a number.

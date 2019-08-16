@@ -25,10 +25,12 @@
 	- [Clean](#clean)
 	- [Errors](#errors)
 - [Todo](#todo)
-	- [Server](#server)
-	- [State](#state)
-	- [UI Components](#ui-components)
-	- [UI Design](#ui-design)
+	- [Architecture](#architecture)
+		- [Server](#server)
+		- [Client](#client)
+			- [State](#state)
+			- [UI Components](#ui-components)
+			- [UI Design](#ui-design)
 - [Learn More](#learn-more)
 
 <!-- /TOC -->
@@ -241,17 +243,26 @@ https://stackoverflow.com/questions/22475849/node-js-what-is-enospc-error-and-ho
 
 Create project board for the following:
 
-## Server
-* Add configuration options to decouple and run services independently of the front-end.
-* Verify sails is in fact stopped by checking port and page.
-* Integrate Neo-One and Neotracker
+## Architecture
 
+There are two main portions of neo-halite, the server, and the client. The system was designed this way to support modular deployment and separation from a singular, full-client installation to easily facilitate development decision use-cases for the users and developers that build on the codebase.
 
-## State
+### Server
+
+The server tightly integrates with neo-one providing API routes to control a neo-one instance: starting, stopping, status, and network data like contracts, events, accounts, blocks, transactions, etc are available.
+
+For status and planning of the server component please see: (Server README.md)[/server/README.md]
+
+### Client
+
+The client or front end is the user interface that tightly couples with the server and focuses on presenting those server controls to the user.
+
+#### State
+(front-end)
 * Add state management with redux before the prop passing and state lifting gets out of hand
 
 
-## UI Components
+#### UI Components
 * Componentize network status button overlay flyout
 * Abstract nav away from vertical/horizontal
 * Event-driven flyout states
@@ -260,7 +271,7 @@ Create project board for the following:
 * Main UI panes do not scroll independently, consider best approach i.e., add scroll or not
 
 
-## UI Design
+#### UI Design
 * Theme - the current UI design and layout was for testing and example
 * Dark Mode
 * Flex nav flyout
