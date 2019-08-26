@@ -74,4 +74,8 @@ module.exports.routes = {
   'GET /api/v1/neo-one/network/start':                 { action: 'neo-one/network/start' },
   'GET /api/v1/neo-one/network/stop':                 { action: 'neo-one/network/stop' },
   'GET /api/v1/neo-one/network/status':                 { action: 'neo-one/network/status' },
+
+  'GET /api/v1/neo-one/server/start':                 { action: 'neo-one/server/start' },
+  'GET /api/v1/neo-one/server/stop':                 { action: 'neo-one/server/stop' },
+  'GET /api/v1/neo-one/server/status':                 { action: 'neo-one/server/status' },
 };

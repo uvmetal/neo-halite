@@ -47,21 +47,24 @@ module.exports = {
 
     const p = spawn('./node_modules/.bin/neo-one', ['init'])
 
-
     p.stdout.on('data', (data) => {
-      console.log(`stdout: ${data}`);
-    });
+      console.log(`stdout: ${data}`)
+    })
 
     p.stderr.on('data', (data) => {
-      console.log(`stderr: ${data}`);
-    });
+      console.log(`stderr: ${data}`)
+
+      const regex = /.*\(pid=([0-9].*)\)\n/
+      const found = data.toString().replace(regex, '$1')
+      console.log(`found ${found}`)
+    })
 
     p.on('close', (code) => {
-      console.log(`child process exited with code ${code}`);
+      console.log(`child process exited with code ${code}`)
     })
 
     // All done.
-    return;
+    return
 
   }
 

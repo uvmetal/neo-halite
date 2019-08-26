@@ -49,4 +49,7 @@ module.exports.globals = {
 
   sails: true,
 
+  neoone: {
+    serverPID: undefined,
+  },
 };
