@@ -57,6 +57,7 @@ module.exports = {
       const regex = /.*\(pid=([0-9].*)\)\n/
       const found = data.toString().replace(regex, '$1')
       console.log(`found ${found}`)
+      sails.config.globals.neoone.serverPID = found
     })
 
     p.on('close', (code) => {

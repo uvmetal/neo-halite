@@ -46,8 +46,11 @@ module.exports = {
 
 
   fn: async function (inputs) {
-    const p = spawn('kill', [pid])
+    const pid = sails.config.globals.neoone.serverPID
 
+    console.log(`kill ${pid}`)
+
+    const p = spawn('kill', [pid])
 
     p.stdout.on('data', (data) => {
       console.log(`stdout: ${data}`)
