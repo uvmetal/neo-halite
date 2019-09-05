@@ -13,11 +13,11 @@ module.exports = {
   friendlyName: 'Get',
 
 
-  description: 'List networks on an already running server.',
+  description: 'List neotrackers on an already running server.',
 
 
   inputs: {
-    
+
     options: {
       description: 'These are extra options to pass to Neo-One.',
       // By declaring a numeric example, Sails will automatically respond with `res.badRequest`
@@ -37,7 +37,7 @@ module.exports = {
 
   fn: async function (inputs) {
 
-    const p = spawn(sails.config.globals.neoone.serverPath, ['get', 'network'])
+    const p = spawn(sails.config.globals.neoone.serverPath, ['get', 'neotracker'])
 
     p.stdout.on('data', (data) => {
       console.log(`stdout: ${data}`);

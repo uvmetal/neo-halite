@@ -13,12 +13,12 @@ module.exports = {
   friendlyName: 'Start',
 
 
-  description: 'Start a network on an already running server.',
+  description: 'Start a neotracker on an already running server.',
 
 
   inputs: {
     name: {
-      description: 'The Neo-One private net instance name to use.',
+      description: 'The Neo-One neotracker instance name to use.',
       // By declaring a numeric example, Sails will automatically respond with `res.badRequest`
       // if the `userId` parameter is not a number.
       type: 'string',
@@ -45,7 +45,7 @@ module.exports = {
 
   fn: async function (inputs) {
 
-    const p = spawn(sails.config.globals.neoone.serverPath, ['start', 'network', inputs.name])
+    const p = spawn(sails.config.globals.neoone.serverPath, ['start', 'neotracker', inputs.name])
 
     p.stdout.on('data', (data) => {
       console.log(`stdout: ${data}`);
