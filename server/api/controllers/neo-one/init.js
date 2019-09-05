@@ -9,10 +9,11 @@ const { spawn } = require('child_process')
 
 module.exports = {
 
-  friendlyName: 'Start',
+
+  friendlyName: 'Init',
 
 
-  description: 'Start the Neo-One server. There should be only one server so identifying it is handled automatically.',
+  description: 'Initialize a Neo-One installation.',
 
 
   inputs: {
@@ -29,27 +30,22 @@ module.exports = {
 
     const p = spawn(sails.config.globals.neoone.serverPath, ['init'])
 
-    console.log('sails __dirname: '+__dirname)
-    console.log('sails process.cwd(): '+process.cwd())
-
     p.stdout.on('data', (data) => {
-      console.log(`stdout: ${data}`)
-    })
+      console.log(`stdout: ${data}`);
+    });
 
     p.stderr.on('data', (data) => {
-      console.log(`stderr: ${data}`)
-
-      const regex = /.*\(pid=([0-9].*)\)\n/
-      const found = data.toString().replace(regex, '$1')
-      console.log(`found ${found}`)
-      sails.config.globals.neoone.serverPID = found
-    })
+      console.log(`stderr: ${data}`);
+    });
 
     p.on('close', (code) => {
-      console.log(`child process exited with code ${code}`)
+      console.log(`child process exited with code ${code}`);
     })
 
     // All done.
-    return
+    return;
+
   }
+
+
 };

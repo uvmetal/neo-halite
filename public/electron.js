@@ -20,7 +20,7 @@ const firstRun = require('electron-first-run')
 
 const isFirstRun = firstRun()
 
-let mainWindow
+let mainWindow, systemConfig
 
 function createWindow() {
   mainWindow = new BrowserWindow(
@@ -54,12 +54,13 @@ ipc.on('start-server', function (event, arg) {
     if (sailsServer === null) {
       sailsServer = new Sails()
 
-      let serverPath = app.isPackaged ? '../server' : './server'
+      // TODO: Test as this is known to work on Ubuntu 18, but it could cause problems on other platforms
+      let serverPath = app.isPackaged ? systemConfig.exe + '/../server' : './server'
 
       // TODO add flag to configure from environment or cli
       let serverPort = 2328
 
-      console.log('lifting server at: ' + serverPath)
+      console.log('Lifting server at: ' + serverPath)
 
       sailsServer.lift({appPath: serverPath, port: serverPort}, function(err) {
         if (err) {
@@ -68,7 +69,7 @@ ipc.on('start-server', function (event, arg) {
           }
           console.log('Sails app lifted successfully!')
       })
-    } else console.log('sails server is already running')
+    } else console.log('Sails server is already running.')
 })
 
 ipc.on('stop-server', function (event, arg) {
@@ -82,7 +83,7 @@ ipc.on('stop-server', function (event, arg) {
         console.log("Sails app lowered successfully!");
       }
     )
-  } else console.log('sails is not running')
+  } else console.log('Sails is not running.')
 })
 
 ipc.on('check-install', function (event, arg) {
@@ -118,10 +119,8 @@ ipc.on('update-system-profile', function (event, arg) {
 function getSystemProfile() {
   let home, appData, userData, temp, exe, mod, desktop, documents, music, pictures, videos, logs, pepperFlashSystemPlugin, version, gpuInfo, isAccessibilitySupportEnabled, isPackaged
 
-  let systemConfig
-
   function configError(error) {
-    console.log('install config: ' + error)
+    console.log('Install config: ' + error)
   }
 
   try { home = app.getPath('home') } catch(error) { configError(error) }
