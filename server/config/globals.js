@@ -51,6 +51,6 @@ module.exports.globals = {
 
   neoone: {
     serverPID: undefined,
-    serverPath: __dirname+'/../../../../../server/node_modules/.bin/neo-one',
+    serverPath: './server/node_modules/.bin/neo-one',
   },
 };

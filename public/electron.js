@@ -20,7 +20,7 @@ const firstRun = require('electron-first-run')
 
 const isFirstRun = firstRun()
 
-let mainWindow, systemConfig
+let mainWindow, systemConfig, sailsIsPackaged
 
 function createWindow() {
   mainWindow = new BrowserWindow(
@@ -54,15 +54,25 @@ ipc.on('start-server', function (event, arg) {
     if (sailsServer === null) {
       sailsServer = new Sails()
 
-      // TODO: Test as this is known to work on Ubuntu 18, but it could cause problems on other platforms
-      let serverPath = app.isPackaged ? systemConfig.exe + '/../server' : './server'
+      // TODO: Test, as this is known to work on Ubuntu 18, but it could cause problems on other platforms; see below.
+      let serverPath
+
+      if (app.isPackaged) {
+        sailsIsPackaged = true
+        serverPath = systemConfig.exe + '/../server'
+      } else {
+        sailsIsPackaged = false
+        serverPath = './server'
+      }
+
+      // sailsIsPackaged = true
 
       // TODO add flag to configure from environment or cli
       let serverPort = 2328
 
       console.log('Lifting server at: ' + serverPath)
 
-      sailsServer.lift({appPath: serverPath, port: serverPort}, function(err) {
+      sailsServer.lift({appPath: serverPath, port: serverPort, isPackaged: sailsIsPackaged}, function(err) {
         if (err) {
             console.log('Error occurred lifting Sails app:', err)
             return
