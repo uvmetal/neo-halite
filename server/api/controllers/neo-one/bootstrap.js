@@ -36,22 +36,22 @@ module.exports = {
 
   fn: async function (inputs) {
 
-    const p = spawn(sails.config.globals.neoone.serverPath, ['bootstrap', inputs.options])
+    const p = spawn(sails.config.globals.neoone.serverPath, ['bootstrap'])
 
     p.stdout.on('data', (data) => {
-      console.log(`stdout: ${data}`);
-    });
+      console.log(`stdout: ${data}`)
+    })
 
     p.stderr.on('data', (data) => {
-      console.log(`stderr: ${data}`);
-    });
+      console.log(`stderr: ${data}`)
+    })
 
     p.on('close', (code) => {
-      console.log(`child process exited with code ${code}`);
+      console.log(`child process exited with code ${code}`)
     })
 
     // All done.
-    return;
+    return
 
   }
 

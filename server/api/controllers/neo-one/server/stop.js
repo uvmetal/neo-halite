@@ -37,11 +37,11 @@ module.exports = {
 
     p.stdout.on('data', (data) => {
       console.log(`stdout: ${data}`)
-    });
+    })
 
     p.stderr.on('data', (data) => {
       console.log(`stderr: ${data}`)
-    });
+    })
 
     p.on('close', (code) => {
       console.log(`child process exited with code ${code}`)
