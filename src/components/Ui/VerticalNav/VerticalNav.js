@@ -76,10 +76,10 @@ class VerticalNav extends Component {
                     <NavLink tag={RRNavLink} exact to="/WorkspaceExport" activeClassName="active"> &nbsp; &nbsp; Export</NavLink>
                   </NavItem>
                   <NavItem>
-                    <NavLink tag={RRNavLink} exact to="/WorkspaceStorage" activeClassName="active"> &nbsp; &nbsp; Storage</NavLink>
+                    <NavLink tag={RRNavLink} exact to="/WorkspaceServer" activeClassName="active"> &nbsp; &nbsp; Server</NavLink>
                   </NavItem>
                   <NavItem>
-                    <NavLink tag={RRNavLink} exact to="/WorkspaceServer" activeClassName="active"> &nbsp; &nbsp; Server</NavLink>
+                    <NavLink tag={RRNavLink} exact to="/WorkspaceStorage" activeClassName="active"> &nbsp; &nbsp; Storage</NavLink>
                   </NavItem>
                   <NavItem>
                     <NavLink tag={RRNavLink} exact to="/WorkspaceTransactions" activeClassName="active"> &nbsp; &nbsp; Transactions</NavLink>
@@ -106,6 +106,9 @@ class VerticalNav extends Component {
                   </NavItem>
                   <NavItem>
                     <NavLink tag={RRNavLink} exact to="/SettingsRpc" activeClassName="active"> &nbsp; &nbsp; Rpc</NavLink>
+                  </NavItem>
+                  <NavItem>
+                    <NavLink tag={RRNavLink} exact to="/SettingsServer" activeClassName="active"> &nbsp; &nbsp; Server</NavLink>
                   </NavItem>
                   <NavItem>
                     <NavLink tag={RRNavLink} exact to="/SettingsSession" activeClassName="active"> &nbsp; &nbsp; Session</NavLink>

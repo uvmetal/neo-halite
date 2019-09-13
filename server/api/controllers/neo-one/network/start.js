@@ -5,7 +5,7 @@
 
 const cli_1 = require('@neo-one/cli')
 const util = require('util')
-
+const { spawn } = require('child_process')
 
 module.exports = {
 
@@ -13,21 +13,21 @@ module.exports = {
   friendlyName: 'Start',
 
 
-  description: 'Start network.',
+  description: 'Start a network on an already running server.',
 
 
   inputs: {
-    rpcurl: {
-      description: 'The url of the RPC node to use.',
+    name: {
+      description: 'The Neo-One private net instance name to use.',
       // By declaring a numeric example, Sails will automatically respond with `res.badRequest`
       // if the `userId` parameter is not a number.
       type: 'string',
       // By making the `userId` parameter required, Sails will automatically respond with
       // `res.badRequest` if it's left out.
-      required: false
+      required: true
     },
-    network: {
-      description: 'The Neo-One private net instance to use.',
+    options: {
+      description: 'These are extra options to pass to Neo-One.',
       // By declaring a numeric example, Sails will automatically respond with `res.badRequest`
       // if the `userId` parameter is not a number.
       type: 'string',
@@ -45,8 +45,22 @@ module.exports = {
 
   fn: async function (inputs) {
 
+    const p = spawn(sails.config.globals.neoone.serverPath, ['start', 'network', inputs.name])
+
+    p.stdout.on('data', (data) => {
+      console.log(`stdout: ${data}`)
+    })
+
+    p.stderr.on('data', (data) => {
+      console.log(`stderr: ${data}`)
+    })
+
+    p.on('close', (code) => {
+      console.log(`child process exited with code ${code}`)
+    })
+
     // All done.
-    return;
+    return
 
   }
 

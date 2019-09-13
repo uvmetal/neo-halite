@@ -4,8 +4,6 @@ var rc = require('sails/accessible/rc')
 
 var util = require('util')
 
-let sailsServer = null
-
 const electron = require('electron')
 const app = electron.app
 const BrowserWindow = electron.BrowserWindow
@@ -18,9 +16,24 @@ const ipc = require('electron').ipcMain
 
 const firstRun = require('electron-first-run')
 
+const neoOneServer = require('./neo-one/BinaryIpcControls')
+
+const sailsServer = require('./neo-one/sails')
+
+const { spawn } = require('child_process')
+
 const isFirstRun = firstRun()
 
-let mainWindow
+let mainWindow, systemConfig
+
+let sailsServerPath, sailsIsPackaged, sailsServerPort = 2328
+
+let neoone = {
+  serverPID: undefined,
+  serverPath: './server/node_modules/.bin/neo-one'
+}
+
+global.serverConfig = { useSails: false }
 
 function createWindow() {
   mainWindow = new BrowserWindow(
@@ -34,6 +47,26 @@ function createWindow() {
   })
   mainWindow.loadURL(isDev ? 'http://localhost:3000' : `file://${path.join(__dirname, '../build/index.html')}`)
   mainWindow.on('closed', () => mainWindow = null)
+
+  let systemConfig = getSystemProfile()
+
+  if (app.isPackaged) {
+    sailsIsPackaged = true
+    sailsServerPath = systemConfig.exe + '/../server'
+    const re = /\/neo-halite$/
+    neoone.serverPath = systemConfig.exe.replace(re, '/server/node_modules/.bin/neo-one')
+  } else {
+    sailsIsPackaged = false
+    sailsServerPath = './server'
+    neoone.serverPath = systemConfig.exe + './server/node_modules/.bin/neo-one'
+
+  }
+
+  console.log('neoone.serverPath: '+neoone.serverPath)
+
+  sailsServer.stopAll()
+  sailsServer.removeIpcListeners()
+  neoOneServer.addIpcListeners(global, neoone)
 }
 
 app.on('ready', createWindow);
@@ -50,39 +83,23 @@ app.on('activate', () => {
   }
 })
 
-ipc.on('start-server', function (event, arg) {
-    if (sailsServer === null) {
-      sailsServer = new Sails()
+ipc.on('use-sails', function (event, arg) {
+  console.log('Toggled checkbox to use Sails.js to: '+arg)
+  // TODO add flag to configure from environment or cli
 
-      let serverPath = app.isPackaged ? '../server' : './server'
+  if (global.serverConfig.useSails) {
+    // TODO: Test, as this is known to work on Ubuntu 18, but it could cause problems on other platforms; see below.
 
-      // TODO add flag to configure from environment or cli
-      let serverPort = 2328
+    // sailsServer.lift(sailsServerPath, sailsServerPort, sailsIsPackaged)
+    neoOneServer.stopAll()
+    neoOneServer.removeIpcListeners()
+    sailsServer.addIpcListeners()
 
-      console.log('lifting server at: ' + serverPath)
-
-      sailsServer.lift({appPath: serverPath, port: serverPort}, function(err) {
-        if (err) {
-            console.log('Error occurred lifting Sails app:', err)
-            return
-          }
-          console.log('Sails app lifted successfully!')
-      })
-    } else console.log('sails server is already running')
-})
-
-ipc.on('stop-server', function (event, arg) {
-  if (sailsServer !== null) {
-    sailsServer.lower(
-      function (err) {
-        sailsServer = null
-        if (err) {
-          return console.log("Error occurred lowering Sails app: ", err);
-        }
-        console.log("Sails app lowered successfully!");
-      }
-    )
-  } else console.log('sails is not running')
+  } else { // Assume neo-one direct control for now
+    sailsServer.stopAll()
+    sailsServer.removeIpcListeners()
+    neoOneServer.addIpcListeners(global, neoone)
+  }
 })
 
 ipc.on('check-install', function (event, arg) {
@@ -118,10 +135,8 @@ ipc.on('update-system-profile', function (event, arg) {
 function getSystemProfile() {
   let home, appData, userData, temp, exe, mod, desktop, documents, music, pictures, videos, logs, pepperFlashSystemPlugin, version, gpuInfo, isAccessibilitySupportEnabled, isPackaged
 
-  let systemConfig
-
   function configError(error) {
-    console.log('install config: ' + error)
+    console.log('Install config: ' + error)
   }
 
   try { home = app.getPath('home') } catch(error) { configError(error) }

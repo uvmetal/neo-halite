@@ -186,6 +186,12 @@ Run an interactive dev version packaged with Electron.
 
 `yarn dev`
 
+# Rebuild Server Binaries with Electron Compatibility
+
+If you start Sails and see errors about sqlite3 and/or grpc, do the following to build compatible binaries for Electron.
+
+`yarn electron-rebuild-bins`
+
 ## Build
 
 Only build the software. Do not package it.

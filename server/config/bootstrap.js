@@ -16,6 +16,11 @@ module.exports.bootstrap = async function() {
 
   sails.Neon = require("@cityofzion/neon-js")
 
+  sails.log('sails.config.isPackaged: '+sails.config.isPackaged)
+
+  if (sails.config.isPackaged) {
+    sails.config.globals.neoone.serverPath = __dirname + '/../../../../../server/node_modules/.bin/neo-one'
+  }
 
   // This bootstrap version indicates what version of fake data we're dealing with here.
   var HARD_CODED_DATA_VERSION = 0;

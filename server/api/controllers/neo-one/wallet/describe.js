@@ -10,15 +10,15 @@ const { spawn } = require('child_process')
 module.exports = {
 
 
-  friendlyName: 'Stop',
+  friendlyName: 'Describe',
 
 
-  description: 'Stop a network on an already running server.',
+  description: 'Describe a wallet on an already running server.',
 
 
   inputs: {
     name: {
-      description: 'The Neo-One private net instance name to use.',
+      description: 'The Neo-One wallet instance name to use.',
       // By declaring a numeric example, Sails will automatically respond with `res.badRequest`
       // if the `userId` parameter is not a number.
       type: 'string',
@@ -45,7 +45,7 @@ module.exports = {
 
   fn: async function (inputs) {
 
-    const p = spawn(sails.config.globals.neoone.serverPath, ['stop', 'network', inputs.name])
+    const p = spawn(sails.config.globals.neoone.serverPath, ['describe', 'wallet', inputs.name])
 
     p.stdout.on('data', (data) => {
       console.log(`stdout: ${data}`)

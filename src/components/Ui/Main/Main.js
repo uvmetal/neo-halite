@@ -18,6 +18,7 @@ import SettingsLogs from '../../App/Settings/Logs'
 import SettingsRest from '../../App/Settings/Rest'
 import SettingsRpc from '../../App/Settings/Rpc'
 import SettingsSession from '../../App/Settings/Session'
+import SettingsServer from '../../App/Settings/Server'
 
 import InstallerHome  from '../../Installer/Home'
 
@@ -152,6 +153,10 @@ class AppMain extends Component {
 
         case '/SettingsSession':
           rightPaneContent = <SettingsSession />
+        break
+
+        case '/SettingsServer':
+          rightPaneContent = <SettingsServer />
         break
 
         case '/InstallerHome':

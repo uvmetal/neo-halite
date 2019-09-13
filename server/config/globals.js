@@ -49,4 +49,8 @@ module.exports.globals = {
 
   sails: true,
 
+  neoone: {
+    serverPID: undefined,
+    serverPath: './server/node_modules/.bin/neo-one',
+  },
 };

@@ -70,8 +70,40 @@ module.exports.routes = {
   'GET /api/v1/neo-one/events':                       { action: 'neo-one/events' },
   'GET /api/v1/neo-one/transactions':                 { action: 'neo-one/transactions' },
 
-  // Neo-One API for Network and contract management
-  'GET /api/v1/neo-one/network/start':                 { action: 'neo-one/network/start' },
+  // Neo-One API for server, network, and contract management
+  'GET /api/v1/neo-one/server/start':                 { action: 'neo-one/server/start' },
+  'GET /api/v1/neo-one/server/status':                { action: 'neo-one/server/status' },
+  'GET /api/v1/neo-one/server/stop':                  { action: 'neo-one/server/stop' },
+
+  'GET /api/v1/neo-one/network/activate':             { action: 'neo-one/network/activate' },
+  'GET /api/v1/neo-one/network/create':               { action: 'neo-one/network/create' },
+  'GET /api/v1/neo-one/network/deactivate':           { action: 'neo-one/network/deactivate' },
+  'GET /api/v1/neo-one/network/delete':               { action: 'neo-one/network/delete' },
+  'GET /api/v1/neo-one/network/describe':             { action: 'neo-one/network/describe' },
+  'GET /api/v1/neo-one/network/get':                  { action: 'neo-one/network/get' },
+  'GET /api/v1/neo-one/network/start':                { action: 'neo-one/network/start' },
+  'GET /api/v1/neo-one/network/status':               { action: 'neo-one/network/status' },
   'GET /api/v1/neo-one/network/stop':                 { action: 'neo-one/network/stop' },
-  'GET /api/v1/neo-one/network/status':                 { action: 'neo-one/network/status' },
+
+  'GET /api/v1/neo-one/wallet/activate':              { action: 'neo-one/wallet/activate' },
+  'GET /api/v1/neo-one/wallet/create':                { action: 'neo-one/wallet/create' },
+  'GET /api/v1/neo-one/wallet/deactivate':            { action: 'neo-one/wallet/deactivate' },
+  'GET /api/v1/neo-one/wallet/delete':                { action: 'neo-one/wallet/delete' },
+  'GET /api/v1/neo-one/wallet/describe':              { action: 'neo-one/wallet/describe' },
+  'GET /api/v1/neo-one/wallet/get':                   { action: 'neo-one/wallet/get' },
+
+  'GET /api/v1/neo-one/neotracker/create':            { action: 'neo-one/neotracker/create' },
+  'GET /api/v1/neo-one/neotracker/delete':            { action: 'neo-one/neotracker/delete' },
+  'GET /api/v1/neo-one/neotracker/describe':          { action: 'neo-one/neotracker/describe' },
+  'GET /api/v1/neo-one/neotracker/get':               { action: 'neo-one/neotracker/get' },
+  'GET /api/v1/neo-one/neotracker/start':             { action: 'neo-one/neotracker/start' },
+  'GET /api/v1/neo-one/neotracker/status':            { action: 'neo-one/neotracker/status' },
+  'GET /api/v1/neo-one/neotracker/stop':              { action: 'neo-one/neotracker/stop' },
+
+  'GET /api/v1/neo-one/init':                         { action: 'neo-one/init' },
+  'GET /api/v1/neo-one/bootstrap':                    { action: 'neo-one/bootstrap' },
+  'GET /api/v1/neo-one/build':                        { action: 'neo-one/build' },
+  'GET /api/v1/neo-one/verify':                       { action: 'neo-one/verify' },
+  'GET /api/v1/neo-one/version':                      { action: 'neo-one/version' },
+
 };

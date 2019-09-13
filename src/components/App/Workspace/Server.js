@@ -45,8 +45,8 @@ class WorkspaceServer extends Component {
           <hr className="my-4" />
           <p className="lead mx-auto">
           </p>
-          <Button size="sm" onClick={this.lift} >Start Sails</Button>
-          <Button size="sm" onClick={this.lower} >Stop Sails</Button>
+          <Button size="sm" onClick={this.lift} >Start Neo-One</Button>
+          <Button size="sm" onClick={this.lower} >Stop Neo-One</Button>
         </div>
         </Jumbotron>
         <img src={neoOneLogo} className="img-fluid mx-auto d-block" alt="Neo One" />

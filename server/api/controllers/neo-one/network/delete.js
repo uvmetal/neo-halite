@@ -10,10 +10,10 @@ const { spawn } = require('child_process')
 module.exports = {
 
 
-  friendlyName: 'Stop',
+  friendlyName: 'Delete',
 
 
-  description: 'Stop a network on an already running server.',
+  description: 'Delete a network on an already running server.',
 
 
   inputs: {
@@ -45,7 +45,7 @@ module.exports = {
 
   fn: async function (inputs) {
 
-    const p = spawn(sails.config.globals.neoone.serverPath, ['stop', 'network', inputs.name])
+    const p = spawn(sails.config.globals.neoone.serverPath, ['delete', 'network', inputs.name])
 
     p.stdout.on('data', (data) => {
       console.log(`stdout: ${data}`)
