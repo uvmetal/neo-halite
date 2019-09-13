@@ -20,7 +20,7 @@ class SettingsServer extends Component {
   }
 
   handleCheckBoxChange(event) {
-    // window.ipcRenderer.send('use-sails', event.target.checked)
+    window.ipcRenderer.send('use-sails', event.target.checked)
 
     remote.getGlobal('serverConfig').useSails = event.target.checked
     console.log('useSails set to : '+remote.getGlobal('serverConfig').useSails)
