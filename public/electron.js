@@ -58,8 +58,7 @@ function createWindow() {
   } else {
     sailsIsPackaged = false
     sailsServerPath = './server'
-    neoone.serverPath = systemConfig.exe + './server/node_modules/.bin/neo-one'
-
+    neoone.serverPath = './server/node_modules/.bin/neo-one'
   }
 
   console.log('neoone.serverPath: '+neoone.serverPath)
