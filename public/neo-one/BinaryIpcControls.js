@@ -32,11 +32,34 @@ let neoOneCommands = ['start-server',
                       'version'
                     ]
 
+// Quickstart should automatically fill in network names
+
+// Create a new Network with 'name'
+// neo-one create network name
+
+// List Wallets for Network 'name'
+// neo-one get wallet --network name
+
+// Get private key from Wallet
+// neo-one describe wallet --network networkName walletNameq
+
+// Create Neotracker block explorer with 'name' on network 'name'
+// neo-one create neotracker trackerName --network netName
+
+let neoOneFullCommandSequence = [ 'start-server',
+                                  'create-network',
+                                  'create-neotracker',
+                               ]
+
 exports.addIpcListeners = function (global, neoone) {
 
   console.log('Adding all IPC listeners for main process control of neo-one.')
 
   ipc.on('start-server', function (event, arg) {
+
+    // TODO verify if we shouldn't allow multiple server instances, until then do:
+    if (neoone.serverPID) return
+
     const p = spawn(neoone.serverPath, ['init'])
 
     p.stdout.on('data', (data) => {
@@ -74,6 +97,8 @@ exports.addIpcListeners = function (global, neoone) {
 
     p.on('close', (code) => {
       console.log(`child process exited with code ${code}`)
+
+      if (code === 0) neoone.serverPID = undefined
     })
   })
 

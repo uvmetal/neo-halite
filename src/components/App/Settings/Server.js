@@ -40,6 +40,7 @@ class SettingsServer extends Component {
             <FormGroup check inline>
               <Label check>
                 <Input type="checkbox" onChange={this.handleCheckBoxChange}/> Use Sails.js (not fully implemented)
+                <Input type="checkbox" onChange={this.handleCheckBoxChange}/> Allow Multiple Server Instances (placeholder)
               </Label>
             </FormGroup>
           </Form>
