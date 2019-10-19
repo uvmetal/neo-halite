@@ -51,455 +51,513 @@ let neoOneFullCommandSequence = [ 'start-server',
                                   'create-neotracker',
                                ]
 
+const functionDebounce = 1000
+
 exports.addIpcListeners = function (global, neoone) {
 
   console.log('Adding all IPC listeners for main process control of neo-one.')
 
   ipc.on('start-server', function (event, arg) {
 
-    // TODO verify if we shouldn't allow multiple server instances, until then do:
-    if (neoone.serverPID) return
+    // TODO verify if we shouldn't allow multiple server instances, until then do debounce:
+    setTimeout(() => {
+      if (neoone.serverPID) return
 
-    const p = spawn(neoone.serverPath, ['init'])
+      const p = spawn(neoone.serverPath, ['init'])
 
-    p.stdout.on('data', (data) => {
-      console.log(`stdout: ${data}`)
-    })
+      p.stdout.on('data', (data) => {
+        console.log(`stdout: ${data}`)
+      })
 
-    p.stderr.on('data', (data) => {
-      console.log(`stderr: ${data}`)
+      p.stderr.on('data', (data) => {
+        console.log(`stderr: ${data}`)
 
-      const regex = /.*\(pid=([0-9].*)\)\n/
-      const found = data.toString().replace(regex, '$1')
-      console.log(`found ${found}`)
-      neoone.serverPID = found
-    })
+        const regex = /.*\(pid=([0-9].*)\)\n/
+        const found = data.toString().replace(regex, '$1')
+        console.log(`found ${found}`)
+        neoone.serverPID = found
+      })
 
-    p.on('close', (code) => {
-      console.log(`child process exited with code ${code}`)
-    })
+      p.on('close', (code) => {
+        console.log(`child process exited with code ${code}`)
+      })
+    }, functionDebounce)
   })
 
   ipc.on('stop-server', function (event, arg) {
-    const pid = neoone.serverPID
+    setTimeout(() => {
+      if (neoone.serverPID === undefined) return
 
-    console.log(`kill ${pid}`)
+      const pid = neoone.serverPID
 
-    const p = spawn('kill', [pid])
+      console.log(`kill ${pid}`)
 
-    p.stdout.on('data', (data) => {
-      console.log(`stdout: ${data}`)
-    })
+      const p = spawn('kill', [pid])
 
-    p.stderr.on('data', (data) => {
-      console.log(`stderr: ${data}`)
-    })
+      p.stdout.on('data', (data) => {
+        console.log(`stdout: ${data}`)
+      })
 
-    p.on('close', (code) => {
-      console.log(`child process exited with code ${code}`)
+      p.stderr.on('data', (data) => {
+        console.log(`stderr: ${data}`)
+      })
 
-      if (code === 0) neoone.serverPID = undefined
-    })
+      p.on('close', (code) => {
+        console.log(`child process exited with code ${code}`)
+
+        if (code === 0) neoone.serverPID = undefined
+      })
+    }, functionDebounce)
   })
 
   ipc.on('create-neotracker', function (event, arg) {
-    const p = spawn(neoone.serverPath, ['create', 'neotracker', arg])
+    setTimeout(() => {
+      const p = spawn(neoone.serverPath, ['create', 'neotracker', arg])
 
-    p.stdout.on('data', (data) => {
-      console.log(`stdout: ${data}`)
-    })
+      p.stdout.on('data', (data) => {
+        console.log(`stdout: ${data}`)
+      })
 
-    p.stderr.on('data', (data) => {
-      console.log(`stderr: ${data}`)
-    })
+      p.stderr.on('data', (data) => {
+        console.log(`stderr: ${data}`)
+      })
 
-    p.on('close', (code) => {
-      console.log(`child process exited with code ${code}`)
-    })
+      p.on('close', (code) => {
+        console.log(`child process exited with code ${code}`)
+      })
+    }, functionDebounce)
   })
 
   ipc.on('delete-neotracker', function (event, arg) {
-    const p = spawn(neoone.serverPath, ['delete', 'neotracker', arg])
+    setTimeout(() => {
+      const p = spawn(neoone.serverPath, ['delete', 'neotracker', arg])
 
-    p.stdout.on('data', (data) => {
-      console.log(`stdout: ${data}`)
-    })
+      p.stdout.on('data', (data) => {
+        console.log(`stdout: ${data}`)
+      })
 
-    p.stderr.on('data', (data) => {
-      console.log(`stderr: ${data}`)
-    })
+      p.stderr.on('data', (data) => {
+        console.log(`stderr: ${data}`)
+      })
 
-    p.on('close', (code) => {
-      console.log(`child process exited with code ${code}`)
-    })
+      p.on('close', (code) => {
+        console.log(`child process exited with code ${code}`)
+      })
+    }, functionDebounce)
   })
 
   ipc.on('describe-neotracker', function (event, arg) {
-    const p = spawn(neoone.serverPath, ['describe', 'neotracker', arg])
+    setTimeout(() => {
+      const p = spawn(neoone.serverPath, ['describe', 'neotracker', arg])
 
-    p.stdout.on('data', (data) => {
-      console.log(`stdout: ${data}`)
-    })
+      p.stdout.on('data', (data) => {
+        console.log(`stdout: ${data}`)
+      })
 
-    p.stderr.on('data', (data) => {
-      console.log(`stderr: ${data}`)
-    })
+      p.stderr.on('data', (data) => {
+        console.log(`stderr: ${data}`)
+      })
 
-    p.on('close', (code) => {
-      console.log(`child process exited with code ${code}`)
-    })
+      p.on('close', (code) => {
+        console.log(`child process exited with code ${code}`)
+      })
+    }, functionDebounce)
   })
 
   ipc.on('get-neotracker', function (event, arg) {
-    const p = spawn(neoone.serverPath, ['get', 'neotracker'])
+    setTimeout(() => {
+      const p = spawn(neoone.serverPath, ['get', 'neotracker'])
 
-    p.stdout.on('data', (data) => {
-      console.log(`stdout: ${data}`)
-    })
+      p.stdout.on('data', (data) => {
+        console.log(`stdout: ${data}`)
+      })
 
-    p.stderr.on('data', (data) => {
-      console.log(`stderr: ${data}`)
-    })
+      p.stderr.on('data', (data) => {
+        console.log(`stderr: ${data}`)
+      })
 
-    p.on('close', (code) => {
-      console.log(`child process exited with code ${code}`)
-    })
+      p.on('close', (code) => {
+        console.log(`child process exited with code ${code}`)
+      })
+    }, functionDebounce)
   })
 
   ipc.on('start-neotracker', function (event, arg) {
-    const p = spawn(neoone.serverPath, ['start', 'neotracker', arg])
+    setTimeout(() => {
+      const p = spawn(neoone.serverPath, ['start', 'neotracker', arg])
 
-    p.stdout.on('data', (data) => {
-      console.log(`stdout: ${data}`)
-    })
+      p.stdout.on('data', (data) => {
+        console.log(`stdout: ${data}`)
+      })
 
-    p.stderr.on('data', (data) => {
-      console.log(`stderr: ${data}`)
-    })
+      p.stderr.on('data', (data) => {
+        console.log(`stderr: ${data}`)
+      })
 
-    p.on('close', (code) => {
-      console.log(`child process exited with code ${code}`)
-    })
+      p.on('close', (code) => {
+        console.log(`child process exited with code ${code}`)
+      })
+    }, functionDebounce)
   })
 
   ipc.on('stop-neotracker', function (event, arg) {
-    const p = spawn(neoone.serverPath, ['stop', 'neotracker', arg])
+    setTimeout(() => {
+      const p = spawn(neoone.serverPath, ['stop', 'neotracker', arg])
 
-    p.stdout.on('data', (data) => {
-      console.log(`stdout: ${data}`)
-    })
+      p.stdout.on('data', (data) => {
+        console.log(`stdout: ${data}`)
+      })
 
-    p.stderr.on('data', (data) => {
-      console.log(`stderr: ${data}`)
-    })
+      p.stderr.on('data', (data) => {
+        console.log(`stderr: ${data}`)
+      })
 
-    p.on('close', (code) => {
-      console.log(`child process exited with code ${code}`)
-    })
+      p.on('close', (code) => {
+        console.log(`child process exited with code ${code}`)
+      })
+    }, functionDebounce)
   })
 
   ipc.on('activate-network', function (event, arg) {
-    const p = spawn(neoone.serverPath, ['activate', 'network', arg])
+    setTimeout(() => {
+      const p = spawn(neoone.serverPath, ['activate', 'network', arg])
 
-    p.stdout.on('data', (data) => {
-      console.log(`stdout: ${data}`)
-    })
+      p.stdout.on('data', (data) => {
+        console.log(`stdout: ${data}`)
+      })
 
-    p.stderr.on('data', (data) => {
-      console.log(`stderr: ${data}`)
-    })
+      p.stderr.on('data', (data) => {
+        console.log(`stderr: ${data}`)
+      })
 
-    p.on('close', (code) => {
-      console.log(`child process exited with code ${code}`)
-    })
+      p.on('close', (code) => {
+        console.log(`child process exited with code ${code}`)
+      })
+    }, functionDebounce)
   })
 
   ipc.on('create-network', function (event, arg) {
-    const p = spawn(neoone.serverPath, ['create', 'network', arg])
+    setTimeout(() => {
+      const p = spawn(neoone.serverPath, ['create', 'network', arg])
 
-    p.stdout.on('data', (data) => {
-      console.log(`stdout: ${data}`)
-    })
+      p.stdout.on('data', (data) => {
+        console.log(`stdout: ${data}`)
+      })
 
-    p.stderr.on('data', (data) => {
-      console.log(`stderr: ${data}`)
-    })
+      p.stderr.on('data', (data) => {
+        console.log(`stderr: ${data}`)
+      })
 
-    p.on('close', (code) => {
-      console.log(`child process exited with code ${code}`)
-    })
+      p.on('close', (code) => {
+        console.log(`child process exited with code ${code}`)
+      })
+    }, functionDebounce)
   })
 
   ipc.on('deactivate-network', function (event, arg) {
-    const p = spawn(neoone.serverPath, ['deactivate', 'network', arg])
+    setTimeout(() => {
+      const p = spawn(neoone.serverPath, ['deactivate', 'network', arg])
 
-    p.stdout.on('data', (data) => {
-      console.log(`stdout: ${data}`)
-    })
+      p.stdout.on('data', (data) => {
+        console.log(`stdout: ${data}`)
+      })
 
-    p.stderr.on('data', (data) => {
-      console.log(`stderr: ${data}`)
-    })
+      p.stderr.on('data', (data) => {
+        console.log(`stderr: ${data}`)
+      })
 
-    p.on('close', (code) => {
-      console.log(`child process exited with code ${code}`)
-    })
+      p.on('close', (code) => {
+        console.log(`child process exited with code ${code}`)
+      })
+    }, functionDebounce)
   })
 
   ipc.on('delete-network', function (event, arg) {
-   const p = spawn(neoone.serverPath, ['delete', 'network', arg])
+    setTimeout(() => {
+      const p = spawn(neoone.serverPath, ['delete', 'network', arg])
 
-    p.stdout.on('data', (data) => {
-      console.log(`stdout: ${data}`)
-    })
+      p.stdout.on('data', (data) => {
+        console.log(`stdout: ${data}`)
+      })
 
-    p.stderr.on('data', (data) => {
-      console.log(`stderr: ${data}`)
-    })
+      p.stderr.on('data', (data) => {
+        console.log(`stderr: ${data}`)
+      })
 
-    p.on('close', (code) => {
-      console.log(`child process exited with code ${code}`)
-    })
+      p.on('close', (code) => {
+        console.log(`child process exited with code ${code}`)
+      })
+    }, functionDebounce)
   })
 
   ipc.on('describe-network', function (event, arg) {
-    const p = spawn(neoone.serverPath, ['describe', 'network', arg])
+    setTimeout(() => {
+      const p = spawn(neoone.serverPath, ['describe', 'network', arg])
 
-    p.stdout.on('data', (data) => {
-      console.log(`stdout: ${data}`)
-    })
+      p.stdout.on('data', (data) => {
+        console.log(`stdout: ${data}`)
+      })
 
-    p.stderr.on('data', (data) => {
-      console.log(`stderr: ${data}`)
-    })
+      p.stderr.on('data', (data) => {
+        console.log(`stderr: ${data}`)
+      })
 
-    p.on('close', (code) => {
-      console.log(`child process exited with code ${code}`)
-    })
+      p.on('close', (code) => {
+        console.log(`child process exited with code ${code}`)
+      })
+    }, functionDebounce)
   })
 
   ipc.on('get-network', function (event, arg) {
-    const p = spawn(neoone.serverPath, ['get', 'network'])
+    setTimeout(() => {
+      const p = spawn(neoone.serverPath, ['get', 'network'])
 
-    p.stdout.on('data', (data) => {
-      console.log(`stdout: ${data}`)
-    })
+      p.stdout.on('data', (data) => {
+        console.log(`stdout: ${data}`)
+      })
 
-    p.stderr.on('data', (data) => {
-      console.log(`stderr: ${data}`)
-    })
+      p.stderr.on('data', (data) => {
+        console.log(`stderr: ${data}`)
+      })
 
-    p.on('close', (code) => {
-      console.log(`child process exited with code ${code}`)
-    })
+      p.on('close', (code) => {
+        console.log(`child process exited with code ${code}`)
+      })
+    }, functionDebounce)
   })
 
   ipc.on('start-network', function (event, arg) {
-    const p = spawn(neoone.serverPath, ['start', 'network', arg])
+    setTimeout(() => {
+      const p = spawn(neoone.serverPath, ['start', 'network', arg])
 
-    p.stdout.on('data', (data) => {
-      console.log(`stdout: ${data}`)
-    })
+      p.stdout.on('data', (data) => {
+        console.log(`stdout: ${data}`)
+      })
 
-    p.stderr.on('data', (data) => {
-      console.log(`stderr: ${data}`)
-    })
+      p.stderr.on('data', (data) => {
+        console.log(`stderr: ${data}`)
+      })
 
-    p.on('close', (code) => {
-      console.log(`child process exited with code ${code}`)
-    })
+      p.on('close', (code) => {
+        console.log(`child process exited with code ${code}`)
+      })
+    }, functionDebounce)
   })
 
   ipc.on('stop-network', function (event, arg) {
-    const p = spawn(neoone.serverPath, ['stop', 'network', arg])
+    setTimeout(() => {
+      const p = spawn(neoone.serverPath, ['stop', 'network', arg])
 
-    p.stdout.on('data', (data) => {
-      console.log(`stdout: ${data}`)
-    })
+      p.stdout.on('data', (data) => {
+        console.log(`stdout: ${data}`)
+      })
 
-    p.stderr.on('data', (data) => {
-      console.log(`stderr: ${data}`)
-    })
+      p.stderr.on('data', (data) => {
+        console.log(`stderr: ${data}`)
+      })
 
-    p.on('close', (code) => {
-      console.log(`child process exited with code ${code}`)
-    })
+      p.on('close', (code) => {
+        console.log(`child process exited with code ${code}`)
+      })
+    }, functionDebounce)
   })
 
   ipc.on('activate-wallet', function (event, arg) {
-    const p = spawn(neoone.serverPath, ['activate', 'wallet', arg])
+    setTimeout(() => {
+      const p = spawn(neoone.serverPath, ['activate', 'wallet', arg])
 
-    p.stdout.on('data', (data) => {
-      console.log(`stdout: ${data}`)
-    })
+      p.stdout.on('data', (data) => {
+        console.log(`stdout: ${data}`)
+      })
 
-    p.stderr.on('data', (data) => {
-      console.log(`stderr: ${data}`)
-    })
+      p.stderr.on('data', (data) => {
+        console.log(`stderr: ${data}`)
+      })
 
-    p.on('close', (code) => {
-      console.log(`child process exited with code ${code}`)
-    })
+      p.on('close', (code) => {
+        console.log(`child process exited with code ${code}`)
+      })
+    }, functionDebounce)
   })
 
   ipc.on('create-wallet', function (event, arg) {
-    const p = spawn(neoone.serverPath, ['create', 'wallet', arg])
+    setTimeout(() => {
+      const p = spawn(neoone.serverPath, ['create', 'wallet', arg])
 
-    p.stdout.on('data', (data) => {
-      console.log(`stdout: ${data}`)
-    })
+      p.stdout.on('data', (data) => {
+        console.log(`stdout: ${data}`)
+      })
 
-    p.stderr.on('data', (data) => {
-      console.log(`stderr: ${data}`)
-    })
+      p.stderr.on('data', (data) => {
+        console.log(`stderr: ${data}`)
+      })
 
-    p.on('close', (code) => {
-      console.log(`child process exited with code ${code}`)
-    })
+      p.on('close', (code) => {
+        console.log(`child process exited with code ${code}`)
+      })
+    }, functionDebounce)
   })
 
   ipc.on('deactivate-wallet', function (event, arg) {
-    const p = spawn(neoone.serverPath, ['deactivate', 'wallet', arg])
+    setTimeout(() => {
+      const p = spawn(neoone.serverPath, ['deactivate', 'wallet', arg])
 
-    p.stdout.on('data', (data) => {
-      console.log(`stdout: ${data}`)
-    })
+      p.stdout.on('data', (data) => {
+        console.log(`stdout: ${data}`)
+      })
 
-    p.stderr.on('data', (data) => {
-      console.log(`stderr: ${data}`)
-    })
+      p.stderr.on('data', (data) => {
+        console.log(`stderr: ${data}`)
+      })
 
-    p.on('close', (code) => {
-      console.log(`child process exited with code ${code}`)
-    })
+      p.on('close', (code) => {
+        console.log(`child process exited with code ${code}`)
+      })
+    }, functionDebounce)
   })
 
   ipc.on('delete-wallet', function (event, arg) {
-    const p = spawn(neoone.serverPath, ['delete', 'wallet', arg])
+    setTimeout(() => {
+      const p = spawn(neoone.serverPath, ['delete', 'wallet', arg])
 
-    p.stdout.on('data', (data) => {
-      console.log(`stdout: ${data}`)
-    })
+      p.stdout.on('data', (data) => {
+        console.log(`stdout: ${data}`)
+      })
 
-    p.stderr.on('data', (data) => {
-      console.log(`stderr: ${data}`)
-    })
+      p.stderr.on('data', (data) => {
+        console.log(`stderr: ${data}`)
+      })
 
-    p.on('close', (code) => {
-      console.log(`child process exited with code ${code}`)
-    })
+      p.on('close', (code) => {
+        console.log(`child process exited with code ${code}`)
+      })
+    }, functionDebounce)
   })
 
   ipc.on('describe-wallet', function (event, arg) {
-    const p = spawn(neoone.serverPath, ['describe', 'wallet', arg])
+    setTimeout(() => {
+      const p = spawn(neoone.serverPath, ['describe', 'wallet', arg])
 
-    p.stdout.on('data', (data) => {
-      console.log(`stdout: ${data}`)
-    })
+      p.stdout.on('data', (data) => {
+        console.log(`stdout: ${data}`)
+      })
 
-    p.stderr.on('data', (data) => {
-      console.log(`stderr: ${data}`)
-    })
+      p.stderr.on('data', (data) => {
+        console.log(`stderr: ${data}`)
+      })
 
-    p.on('close', (code) => {
-      console.log(`child process exited with code ${code}`)
-    })
+      p.on('close', (code) => {
+        console.log(`child process exited with code ${code}`)
+      })
+    }, functionDebounce)
   })
 
   ipc.on('get-wallet', function (event, arg) {
-    const p = spawn(neoone.serverPath, ['get', 'wallet'])
+    setTimeout(() => {
+      const p = spawn(neoone.serverPath, ['get', 'wallet'])
 
-    p.stdout.on('data', (data) => {
-      console.log(`stdout: ${data}`)
-    })
+      p.stdout.on('data', (data) => {
+        console.log(`stdout: ${data}`)
+      })
 
-    p.stderr.on('data', (data) => {
-      console.log(`stderr: ${data}`)
-    })
+      p.stderr.on('data', (data) => {
+        console.log(`stderr: ${data}`)
+      })
 
-    p.on('close', (code) => {
-      console.log(`child process exited with code ${code}`)
-    })
+      p.on('close', (code) => {
+        console.log(`child process exited with code ${code}`)
+      })
+    }, functionDebounce)
   })
 
   ipc.on('bootstrap', function (event, arg) {
-    const p = spawn(neoone.serverPath, ['bootstrap'])
+    setTimeout(() => {
+      const p = spawn(neoone.serverPath, ['bootstrap'])
 
-    p.stdout.on('data', (data) => {
-      console.log(`stdout: ${data}`)
-    })
+      p.stdout.on('data', (data) => {
+        console.log(`stdout: ${data}`)
+      })
 
-    p.stderr.on('data', (data) => {
-      console.log(`stderr: ${data}`)
-    })
+      p.stderr.on('data', (data) => {
+        console.log(`stderr: ${data}`)
+      })
 
-    p.on('close', (code) => {
-      console.log(`child process exited with code ${code}`)
-    })
+      p.on('close', (code) => {
+        console.log(`child process exited with code ${code}`)
+      })
+    }, functionDebounce)
   })
 
   ipc.on('build', function (event, arg) {
-    const p = spawn(neoone.serverPath, ['build'])
+    setTimeout(() => {
+      const p = spawn(neoone.serverPath, ['build'])
 
-    p.stdout.on('data', (data) => {
-      console.log(`stdout: ${data}`)
-    })
+      p.stdout.on('data', (data) => {
+        console.log(`stdout: ${data}`)
+      })
 
-    p.stderr.on('data', (data) => {
-      console.log(`stderr: ${data}`)
-    })
+      p.stderr.on('data', (data) => {
+        console.log(`stderr: ${data}`)
+      })
 
-    p.on('close', (code) => {
-      console.log(`child process exited with code ${code}`)
-    })
+      p.on('close', (code) => {
+        console.log(`child process exited with code ${code}`)
+      })
+    }, functionDebounce)
   })
 
   ipc.on('init', function (event, arg) {
-    const p = spawn(neoone.serverPath, ['init'])
+    setTimeout(() => {
+      const p = spawn(neoone.serverPath, ['init'])
 
-    p.stdout.on('data', (data) => {
-      console.log(`stdout: ${data}`)
-    })
+      p.stdout.on('data', (data) => {
+        console.log(`stdout: ${data}`)
+      })
 
-    p.stderr.on('data', (data) => {
-      console.log(`stderr: ${data}`)
-    })
+      p.stderr.on('data', (data) => {
+        console.log(`stderr: ${data}`)
+      })
 
-    p.on('close', (code) => {
-      console.log(`child process exited with code ${code}`)
-    })
+      p.on('close', (code) => {
+        console.log(`child process exited with code ${code}`)
+      })
+    }, functionDebounce)
   })
 
   ipc.on('verify', function (event, arg) {
-    const p = spawn(neoone.serverPath, ['verify'])
+    setTimeout(() => {
+      const p = spawn(neoone.serverPath, ['verify'])
 
-    p.stdout.on('data', (data) => {
-      console.log(`stdout: ${data}`)
-    })
+      p.stdout.on('data', (data) => {
+        console.log(`stdout: ${data}`)
+      })
 
-    p.stderr.on('data', (data) => {
-      console.log(`stderr: ${data}`)
-    })
+      p.stderr.on('data', (data) => {
+        console.log(`stderr: ${data}`)
+      })
 
-    p.on('close', (code) => {
-      console.log(`child process exited with code ${code}`)
-    })
+      p.on('close', (code) => {
+        console.log(`child process exited with code ${code}`)
+      })
+    }, functionDebounce)
   })
 
   ipc.on('version', function (event, arg) {
-    const p = spawn(neoone.serverPath, ['version'])
+    setTimeout(() => {
+      const p = spawn(neoone.serverPath, ['version'])
 
-    p.stdout.on('data', (data) => {
-      console.log(`stdout: ${data}`)
-    })
+      p.stdout.on('data', (data) => {
+        console.log(`stdout: ${data}`)
+      })
 
-    p.stderr.on('data', (data) => {
-      console.log(`stderr: ${data}`)
-    })
+      p.stderr.on('data', (data) => {
+        console.log(`stderr: ${data}`)
+      })
 
-    p.on('close', (code) => {
-      console.log(`child process exited with code ${code}`)
-    })
+      p.on('close', (code) => {
+        console.log(`child process exited with code ${code}`)
+      })
+    }, functionDebounce)
   })
 }
 

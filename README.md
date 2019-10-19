@@ -282,4 +282,108 @@ The client or front end is the user interface that tightly couples with the serv
 * Dark Mode
 * Flex nav flyout
 
+
+# Neo-One Notes
+
+This section is mainly developer reference for the Neo-One Suite and the IPC control signals used internally by Neo-Halite.
+
+## Start Neo-One Server
+
+Command
+
+`neo-one init`
+
+Neo-Halite IPC Signal
+
+`start-server`
+
+## Stop Neo-One Server
+
+Kill the PID returned by the start server neo-one command
+
+`kill ${PID}`
+
+## Create Neotracker
+
+Command
+
+`neo-one create neotracker neotracker-instance-name --network network-name`
+
+Neo-Halite IPC Signal
+
+`create-neotracker`
+
+## Delete Neotracker
+
+Command
+
+`neo-one delete neotracker neotracker-instance-name --network network-name`
+
+Neo-Halite IPC Signal
+
+`delete-neotracker`
+
+## Describe Neotracker
+
+Command
+
+`neo-one describe neotracker neotracker-instance-name`
+
+Neo-Halite IPC Signal
+
+`describe-neotracker`
+
+## Get Neotracker
+
+Command
+
+`neo-one get neotracker neotracker-instance-name`
+
+Neo-Halite IPC Signal
+
+`get-neotracker`
+
+## Start Neotracker
+
+Command
+
+`neo-one start neotracker neotracker-instance-name`
+
+Neo-Halite IPC Signal
+
+`start-neotracker`
+
+## Stop Neotracker
+
+Command
+
+`neo-one stop neotracker neotracker-instance-name`
+
+Neo-Halite IPC Signal
+
+`stop-neotracker`
+
+## Activate Network
+
+Command
+
+`neo-one activate network network-instance-name`
+
+Neo-Halite IPC Signal
+
+`activate-network`
+
+## Create Network
+
+Command
+
+`neo-one create network network-instance-name`
+
+Neo-Halite IPC Signal
+
+`create-network`
+
+
+
+
 # Learn More
