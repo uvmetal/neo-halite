@@ -10,8 +10,19 @@ class Quickstart extends Component {
   constructor(props) {
     super(props)
 
+    this.quickstart = this.quickstart.bind(this)
+    this.quickstop = this.quickstop.bind(this)
+
     this.state = {
     }
+  }
+
+  quickstart() {
+    window.ipcRenderer.send('quickstart')
+  }
+
+  quickstop() {
+    window.ipcRenderer.send('quickstop')
   }
 
   componentDidMount() {

@@ -20,11 +20,11 @@ class InstallerHome extends Component {
   }
 
   lift() {
-    window.ipcRenderer.send('start-server')
+    window.ipcRenderer.send('startServer')
   }
 
   lower() {
-    window.ipcRenderer.send('stop-server')
+    window.ipcRenderer.send('stopServer')
   }
 
   componentDidMount() {
