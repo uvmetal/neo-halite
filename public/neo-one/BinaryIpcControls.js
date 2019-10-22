@@ -30,7 +30,8 @@ let neoOneCommands = ['startServer',
                       'init',
                       'verify',
                       'version',
-                      'quickstart'
+                      'quickstart',
+                      'quickstop'
                     ]
 
 // Quickstart should automatically fill in network names
@@ -111,61 +112,26 @@ exports.stopAll = function () {
 
 
 function quickstart (event, arg) {
-  // TODO verify if we shouldn't allow multiple server instances, until then do debounce:
-  setTimeout(() => {
-    if (neoOne.serverPID) return
-
-    const p = spawn(neoOne.serverPath, ['init'])
-
-    p.stdout.on('data', (data) => {
-      console.log(`stdout: ${data}`)
+  console.log('Quickstarting a Neo One instance.')
+  startServer(null, null, () => {
+    createNetwork(null, null, () => {
+      startNetwork()
     })
-
-    p.stderr.on('data', (data) => {
-      console.log(`stderr: ${data}`)
-
-      const regex = /.*\(pid=([0-9].*)\)\n/
-      const found = data.toString().replace(regex, '$1')
-      console.log(`found ${found}`)
-      neoOne.serverPID = found
-    })
-
-    p.on('close', (code) => {
-      console.log(`child process exited with code ${code}`)
-    })
-  }, functionDebounce)
+  })
+  // createNeotracker()
 }
 
 function quickstop (event, arg) {
-  // TODO verify if we shouldn't allow multiple server instances, until then do debounce:
-  setTimeout(() => {
-    if (neoOne.serverPID) return
-
-    const p = spawn(neoOne.serverPath, ['init'])
-
-    p.stdout.on('data', (data) => {
-      console.log(`stdout: ${data}`)
-    })
-
-    p.stderr.on('data', (data) => {
-      console.log(`stderr: ${data}`)
-
-      const regex = /.*\(pid=([0-9].*)\)\n/
-      const found = data.toString().replace(regex, '$1')
-      console.log(`found ${found}`)
-      neoOne.serverPID = found
-    })
-
-    p.on('close', (code) => {
-      console.log(`child process exited with code ${code}`)
-    })
-  }, functionDebounce)
+  console.log('Quickstopping a Neo One instance.')
+  stopServer()
 }
 
-function startServer (event, arg) {
+function startServer (event, arg, callback) {
   // TODO verify if we shouldn't allow multiple server instances, until then do debounce:
   setTimeout(() => {
     if (neoOne.serverPID) return
+
+    console.log('startServer(): ' + neoOne.serverPath + ' init')
 
     const p = spawn(neoOne.serverPath, ['init'])
 
@@ -180,10 +146,12 @@ function startServer (event, arg) {
       const found = data.toString().replace(regex, '$1')
       console.log(`found ${found}`)
       neoOne.serverPID = found
+
     })
 
     p.on('close', (code) => {
       console.log(`child process exited with code ${code}`)
+      if (callback) callback()
     })
   }, functionDebounce)
 }
@@ -218,6 +186,8 @@ function createNeotracker (event, arg) {
   setTimeout(() => {
     const p = spawn(neoOne.serverPath, ['create', 'neotracker', arg])
 
+    console.log('createNeotracker(): ' + neoOne.serverPath + ' create neotracker ' + arg)
+
     p.stdout.on('data', (data) => {
       console.log(`stdout: ${data}`)
     })
@@ -235,6 +205,8 @@ function createNeotracker (event, arg) {
 function deleteNeotracker (event, arg) {
   setTimeout(() => {
     const p = spawn(neoOne.serverPath, ['delete', 'neotracker', arg])
+
+    console.log('deleteNeotracker(): ' + neoOne.serverPath + ' delete neotracker ' + arg)
 
     p.stdout.on('data', (data) => {
       console.log(`stdout: ${data}`)
@@ -340,9 +312,16 @@ function activateNetwork (event, arg) {
   }, functionDebounce)
 }
 
-function createNetwork (event, arg) {
+function createNetwork (event, arg, callback) {
   setTimeout(() => {
+    if (!arg) {
+      // TODO code a name generator for networks, wallets, etc
+      arg = 'halite'
+    }
+
     const p = spawn(neoOne.serverPath, ['create', 'network', arg])
+
+    console.log('createNetwork(): ' + neoOne.serverPath + ' create network ' + arg)
 
     p.stdout.on('data', (data) => {
       console.log(`stdout: ${data}`)
@@ -354,6 +333,7 @@ function createNetwork (event, arg) {
 
     p.on('close', (code) => {
       console.log(`child process exited with code ${code}`)
+      if (callback) callback()
     })
   }, functionDebounce)
 }
@@ -432,7 +412,14 @@ function getNetwork (event, arg) {
 
 function startNetwork (event, arg) {
   setTimeout(() => {
+    if (!arg) {
+      // TODO code a name generator for networks, wallets, etc
+      arg = 'halite'
+    }
+
     const p = spawn(neoOne.serverPath, ['start', 'network', arg])
+
+    console.log('startNetwork(): ' + neoOne.serverPath + ' start network ' + arg)
 
     p.stdout.on('data', (data) => {
       console.log(`stdout: ${data}`)

@@ -1,5 +1,5 @@
-import React, {Component} from 'react'
-import { Jumbotron } from 'reactstrap'
+import React, { Component } from 'react'
+import { Jumbotron, Button } from 'reactstrap'
 
 import './style.css'
 
@@ -34,10 +34,12 @@ class Quickstart extends Component {
         <Jumbotron className="vertical-center">
         <div className="container hero-container text-center">
           <h1 className="display-4">Quickstart </h1>
-          <p className="lead">Lorem ipsum dolor</p>
+          <p className="lead">Quickstart Neo One Suite</p>
           <hr className="my-4" />
           <p className="lead mx-auto">
           </p>
+          <Button size="sm" onClick={this.quickstart} >Quickstart</Button>
+          <Button size="sm" onClick={this.quickstop} >Stop</Button>
         </div>
         </Jumbotron>
         <img src={neoOneLogo} className="img-fluid mx-auto d-block" alt="Neo One" />
