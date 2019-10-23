@@ -6,6 +6,8 @@ import './style.css'
 import cozLogo from '../../images/coz-inverted.svg'
 import neoOneLogo from '../../images/neo-one.png'
 
+// TODO Add flag to exclude/include neotracker from startup sequence
+
 class Quickstart extends Component {
   constructor(props) {
     super(props)
@@ -34,7 +36,7 @@ class Quickstart extends Component {
         <Jumbotron className="vertical-center">
         <div className="container hero-container text-center">
           <h1 className="display-4">Quickstart </h1>
-          <p className="lead">Quickstart Neo One Suite</p>
+          <p className="lead">Quickstart a New Neo One Network</p>
           <hr className="my-4" />
           <p className="lead mx-auto">
           </p>

@@ -112,10 +112,18 @@ exports.stopAll = function () {
 
 
 function quickstart (event, arg) {
+  // TODO add options to save a network with a name and access from saved networks later
+  // For now the network, data, wallet, and blocks are all cleared by default each quickstart
   console.log('Quickstarting a Neo One instance.')
   startServer(null, null, () => {
     createNetwork(null, null, () => {
-      startNetwork()
+      startNetwork(null, null, () => {
+        createWallet(null, null, () => {
+          createNeotracker(null, null, () => {
+            startNeotracker()
+          })
+        })
+      })
     })
   })
   // createNeotracker()
@@ -156,7 +164,7 @@ function startServer (event, arg, callback) {
   }, functionDebounce)
 }
 
-function stopServer (event, arg) {
+function stopServer (event, arg, callback) {
   setTimeout(() => {
     if (neoOne.serverPID === undefined) return
 
@@ -178,150 +186,23 @@ function stopServer (event, arg) {
       console.log(`child process exited with code ${code}`)
 
       if (code === 0) neoOne.serverPID = undefined
+      if (callback) callback()
     })
   }, functionDebounce)
 }
 
-function createNeotracker (event, arg) {
-  setTimeout(() => {
-    const p = spawn(neoOne.serverPath, ['create', 'neotracker', arg])
-
-    console.log('createNeotracker(): ' + neoOne.serverPath + ' create neotracker ' + arg)
-
-    p.stdout.on('data', (data) => {
-      console.log(`stdout: ${data}`)
-    })
-
-    p.stderr.on('data', (data) => {
-      console.log(`stderr: ${data}`)
-    })
-
-    p.on('close', (code) => {
-      console.log(`child process exited with code ${code}`)
-    })
-  }, functionDebounce)
-}
-
-function deleteNeotracker (event, arg) {
-  setTimeout(() => {
-    const p = spawn(neoOne.serverPath, ['delete', 'neotracker', arg])
-
-    console.log('deleteNeotracker(): ' + neoOne.serverPath + ' delete neotracker ' + arg)
-
-    p.stdout.on('data', (data) => {
-      console.log(`stdout: ${data}`)
-    })
-
-    p.stderr.on('data', (data) => {
-      console.log(`stderr: ${data}`)
-    })
-
-    p.on('close', (code) => {
-      console.log(`child process exited with code ${code}`)
-    })
-  }, functionDebounce)
-}
-
-function describeNeotracker (event, arg) {
-  setTimeout(() => {
-    const p = spawn(neoOne.serverPath, ['describe', 'neotracker', arg])
-
-    p.stdout.on('data', (data) => {
-      console.log(`stdout: ${data}`)
-    })
-
-    p.stderr.on('data', (data) => {
-      console.log(`stderr: ${data}`)
-    })
-
-    p.on('close', (code) => {
-      console.log(`child process exited with code ${code}`)
-    })
-  }, functionDebounce)
-}
-
-function getNeotracker (event, arg) {
-  setTimeout(() => {
-    const p = spawn(neoOne.serverPath, ['get', 'neotracker'])
-
-    p.stdout.on('data', (data) => {
-      console.log(`stdout: ${data}`)
-    })
-
-    p.stderr.on('data', (data) => {
-      console.log(`stderr: ${data}`)
-    })
-
-    p.on('close', (code) => {
-      console.log(`child process exited with code ${code}`)
-    })
-  }, functionDebounce)
-}
-
-function startNeotracker (event, arg) {
-  setTimeout(() => {
-    const p = spawn(neoOne.serverPath, ['start', 'neotracker', arg])
-
-    p.stdout.on('data', (data) => {
-      console.log(`stdout: ${data}`)
-    })
-
-    p.stderr.on('data', (data) => {
-      console.log(`stderr: ${data}`)
-    })
-
-    p.on('close', (code) => {
-      console.log(`child process exited with code ${code}`)
-    })
-  }, functionDebounce)
-}
-
-function stopNeotracker (event, arg) {
-  setTimeout(() => {
-    const p = spawn(neoOne.serverPath, ['stop', 'neotracker', arg])
-
-    p.stdout.on('data', (data) => {
-      console.log(`stdout: ${data}`)
-    })
-
-    p.stderr.on('data', (data) => {
-      console.log(`stderr: ${data}`)
-    })
-
-    p.on('close', (code) => {
-      console.log(`child process exited with code ${code}`)
-    })
-  }, functionDebounce)
-}
-
-function activateNetwork (event, arg) {
-  setTimeout(() => {
-    const p = spawn(neoOne.serverPath, ['activate', 'network', arg])
-
-    p.stdout.on('data', (data) => {
-      console.log(`stdout: ${data}`)
-    })
-
-    p.stderr.on('data', (data) => {
-      console.log(`stderr: ${data}`)
-    })
-
-    p.on('close', (code) => {
-      console.log(`child process exited with code ${code}`)
-    })
-  }, functionDebounce)
-}
-
-function createNetwork (event, arg, callback) {
+function createNeotracker (event, arg, callback) {
   setTimeout(() => {
     if (!arg) {
       // TODO code a name generator for networks, wallets, etc
-      arg = 'halite'
+      arg = {
+        wallet: 'halite', network: 'halite', neotracker: 'halite'
+      }
     }
 
-    const p = spawn(neoOne.serverPath, ['create', 'network', arg])
+    const p = spawn(neoOne.serverPath, ['create', 'neotracker', arg.neotracker, '--network', arg.network])
 
-    console.log('createNetwork(): ' + neoOne.serverPath + ' create network ' + arg)
+    console.log('createNeotracker(): ' + neoOne.serverPath + ' create neotracker ' + arg.neotracker + ' --network ' + arg.network)
 
     p.stdout.on('data', (data) => {
       console.log(`stdout: ${data}`)
@@ -338,88 +219,18 @@ function createNetwork (event, arg, callback) {
   }, functionDebounce)
 }
 
-function deactivateNetwork (event, arg) {
-  setTimeout(() => {
-    const p = spawn(neoOne.serverPath, ['deactivate', 'network', arg])
-
-    p.stdout.on('data', (data) => {
-      console.log(`stdout: ${data}`)
-    })
-
-    p.stderr.on('data', (data) => {
-      console.log(`stderr: ${data}`)
-    })
-
-    p.on('close', (code) => {
-      console.log(`child process exited with code ${code}`)
-    })
-  }, functionDebounce)
-}
-
-function deleteNetwork (event, arg) {
-  setTimeout(() => {
-    const p = spawn(neoOne.serverPath, ['delete', 'network', arg])
-
-    p.stdout.on('data', (data) => {
-      console.log(`stdout: ${data}`)
-    })
-
-    p.stderr.on('data', (data) => {
-      console.log(`stderr: ${data}`)
-    })
-
-    p.on('close', (code) => {
-      console.log(`child process exited with code ${code}`)
-    })
-  }, functionDebounce)
-}
-
-function describeNetwork (event, arg) {
-  setTimeout(() => {
-    const p = spawn(neoOne.serverPath, ['describe', 'network', arg])
-
-    p.stdout.on('data', (data) => {
-      console.log(`stdout: ${data}`)
-    })
-
-    p.stderr.on('data', (data) => {
-      console.log(`stderr: ${data}`)
-    })
-
-    p.on('close', (code) => {
-      console.log(`child process exited with code ${code}`)
-    })
-  }, functionDebounce)
-}
-
-function getNetwork (event, arg) {
-  setTimeout(() => {
-    const p = spawn(neoOne.serverPath, ['get', 'network'])
-
-    p.stdout.on('data', (data) => {
-      console.log(`stdout: ${data}`)
-    })
-
-    p.stderr.on('data', (data) => {
-      console.log(`stderr: ${data}`)
-    })
-
-    p.on('close', (code) => {
-      console.log(`child process exited with code ${code}`)
-    })
-  }, functionDebounce)
-}
-
-function startNetwork (event, arg) {
+function deleteNeotracker (event, arg, callback) {
   setTimeout(() => {
     if (!arg) {
       // TODO code a name generator for networks, wallets, etc
-      arg = 'halite'
+      arg = {
+        wallet: 'halite', network: 'halite', neotracker: 'halite'
+      }
     }
 
-    const p = spawn(neoOne.serverPath, ['start', 'network', arg])
+    const p = spawn(neoOne.serverPath, ['delete', 'neotracker', arg.neotracker])
 
-    console.log('startNetwork(): ' + neoOne.serverPath + ' start network ' + arg)
+    console.log('deleteNeotracker(): ' + neoOne.serverPath + ' delete neotracker ' + arg.neotracker)
 
     p.stdout.on('data', (data) => {
       console.log(`stdout: ${data}`)
@@ -431,13 +242,338 @@ function startNetwork (event, arg) {
 
     p.on('close', (code) => {
       console.log(`child process exited with code ${code}`)
+      if (callback) callback()
     })
   }, functionDebounce)
 }
 
-function stopNetwork (event, arg) {
+function describeNeotracker (event, arg, callback) {
+  setTimeout(() => {
+    if (!arg) {
+      // TODO code a name generator for networks, wallets, etc
+      arg = {
+        wallet: 'halite', network: 'halite', neotracker: 'halite'
+      }
+    }
+
+    const p = spawn(neoOne.serverPath, ['describe', 'neotracker', arg.neotracker])
+
+    console.log('describeNeotracker(): ' + neoOne.serverPath + ' describe neotracker ' + arg.neotracker)
+
+    p.stdout.on('data', (data) => {
+      console.log(`stdout: ${data}`)
+    })
+
+    p.stderr.on('data', (data) => {
+      console.log(`stderr: ${data}`)
+    })
+
+    p.on('close', (code) => {
+      console.log(`child process exited with code ${code}`)
+      if (callback) callback()
+    })
+  }, functionDebounce)
+}
+
+function getNeotracker (event, arg, callback) {
+  setTimeout(() => {
+    if (!arg) {
+      // TODO code a name generator for networks, wallets, etc
+      arg = {
+        wallet: 'halite', network: 'halite', neotracker: 'halite'
+      }
+    }
+
+    const p = spawn(neoOne.serverPath, ['get', 'neotracker', arg.neotracker])
+
+    console.log('getNeotracker(): ' + neoOne.serverPath + ' get neotracker ' + arg.neotracker)
+
+    p.stdout.on('data', (data) => {
+      console.log(`stdout: ${data}`)
+    })
+
+    p.stderr.on('data', (data) => {
+      console.log(`stderr: ${data}`)
+    })
+
+    p.on('close', (code) => {
+      console.log(`child process exited with code ${code}`)
+      if (callback) callback()
+    })
+  }, functionDebounce)
+}
+
+function startNeotracker (event, arg, callback) {
+  setTimeout(() => {
+    if (!arg) {
+      // TODO code a name generator for networks, wallets, etc
+      arg = {
+        wallet: 'halite', network: 'halite', neotracker: 'halite'
+      }
+    }
+
+    const p = spawn(neoOne.serverPath, ['start', 'neotracker', arg.neotracker, '--network', arg.network])
+
+    console.log('startNeotracker(): ' + neoOne.serverPath + ' start neotracker ' + arg.neotracker + ' --network ' + arg.network)
+
+    p.stdout.on('data', (data) => {
+      console.log(`stdout: ${data}`)
+    })
+
+    p.stderr.on('data', (data) => {
+      console.log(`stderr: ${data}`)
+    })
+
+    p.on('close', (code) => {
+      console.log(`child process exited with code ${code}`)
+      if (callback) callback()
+    })
+  }, functionDebounce)
+}
+
+function stopNeotracker (event, arg, callback) {
+  setTimeout(() => {
+    if (!arg) {
+      // TODO code a name generator for networks, wallets, etc
+      arg = {
+        wallet: 'halite', network: 'halite', neotracker: 'halite'
+      }
+    }
+
+    const p = spawn(neoOne.serverPath, ['stop', 'neotracker', arg.neotracker, '--network', arg.network])
+
+    console.log('stopNeotracker(): ' + neoOne.serverPath + ' stop neotracker ' + arg.neotracker + ' --network ' + arg.network)
+
+    p.stdout.on('data', (data) => {
+      console.log(`stdout: ${data}`)
+    })
+
+    p.stderr.on('data', (data) => {
+      console.log(`stderr: ${data}`)
+    })
+
+    p.on('close', (code) => {
+      console.log(`child process exited with code ${code}`)
+      if (callback) callback()
+    })
+  }, functionDebounce)
+}
+
+function activateNetwork (event, arg, callback) {
+  setTimeout(() => {
+    if (!arg) {
+      // TODO code a name generator for networks, wallets, etc
+      arg = {
+        wallet: 'halite', network: 'halite', neotracker: 'halite'
+      }
+    }
+
+    const p = spawn(neoOne.serverPath, ['activate', 'network', arg.network])
+
+    console.log('activateNetwork(): ' + neoOne.serverPath + ' activate network ' + arg.network)
+
+    p.stdout.on('data', (data) => {
+      console.log(`stdout: ${data}`)
+    })
+
+    p.stderr.on('data', (data) => {
+      console.log(`stderr: ${data}`)
+    })
+
+    p.on('close', (code) => {
+      console.log(`child process exited with code ${code}`)
+      if (callback) callback()
+    })
+  }, functionDebounce)
+}
+
+function createNetwork (event, arg, callback) {
+  setTimeout(() => {
+    if (!arg) {
+      // TODO code a name generator for networks, wallets, etc
+      arg = {
+        wallet: 'halite', network: 'halite', neotracker: 'halite'
+
+      }
+    }
+
+    const p = spawn(neoOne.serverPath, ['create', 'network', arg.network])
+
+    console.log('createNetwork(): ' + neoOne.serverPath + ' create network ' + arg.network)
+
+    p.stdout.on('data', (data) => {
+      console.log(`stdout: ${data}`)
+    })
+
+    p.stderr.on('data', (data) => {
+      console.log(`stderr: ${data}`)
+    })
+
+    p.on('close', (code) => {
+      console.log(`child process exited with code ${code}`)
+      if (callback) callback()
+    })
+  }, functionDebounce)
+}
+
+function deactivateNetwork (event, arg, callback) {
+  setTimeout(() => {
+    if (!arg) {
+      // TODO code a name generator for networks, wallets, etc
+      arg = {
+        wallet: 'halite', network: 'halite', neotracker: 'halite'
+
+      }
+    }
+
+    const p = spawn(neoOne.serverPath, ['deactivate', 'network', arg.network])
+
+    console.log('deactivateNetwork(): ' + neoOne.serverPath + ' deactivate network ' + arg.network)
+
+    p.stdout.on('data', (data) => {
+      console.log(`stdout: ${data}`)
+    })
+
+    p.stderr.on('data', (data) => {
+      console.log(`stderr: ${data}`)
+    })
+
+    p.on('close', (code) => {
+      console.log(`child process exited with code ${code}`)
+      if (callback) callback()
+    })
+  }, functionDebounce)
+}
+
+function deleteNetwork (event, arg, callback) {
+  setTimeout(() => {
+    if (!arg) {
+      // TODO code a name generator for networks, wallets, etc
+      arg = {
+        wallet: 'halite', network: 'halite', neotracker: 'halite'
+
+      }
+    }
+
+    const p = spawn(neoOne.serverPath, ['delete', 'network', arg.network])
+
+    console.log('deleteNetwork(): ' + neoOne.serverPath + ' delete network ' + arg.network)
+
+    p.stdout.on('data', (data) => {
+      console.log(`stdout: ${data}`)
+    })
+
+    p.stderr.on('data', (data) => {
+      console.log(`stderr: ${data}`)
+    })
+
+    p.on('close', (code) => {
+      console.log(`child process exited with code ${code}`)
+      if (callback) callback()
+    })
+  }, functionDebounce)
+}
+
+function describeNetwork (event, arg, callback) {
+  setTimeout(() => {
+    if (!arg) {
+      // TODO code a name generator for networks, wallets, etc
+      arg = {
+        wallet: 'halite', network: 'halite', neotracker: 'halite'
+
+      }
+    }
+
+    const p = spawn(neoOne.serverPath, ['describe', 'network', arg.network])
+
+    console.log('describeNetwork(): ' + neoOne.serverPath + ' describe network ' + arg.network)
+
+    p.stdout.on('data', (data) => {
+      console.log(`stdout: ${data}`)
+    })
+
+    p.stderr.on('data', (data) => {
+      console.log(`stderr: ${data}`)
+    })
+
+    p.on('close', (code) => {
+      console.log(`child process exited with code ${code}`)
+      if (callback) callback()
+    })
+  }, functionDebounce)
+}
+
+function getNetwork (event, arg, callback) {
+  setTimeout(() => {
+    if (!arg) {
+      // TODO code a name generator for networks, wallets, etc
+      arg = {
+        wallet: 'halite', network: 'halite', neotracker: 'halite'
+
+      }
+    }
+
+    const p = spawn(neoOne.serverPath, ['get', 'network', arg.network])
+
+    console.log('getNetwork(): ' + neoOne.serverPath + ' get network ' + arg.network)
+
+    p.stdout.on('data', (data) => {
+      console.log(`stdout: ${data}`)
+    })
+
+    p.stderr.on('data', (data) => {
+      console.log(`stderr: ${data}`)
+    })
+
+    p.on('close', (code) => {
+      console.log(`child process exited with code ${code}`)
+      if (callback) callback()
+    })
+  }, functionDebounce)
+}
+
+function startNetwork (event, arg, callback) {
+  setTimeout(() => {
+    if (!arg) {
+      // TODO code a name generator for networks, wallets, etc
+      arg = {
+        wallet: 'halite', network: 'halite', neotracker: 'halite'
+
+      }
+    }
+
+    const p = spawn(neoOne.serverPath, ['start', 'network', arg.network])
+
+    console.log('startNetwork(): ' + neoOne.serverPath + ' start network ' + arg.network)
+
+    p.stdout.on('data', (data) => {
+      console.log(`stdout: ${data}`)
+    })
+
+    p.stderr.on('data', (data) => {
+      console.log(`stderr: ${data}`)
+    })
+
+    p.on('close', (code) => {
+      console.log(`child process exited with code ${code}`)
+      if (callback) callback()
+    })
+  }, functionDebounce)
+}
+
+function stopNetwork (event, arg, callback) {
  setTimeout(() => {
-   const p = spawn(neoOne.serverPath, ['stop', 'network', arg])
+   if (!arg) {
+     // TODO code a name generator for networks, wallets, etc
+     arg = {
+       wallet: 'halite', network: 'halite', neotracker: 'halite'
+
+     }
+   }
+
+   const p = spawn(neoOne.serverPath, ['stop', 'network', arg.network])
+
+   console.log('stopNetwork(): ' + neoOne.serverPath + ' stop network ' + arg.network)
 
    p.stdout.on('data', (data) => {
      console.log(`stdout: ${data}`)
@@ -449,13 +585,23 @@ function stopNetwork (event, arg) {
 
    p.on('close', (code) => {
      console.log(`child process exited with code ${code}`)
+     if (callback) callback()
    })
  }, functionDebounce)
 }
 
-function activateWallet (event, arg) {
+function activateWallet (event, arg, callback) {
   setTimeout(() => {
-    const p = spawn(neoOne.serverPath, ['activate', 'wallet', arg])
+    if (!arg) {
+      // TODO code a name generator for networks, wallets, etc
+      arg = {
+        wallet: 'halite', network: 'halite', neotracker: 'halite'
+
+      }
+    }
+    const p = spawn(neoOne.serverPath, ['activate', 'wallet', arg.wallet, '--network', arg.network])
+
+    console.log('activateWallet(): ' + neoOne.serverPath + ' activate wallet ' + arg.wallet + ' --network ' + arg.network)
 
     p.stdout.on('data', (data) => {
       console.log(`stdout: ${data}`)
@@ -467,13 +613,24 @@ function activateWallet (event, arg) {
 
     p.on('close', (code) => {
       console.log(`child process exited with code ${code}`)
+      if (callback) callback()
     })
   }, functionDebounce)
 }
 
-function createWallet (event, arg) {
+function createWallet (event, arg, callback) {
   setTimeout(() => {
-    const p = spawn(neoOne.serverPath, ['create', 'wallet', arg])
+    if (!arg) {
+      // TODO code a name generator for networks, wallets, etc
+      arg = {
+        wallet: 'halite', network: 'halite', neotracker: 'halite'
+
+      }
+    }
+
+    const p = spawn(neoOne.serverPath, ['create', 'wallet', arg.wallet, '--network', arg.network])
+
+    console.log('createWallet(): ' + neoOne.serverPath + ' create wallet ' + arg.wallet + ' --network ' + arg.network)
 
     p.stdout.on('data', (data) => {
       console.log(`stdout: ${data}`)
@@ -485,13 +642,23 @@ function createWallet (event, arg) {
 
     p.on('close', (code) => {
       console.log(`child process exited with code ${code}`)
+      if (callback) callback()
     })
   }, functionDebounce)
 }
 
-function deactivateWallet (event, arg) {
+function deactivateWallet (event, arg, callback) {
   setTimeout(() => {
-    const p = spawn(neoOne.serverPath, ['deactivate', 'wallet', arg])
+    if (!arg) {
+      // TODO code a name generator for networks, wallets, etc
+      arg = {
+        wallet: 'halite', network: 'halite', neotracker: 'halite'
+      }
+    }
+
+    const p = spawn(neoOne.serverPath, ['deactivate', 'wallet', arg.wallet, '--network', arg.network])
+
+    console.log('deactivateWallet(): ' + neoOne.serverPath + ' deactivate wallet ' + arg.wallet + ' --network ' + arg.network)
 
     p.stdout.on('data', (data) => {
       console.log(`stdout: ${data}`)
@@ -503,13 +670,24 @@ function deactivateWallet (event, arg) {
 
     p.on('close', (code) => {
       console.log(`child process exited with code ${code}`)
+      if (callback) callback()
     })
   }, functionDebounce)
 }
 
-function deleteWallet (event, arg) {
+function deleteWallet (event, arg, callback) {
   setTimeout(() => {
-    const p = spawn(neoOne.serverPath, ['delete', 'wallet', arg])
+    if (!arg) {
+      // TODO code a name generator for networks, wallets, etc
+      arg = {
+        wallet: 'halite', network: 'halite', neotracker: 'halite'
+
+      }
+    }
+
+    const p = spawn(neoOne.serverPath, ['delete', 'wallet', arg.wallet, '--network', arg.network])
+
+    console.log('deleteWallet(): ' + neoOne.serverPath + ' delete wallet ' + arg.wallet + ' --network ' + arg.network)
 
     p.stdout.on('data', (data) => {
       console.log(`stdout: ${data}`)
@@ -521,13 +699,24 @@ function deleteWallet (event, arg) {
 
     p.on('close', (code) => {
       console.log(`child process exited with code ${code}`)
+      if (callback) callback()
     })
   }, functionDebounce)
 }
 
-function describeWallet (event, arg) {
+function describeWallet (event, arg, callback) {
   setTimeout(() => {
-    const p = spawn(neoOne.serverPath, ['describe', 'wallet', arg])
+    if (!arg) {
+      // TODO code a name generator for networks, wallets, etc
+      arg = {
+        wallet: 'halite', network: 'halite', neotracker: 'halite'
+
+      }
+    }
+
+    const p = spawn(neoOne.serverPath, ['describe', 'wallet', arg.wallet, '--network', arg.network])
+
+    console.log('describeWallet(): ' + neoOne.serverPath + ' describe wallet ' + arg.wallet + ' --network ' + arg.network)
 
     p.stdout.on('data', (data) => {
       console.log(`stdout: ${data}`)
@@ -539,13 +728,24 @@ function describeWallet (event, arg) {
 
     p.on('close', (code) => {
       console.log(`child process exited with code ${code}`)
+      if (callback) callback()
     })
   }, functionDebounce)
 }
 
-function getWallet (event, arg) {
+function getWallet (event, arg, callback) {
   setTimeout(() => {
-    const p = spawn(neoOne.serverPath, ['get', 'wallet'])
+    if (!arg) {
+      // TODO code a name generator for networks, wallets, etc
+      arg = {
+        wallet: 'halite', network: 'halite', neotracker: 'halite'
+
+      }
+    }
+
+    const p = spawn(neoOne.serverPath, ['get', 'wallet', arg.wallet, '--network', arg.network])
+
+    console.log('getWallet(): ' + neoOne.serverPath + ' get wallet ' + arg.wallet + ' --network ' + arg.network)
 
     p.stdout.on('data', (data) => {
       console.log(`stdout: ${data}`)
@@ -557,6 +757,7 @@ function getWallet (event, arg) {
 
     p.on('close', (code) => {
       console.log(`child process exited with code ${code}`)
+      if (callback) callback()
     })
   }, functionDebounce)
 }
