@@ -111,6 +111,12 @@ exports.stopAll = function () {
 }
 
 
+function describeAll(event, arg, callback) {
+  describeNetwork()
+  describeWallet()
+  describeNeotracker()
+}
+
 function quickstart (event, arg) {
   // TODO add options to save a network with a name and access from saved networks later
   // For now the network, data, wallet, and blocks are all cleared by default each quickstart
@@ -120,7 +126,9 @@ function quickstart (event, arg) {
       startNetwork(null, null, () => {
         createWallet(null, null, () => {
           createNeotracker(null, null, () => {
-            startNeotracker()
+            startNeotracker(null, null, () => {
+              describeAll()
+            })
           })
         })
       })
@@ -312,9 +320,9 @@ function startNeotracker (event, arg, callback) {
       }
     }
 
-    const p = spawn(neoOne.serverPath, ['start', 'neotracker', arg.neotracker, '--network', arg.network])
+    const p = spawn(neoOne.serverPath, ['start', 'neotracker', arg.neotracker])
 
-    console.log('startNeotracker(): ' + neoOne.serverPath + ' start neotracker ' + arg.neotracker + ' --network ' + arg.network)
+    console.log('startNeotracker(): ' + neoOne.serverPath + ' start neotracker ' + arg.neotracker)
 
     p.stdout.on('data', (data) => {
       console.log(`stdout: ${data}`)
