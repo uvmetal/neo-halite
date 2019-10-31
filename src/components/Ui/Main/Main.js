@@ -81,7 +81,7 @@ class AppMain extends Component {
 
     if (this.props && this.props.location && this.props.location.pathname) {
 
-      console.log('pathname: ' + this.props.location.pathname)
+      // console.log(this.props.config.consoleBuffer)
 
       rightPaneContent = <Home />
 
@@ -108,7 +108,7 @@ class AppMain extends Component {
         break
 
         case '/WorkspaceConsole':
-          rightPaneContent = <WorkspaceConsole />
+          rightPaneContent = <WorkspaceConsole config={this.props.config}/>
         break
 
         case '/WorkspaceContracts':

@@ -3,6 +3,8 @@
 const { spawn } = require('child_process')
 const ipc = require('electron').ipcMain
 
+const util = require('util')
+
 let neoOneCommands = ['startServer',
                       'stopServer',
                       'createNeotracker',
@@ -62,6 +64,14 @@ const functionDebounce = 1000
 
 let neoOne = {}
 
+let eventManager
+
+exports.setupEventManager = function (event) {
+    eventManager = event
+    console.log('Eventmanager setup.')
+    return event
+}
+
 exports.addIpcListeners = function (global, neoone) {
 
   console.log('Adding all IPC listeners for main process control of neo-one.')
@@ -111,6 +121,13 @@ exports.stopAll = function () {
 }
 
 
+function log(message) {
+  console.log('logging ' + message + ' to terminal widget')
+  eventManager.sender.send('update-console-buffer', message)
+  return message
+}
+
+
 function describeAll(event, arg, callback) {
   describeNetwork()
   describeWallet()
@@ -120,25 +137,26 @@ function describeAll(event, arg, callback) {
 function quickstart (event, arg) {
   // TODO add options to save a network with a name and access from saved networks later
   // For now the network, data, wallet, and blocks are all cleared by default each quickstart
-  console.log('Quickstarting a Neo One instance.')
-  startServer(null, null, () => {
-    createNetwork(null, null, () => {
-      startNetwork(null, null, () => {
-        createWallet(null, null, () => {
-          createNeotracker(null, null, () => {
-            startNeotracker(null, null, () => {
-              describeAll()
-            })
-          })
-        })
-      })
-    })
-  })
+  console.log(log('Quickstarting a Neo One instance.'))
+  console.log(log('Test, test test'))
+  // startServer(null, null, () => {
+  //   createNetwork(null, null, () => {
+  //     startNetwork(null, null, () => {
+  //       createWallet(null, null, () => {
+  //         createNeotracker(null, null, () => {
+  //           startNeotracker(null, null, () => {
+  //             describeAll()
+  //           })
+  //         })
+  //       })
+  //     })
+  //   })
+  // })
   // createNeotracker()
 }
 
 function quickstop (event, arg) {
-  console.log('Quickstopping a Neo One instance.')
+  console.log(log('Quickstopping a Neo One instance.'))
   stopServer()
 }
 
@@ -147,7 +165,7 @@ function startServer (event, arg, callback) {
   setTimeout(() => {
     if (neoOne.serverPID) return
 
-    console.log('startServer(): ' + neoOne.serverPath + ' init')
+    console.log(log('startServer(): ' + neoOne.serverPath + ' init'))
 
     const p = spawn(neoOne.serverPath, ['init'])
 

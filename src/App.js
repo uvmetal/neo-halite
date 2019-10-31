@@ -11,7 +11,7 @@ import WebWorker from './WebWorker'
 
 import './App.css'
 
-const electron = window.require("electron")
+const electron = window.require('electron')
 
 class App extends Component {
   constructor(props) {
@@ -21,7 +21,8 @@ class App extends Component {
           isLoading: true,
           users: [],
           isSorting: false,
-          systemConfig: {}
+          systemConfig: {
+          }
       }
   }
 
@@ -44,6 +45,14 @@ class App extends Component {
     })
 
     electron.ipcRenderer.send('check-install')
+
+    electron.ipcRenderer.on('update-console-buffer', function (event, arg) {
+      console.log('updating console buffer')
+      self.state.systemConfig.consoleBuffer.push(arg)
+      self.setState({ systemConfig: { consoleBuffer: self.state.systemConfig.consoleBuffer } })
+    })
+
+    electron.ipcRenderer.send('setup-event-manager')
   }
 
   handleSort() {

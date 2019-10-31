@@ -59,7 +59,8 @@ class InstallerMain extends Component {
 
     if (this.props && this.props.location && this.props.location.pathname) {
 
-      console.log('pathname: ' + this.props.location.pathname)
+      // console.log('pathname: ' + this.props.location.pathname)
+      // console.log(this.props.config.consoleBuffer)
 
       rightPaneContent = <InstallerHome />
 

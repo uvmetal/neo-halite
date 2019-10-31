@@ -48,6 +48,8 @@ function createWindow() {
   mainWindow.loadURL(isDev ? 'http://localhost:3000' : `file://${path.join(__dirname, '../build/index.html')}`)
   mainWindow.on('closed', () => mainWindow = null)
 
+  // console.log(util.inspect(mainWindow, {depth: null}))
+
   let systemConfig = getSystemProfile()
 
   if (app.isPackaged) {
@@ -99,6 +101,11 @@ ipc.on('use-sails', function (event, arg) {
     sailsServer.removeIpcListeners()
     neoOneServer.addIpcListeners(global, neoone)
   }
+})
+
+// This manages events from the terminal widget under Workspace/Console
+ipc.on('setup-event-manager', function (event, arg) {
+  neoOneServer.setupEventManager(event)
 })
 
 ipc.on('check-install', function (event, arg) {
@@ -176,7 +183,8 @@ function getSystemProfile() {
     appMetrics: appMetrics,
     gpuInfo: gpuInfo,
     isAccessibilitySupportEnabled: isAccessibilitySupportEnabled,
-    isPackaged: isPackaged
+    isPackaged: isPackaged,
+    consoleBuffer: ['Welcome to Neo-Halite']
   }
 
   console.log('systemConfig is ' + util.inspect(systemConfig, {depth: null}))
