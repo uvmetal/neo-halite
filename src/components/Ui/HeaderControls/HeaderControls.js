@@ -78,18 +78,20 @@ class HeaderControls extends Component {
     return(
       <div>
         <Button size="sm" onClick={this.props.leftPaneToggleHidden} >...</Button>
-        <Button size="sm" outline color="success" onClick={this.toggleNetworkStatus} >Session Status</Button>
-          <Collapse isOpen={this.state.networkStatusToggle}>
-            <Card style={{ marginLeft: '1rem', marginRight: '1rem', marginBottom: '1rem' }}>
-              <CardBody>
-              <Button size="sm" outline color="success" onClick={() => this.startAllClick()}>Start All</Button>
-              <Button size="sm" outline color="danger" onClick={() => this.stopAllClick()}>Stop All</Button>
-              <RunningNetworks networks={this.state.networks} />
-              </CardBody>
-            </Card>
-          </Collapse>
+
       </div>
     )
   }
 }
 export default HeaderControls
+
+// <Button size="sm" outline color="success" onClick={this.toggleNetworkStatus} >Session Status</Button>
+//   <Collapse isOpen={this.state.networkStatusToggle}>
+//     <Card style={{ marginLeft: '1rem', marginRight: '1rem', marginBottom: '1rem' }}>
+//       <CardBody>
+//       <Button size="sm" outline color="success" onClick={() => this.startAllClick()}>Start All</Button>
+//       <Button size="sm" outline color="danger" onClick={() => this.stopAllClick()}>Stop All</Button>
+//       <RunningNetworks networks={this.state.networks} />
+//       </CardBody>
+//     </Card>
+//   </Collapse>

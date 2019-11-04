@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Jumbotron } from 'reactstrap'
+import { Jumbotron, Button } from 'reactstrap'
 import Terminal from 'terminal-in-react'
 
 const electron = window.require('electron')
@@ -9,6 +9,8 @@ class WorkspaceConsole extends Component {
     super(props)
 
     this.showMsg = this.showMsg.bind(this)
+    this.quickstart = this.quickstart.bind(this)
+    this.quickstop = this.quickstop.bind(this)
 
     this.state = {
       config: '',
@@ -18,8 +20,7 @@ class WorkspaceConsole extends Component {
 
   componentDidMount() {
     this.setState({
-      config: this.props.config,
-      buffer: []
+      config: this.props.config
     })
     console.log(this.state.config.consoleBuffer)
 
@@ -30,6 +31,15 @@ class WorkspaceConsole extends Component {
     console.log(this.state.config.consoleBuffer)
     return this.state.config.consoleBuffer
   }
+
+  quickstart() {
+    window.ipcRenderer.send('quickstart')
+  }
+
+  quickstop() {
+    window.ipcRenderer.send('quickstop')
+  }
+
 
   render() {
     let history
@@ -48,6 +58,8 @@ class WorkspaceConsole extends Component {
          <p className="lead mx-auto">
 
          </p>
+         <Button size="sm" onClick={this.quickstart} >Quickstart</Button>
+         <Button size="sm" onClick={this.quickstop} >Stop</Button>
         </div>
       </Jumbotron>
       <div>

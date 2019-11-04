@@ -96,7 +96,7 @@ class AppMain extends Component {
         break
 
         case '/Quickstart':
-          rightPaneContent = <Quickstart />
+          rightPaneContent = <Quickstart config={this.props.config}/>
         break
 
         case '/WorkspaceAccounts':

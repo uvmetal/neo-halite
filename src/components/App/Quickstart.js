@@ -16,6 +16,7 @@ class Quickstart extends Component {
     this.quickstop = this.quickstop.bind(this)
 
     this.state = {
+      config: ''
     }
   }
 
@@ -28,9 +29,19 @@ class Quickstart extends Component {
   }
 
   componentDidMount() {
+    this.setState({
+      config: this.props.config
+    })
+    console.log(this.state.config.consoleBuffer)
   }
 
   render() {
+    let history
+    if (this.state.config.consoleBuffer && this.state.config.consoleBuffer.length) {
+      history = this.state.config.consoleBuffer.map(function(msg){
+        return <p>{msg}</p>
+      })
+    }
     return(
       <React.Fragment>
         <Jumbotron className="vertical-center">
@@ -44,9 +55,8 @@ class Quickstart extends Component {
           <Button size="sm" onClick={this.quickstop} >Stop</Button>
         </div>
         </Jumbotron>
-        <img src={neoOneLogo} className="img-fluid mx-auto d-block" alt="Neo One" />
-        <div className="footer coz-medium pt-1">
-          <img src={cozLogo} width="276" height="50" alt="City of Zion" className="img-fluid mx-auto d-block" />
+        <div>
+        {history}
         </div>
       </React.Fragment>
     )
